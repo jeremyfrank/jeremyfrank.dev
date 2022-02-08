@@ -21,5 +21,8 @@
   "homepage": "https://github.com/jeremyfrank/jeremyfrank.dev#readme",
   "dependencies": {
     "astro": "^0.22.20"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.0.19"
   }
 }
