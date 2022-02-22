@@ -3,8 +3,16 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    height: fill-available;
+    height: -webkit-fill-available;
+  }
+
   body {
     @apply bg-white text-gray-800;
     @apply dark:bg-black dark:text-gray-200;
+    min-height: 100vh;
+    min-height: fill-available;
+    min-height: -webkit-fill-available;
   }
 }
