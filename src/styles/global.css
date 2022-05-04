@@ -19,15 +19,18 @@
     font-display: swap;
   }
   html {
-    height: fill-available;
-    height: -webkit-fill-available;
+    height: stretch;
   }
-
   body {
     @apply bg-white text-gray-800;
-    @apply dark:bg-black dark:text-gray-200;
-    min-height: 100vh;
-    min-height: fill-available;
-    min-height: -webkit-fill-available;
+    @apply font-light;
+  }
+  h2 {
+    @apply font-serif;
+    @apply text-4xl;
+  }
+  h3 {
+    @apply font-serif;
+    @apply text-2xl;
   }
 }
