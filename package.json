@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/jeremyfrank/jeremyfrank.dev#readme",
   "dependencies": {
-    "astro": "^0.22.20"
+    "astro": "^1.0.0-beta.24"
   },
   "devDependencies": {
     "tailwindcss": "^3.0.24"
