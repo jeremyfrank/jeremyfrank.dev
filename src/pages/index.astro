@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css'
+import { focusAreas } from '../data/focus-areas'
 ---
 <html>
   <head>
@@ -31,6 +32,37 @@ import '../styles/global.css'
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga voluptatum harum aliquam quia expedita deleniti? Voluptatum unde sapiente eligendi. Tempora, non fugiat dicta impedit distinctio at magnam provident nam aliquam.
             </p>
           </div>
+        </div>
+      </section>
+
+      <section class="bg-slate-50 px-6 py-20">
+        <div class="flex flex-col gap-12 items-center justify-center max-w-6xl mx-auto">
+          <h2>
+            Areas of Focus
+          </h2>
+
+          <ul class="grid sm:grid-cols-3 gap-8">
+            {focusAreas.map(area => (
+              <li class="flex flex-col items-center gap-4">
+                <Fragment set:html={area.icon}></Fragment>
+                <span class="block font-semibold uppercase">
+                  {area.title}
+                </span>
+                <span class="sr-only">.</span>
+                <span class="block self-start">
+                  {area.description}
+                </span>
+                <span class="self-start">
+                  {area.favorites.map((fav, index) => (
+                    <span>
+                      {fav}
+                      {index + 1 !== area.favorites.length ? '•' : ''}
+                    </span>
+                  ))}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </main>
