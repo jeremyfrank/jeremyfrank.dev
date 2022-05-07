@@ -1,0 +1,28 @@
+---
+import cx from 'classnames'
+const { title, url, image, color, role, tech, index } = Astro.props
+---
+<li class="sm:grid sm:grid-cols-3 items-center">
+  <img src={image} alt="Screenshot of ${title} work" class="col-span-2" />
+  <div
+    class={cx(
+      'relative border-t-4 bg-white',
+      'smd:mx-6 smd:-mt-6 smd:p-6',
+      'sm:min-h-[50%] sm:p-[20%]',
+      {
+        'sm:-ml-[50%]': index % 2 === 0,
+        'sm:-mr-[50%] order-first': index % 2 !== 0,
+      }
+    )}
+    style={`border-color:${color ? color : 'lightblue'}`}
+  >
+    <h3>{title}</h3>
+    <dl class="flex flex-wrap">
+      <dt class="w-1/5">Role</dt>
+      <dd class="w-4/5">{role}</dd>
+      <dt class="w-1/5">Tech</dt>
+      <dd class="w-4/5">{tech}</dd>
+    </dl>
+    <a href={url}>View Work →</a>
+  </div>
+</li>

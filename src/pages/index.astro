@@ -1,6 +1,10 @@
 ---
+import WorkRow from '../components/WorkRow.astro'
 import '../styles/global.css'
 import { focusAreas } from '../data/focus-areas'
+
+const work = (await Astro.glob('../data/work/*.md'))
+  .sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf())
 ---
 <html>
   <head>
@@ -61,6 +65,28 @@ import { focusAreas } from '../data/focus-areas'
                   ))}
                 </span>
               </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section class="bg-slate-300 min-h-screen py-20">
+        <div class="flex flex-col gap-12 items-center justify-center max-w-5xl mx-auto">
+          <h2>
+            Work
+          </h2>
+
+          <ul class="mt-20 space-y-40 text-left">
+            {work.map((item, index) => (
+              <WorkRow
+                title={item.frontmatter.title}
+                url={item.frontmatter.url}
+                image={item.frontmatter.image}
+                color={item.frontmatter.color}
+                role={item.frontmatter.role}
+                tech={item.frontmatter.tech}
+                index={index}
+              />
             ))}
           </ul>
         </div>
