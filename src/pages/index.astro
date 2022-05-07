@@ -1,10 +1,37 @@
 ---
+import { promisify } from 'util'
+import sizeOf from 'image-size'
+
 import WorkRow from '../components/WorkRow.astro'
 import '../styles/global.css'
 import { focusAreas } from '../data/focus-areas'
+import { clients } from '../data/clients.js'
 
+const getSizeOf = promisify(sizeOf)
 const work = (await Astro.glob('../data/work/*.md'))
   .sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf())
+
+const allClients = clients.sort((a, b) => {
+  var nameA = a.name.toUpperCase()
+  var nameB = b.name.toUpperCase()
+  return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0
+})
+
+const featuredClients = allClients.filter(item => item.image)
+const remainingClients = allClients.filter(item => !item.image)
+
+featuredClients
+  .map(async client => {
+    await getSizeOf(`./public/images/${client.image}`)
+      .then(dimensions => {
+        client.width = dimensions.width
+        client.height = dimensions.height
+        client.aspectRatio = dimensions.height / dimensions.width
+      })
+      .catch(err => console.error(err))
+    return client
+  })
+
 ---
 <html>
   <head>
@@ -90,6 +117,37 @@ const work = (await Astro.glob('../data/work/*.md'))
             ))}
           </ul>
         </div>
+      </section>
+
+      <section class="flex flex-col items-center justify-center px-5 py-20 text-center">
+        <h2>
+          Select Clients
+        </h2>
+
+        <p class="max-w-2xl mx-auto mt-4 font-serif text-xl sm:text-2xl">
+          I’m proud to have worked with a wide variety of companies and organizations over the years. Here’s just a few of them!
+        </p>
+
+        <ul class="grid grid-cols-2 gap-10 mt-20 md:grid-cols-5">
+          {featuredClients.map(client => (
+            <li class="flex flex-col items-center justify-center p-2 text-center">
+              <img src="/images/${client.image}" loading="lazy" alt={client.name} class="max-w-[75%] max-h-[30px]">
+            </li>
+          ))}
+        </ul>
+
+        <details class="mt-10 max-w-4xl">
+          <summary class="cursor-pointer select-none text-center mx-auto w-[10ch]">
+            More
+          </summary>
+          <ul class="mt-10 columns-3 sm:columns-4 gap-x-10 leading-4 text-sm text-neutral-500">
+            {remainingClients.map(client => (
+              <li class="break-inside-avoid flex items-center justify-center py-1">
+                {client.name}
+              </li>
+            ))}
+          </ul>
+        </details>
       </section>
     </main>
   </body>
