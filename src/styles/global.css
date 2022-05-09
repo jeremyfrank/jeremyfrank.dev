@@ -10,7 +10,6 @@
     font-style: normal;
     font-display: swap;
   }
-
   @font-face {
     font-family: 'Calluna Sans';
     src: url('/fonts/CallunaSansRegular-webfont.woff2') format('woff2');
@@ -18,19 +17,18 @@
     font-style: normal;
     font-display: swap;
   }
-  html {
-    height: stretch;
-  }
   body {
-    @apply bg-white text-gray-800;
-    @apply font-light;
+    @apply font-light text-gray-800;
   }
   h2 {
     @apply font-serif;
-    @apply text-4xl;
+    @apply text-2xl sm:text-4xl;
   }
   h3 {
     @apply font-serif;
-    @apply text-2xl;
+  }
+  a {
+    @apply focus-visible:ring-2;
+    text-decoration: underline;
   }
 }
