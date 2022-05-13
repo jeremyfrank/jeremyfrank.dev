@@ -4,7 +4,6 @@ import sizeOf from 'image-size'
 
 import WorkRow from '../components/WorkRow.astro'
 import '../styles/global.css'
-import { focusAreas } from '../data/focus-areas'
 import { clients } from '../data/clients.js'
 
 const getSizeOf = promisify(sizeOf)
@@ -40,8 +39,8 @@ featuredClients
   </head>
   <body>
     <main>
-      <section class="bg-gradient-to-br from-cyan-500 to-blue-500 text-white pt-6 sm:pt-12 pb-36 sm:pb-48 px-6 space-y-8">
-        <div class="flex flex-col gap-6 sm:gap-8 justify-center min-h-max font-serif max-w-4xl mx-auto leading-tight text-xl sm:text-3xl">
+      <section class="bg-gradient-to-br from-cyan-500 to-blue-500 p-6 sm:py-12">
+        <div class="flex flex-col gap-6 sm:gap-8 justify-center min-h-max font-serif text-white max-w-4xl mx-auto leading-tight text-xl sm:text-3xl">
           <img src="/images/avatar.jpg" class="block flex-shrink-0 rounded-full h-24 w-24 sm:h-24 sm:w-24" alt="">
 
           <p>
@@ -60,36 +59,6 @@ featuredClients
           <p>
             Over the course of two decades, I've bridged the gap between design and engineering, working with teams to provide technical leadership and mentorship, while building cohesive and intuitive, highly performant and accessible user interfaces.
           </p>
-        </div>
-      </section>
-
-      <section class="px-6 pb-20 -mt-24 sm:-mt-32">
-        <div class="bg-white rounded-lg shadow-md flex flex-col gap-12 items-center justify-center max-w-6xl mx-auto p-6 sm:p-16">
-          <h2>
-            Areas of Focus
-          </h2>
-
-          <ul class="grid sm:grid-cols-3 gap-16">
-            {focusAreas.map(area => (
-              <li class="flex flex-col items-center gap-4">
-                <img src="/images/${area.icon}" alt="" class="">
-                <span class="block font-semibold">
-                  {area.title}
-                </span>
-                <span class="sr-only">.</span>
-                <span class="block text-center">
-                  {area.description}
-                </span>
-                <span class="text-gray-400 text-center">
-                  {area.favorites.map((fav, index) => (
-                    <span>
-                      {fav}{index + 1 !== area.favorites.length ? ',' : ''}
-                    </span>
-                  ))}
-                </span>
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 
