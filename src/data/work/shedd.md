@@ -3,11 +3,10 @@ title: Shedd Aquarium
 client: Shedd Aquarium
 date: 2019-09-01
 url: https://sheddaquarium.org/
-image: /public/images/shedd.jpg
+image: https://ucarecdn.com/e3159180-effe-4780-b36e-8a166dc1b467/
 color: '#004c7e'
 role: UI Developer
 tech: Tailwind, ERB
-summary: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis, ipsam error nam eaque et facilis commodi nesciunt necessitatibus.
+summary: Developing a bold new site and integrating with a custom CMS on a proven platform.
+featured: true
 ---
-
-Description text here.

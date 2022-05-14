@@ -1,14 +1,18 @@
 ---
 import { promisify } from 'util'
 import sizeOf from 'image-size'
+import cx from 'classnames'
 
-import WorkRow from '../components/WorkRow.astro'
+import WorkCard from '../components/WorkCard.astro'
 import '../styles/global.css'
 import { clients } from '../data/clients.js'
 
 const getSizeOf = promisify(sizeOf)
-const work = (await Astro.glob('../data/work/*.md'))
+const allWork = (await Astro.glob('../data/work/*.md'))
   .sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf())
+
+const featuredWork = allWork.filter(item => item.frontmatter.featured)
+const remainingWork = allWork.filter(item => !item.frontmatter.featured)
 
 const allClients = clients.sort((a, b) => {
   var nameA = a.name.toUpperCase()
@@ -39,8 +43,8 @@ featuredClients
   </head>
   <body>
     <main>
-      <section class="bg-gradient-to-br from-cyan-500 to-blue-500 p-6 sm:py-12">
-        <div class="flex flex-col gap-6 sm:gap-8 justify-center min-h-max font-serif text-white max-w-4xl mx-auto leading-tight text-xl sm:text-3xl">
+      <section class="p-5 sm:py-12">
+        <div class="flex flex-col gap-5 sm:gap-8 justify-center min-h-max font-serif max-w-4xl mx-auto leading-tight text-xl sm:text-3xl">
           <img src="/images/avatar.jpg" class="block flex-shrink-0 rounded-full h-24 w-24 sm:h-24 sm:w-24" alt="">
 
           <p>
@@ -62,29 +66,56 @@ featuredClients
         </div>
       </section>
 
-      <section class="bg-slate-300 min-h-screen py-20">
+
+      <section class={ cx(
+        'px-5 py-20 sm:px-8 md:px-12 lg:px-16 xl:px-0',
+      )}>
         <div class="flex flex-col gap-12 items-center justify-center max-w-5xl mx-auto">
           <h2>
             Work
           </h2>
 
-          <ul class="mt-20 space-y-40 text-left">
-            {work.map((item, index) => (
-              <WorkRow
+          <ul class={ cx(
+            'grid gap-12',
+            'sm:grid-cols-2',
+            'sm:gap-8',
+            'md:gap-12',
+            'lg:gap-16',
+            'xl:gap-20',
+          ) }>
+            {featuredWork.map((item) => (
+              <WorkCard
                 title={item.frontmatter.title}
                 url={item.frontmatter.url}
                 image={item.frontmatter.image}
                 color={item.frontmatter.color}
-                role={item.frontmatter.role}
-                tech={item.frontmatter.tech}
-                index={index}
+                summary={item.frontmatter.summary}
+                featured={true}
               />
             ))}
           </ul>
+
+          <details class="flex flex-col w-full">
+            <summary class="cursor-pointer select-none text-center mx-auto w-[10ch]">
+              More
+            </summary>
+
+            <ul class="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-5">
+              {remainingWork.map((item) => (
+                <WorkCard
+                  title={item.frontmatter.title}
+                  url={item.frontmatter.url}
+                  image={item.frontmatter.image}
+                  color={item.frontmatter.color}
+                  featured={false}
+                />
+              ))}
+            </ul>
+          </details>
         </div>
       </section>
 
-      <section class="flex flex-col items-center justify-center px-5 py-20 text-center">
+      <section class="bg-white text-zinc-900 flex flex-col items-center justify-center px-5 py-20 text-center">
         <h2>
           Select Clients
         </h2>
@@ -105,7 +136,8 @@ featuredClients
           <summary class="cursor-pointer select-none text-center mx-auto w-[10ch]">
             More
           </summary>
-          <ul class="mt-10 columns-3 sm:columns-4 gap-x-10 leading-4 text-sm text-neutral-500">
+
+          <ul class="mt-10 columns-3 sm:columns-4 gap-x-10 leading-4 text-sm text-zinc-500">
             {remainingClients.map(client => (
               <li class="break-inside-avoid flex items-center justify-center py-1">
                 {client.name}
@@ -116,7 +148,7 @@ featuredClients
       </section>
     </main>
 
-    <footer class="p-5 text-center">
+    <footer class="bg-white text-zinc-900 p-5 text-center">
       <p class="border-t pt-5">
         ©
         {new Date().getFullYear()}

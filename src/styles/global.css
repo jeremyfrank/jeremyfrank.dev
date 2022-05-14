@@ -18,7 +18,8 @@
     font-display: swap;
   }
   body {
-    @apply font-light text-gray-800;
+    @apply font-light;
+    @apply bg-gradient-to-br from-zinc-800 to-zinc-900 text-zinc-200;
   }
   h2 {
     @apply font-serif;

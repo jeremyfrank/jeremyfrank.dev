@@ -1,0 +1,45 @@
+---
+import { renderImg } from "astro-imagetools/api";
+import cx from 'classnames'
+
+const { title, url, image, color, summary, featured } = Astro.props
+const renderedImgHTML = await renderImg({
+  src: image,
+  alt: `Screenshot of ${title} work`,
+  breakpoints: [750, 900, 1200],
+  sizes: '(min-width: 1024px) 682px, (min-width: 640px) 33.33vw, 100vw',
+  attributes: {
+    img: {
+      class: 'col-span-2',
+    }
+  }
+});
+---
+
+<li class="flex flex-col rounded overflow-hidden">
+  <Fragment set:html={renderedImgHTML.img}/>
+  <div
+    class={cx(
+      'flex flex-col flex-grow items-start',
+      'border-t-4 bg-zinc-100 text-zinc-800',
+      {
+        'gap-4 p-6': featured,
+        'gap-1 p-4': !featured,
+      }
+    )}
+    style={`border-color:${color ? color : 'lightblue'}`}
+  >
+    <h3
+      class={
+        cx({
+          'text-xl sm:text-2xl': featured,
+          'leading-5 text-md sm:text-lg': !featured,
+        })
+      }
+    >
+      {title}
+    </h3>
+    <p>{summary}</p>
+    {url && <a href={url}>View Work →</a>}
+  </div>
+</li>

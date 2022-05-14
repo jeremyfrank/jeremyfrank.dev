@@ -2,11 +2,10 @@
 title: Carne y Arena
 client: Emerson Collective
 date: 2018-03-22
-image: /public/images/carne-y-arena.jpg
+image: https://ucarecdn.com/2d3f96f6-e21a-4223-b4e0-db21bd4987b4/
 color: '#CC494D'
 role: UI Developer
 tech: Gatsby, CSS Modules
-summary: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officiis, ipsam error nam eaque et facilis commodi nesciunt necessitatibus.
+summary: Developing a rich marketing site for a groundbreaking and immersive virtual reality installation.
+featured: true
 ---
-
-Description text here.
