@@ -17,9 +17,15 @@
     font-style: normal;
     font-display: swap;
   }
+  html {
+    @apply bg-zinc-50;
+    @apply dark:bg-zinc-800;
+  }
   body {
     @apply font-light;
-    @apply bg-gradient-to-br from-zinc-800 to-zinc-900 text-zinc-200;
+    @apply bg-gradient-to-b;
+    @apply from-zinc-50 to-zinc-100 text-zinc-900;
+    @apply dark:from-zinc-800 dark:to-zinc-900 dark:text-zinc-200;
   }
   h2 {
     @apply font-serif;
