@@ -80,7 +80,7 @@ featuredClients
             image={item.frontmatter.image}
             color={item.frontmatter.color}
             summary={item.frontmatter.summary}
-            featured={true}
+            extended={true}
           />
         ))}
       </ul>
@@ -97,7 +97,6 @@ featuredClients
               url={item.frontmatter.layout ? item.url : ''}
               image={item.frontmatter.image}
               color={item.frontmatter.color}
-              featured={false}
             />
           ))}
         </ul>
