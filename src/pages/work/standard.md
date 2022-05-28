@@ -1,4 +1,5 @@
 ---
+layout: ../../layouts/Work.astro
 title: Standard Cognition
 client: Standard Cognition
 date: 2020-05-15

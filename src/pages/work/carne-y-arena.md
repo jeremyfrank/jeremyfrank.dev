@@ -1,4 +1,5 @@
 ---
+layout: ../../layouts/Work.astro
 title: Carne y Arena
 client: Emerson Collective
 date: 2018-03-22

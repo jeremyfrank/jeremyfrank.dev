@@ -8,7 +8,7 @@ import WorkCard from '../components/WorkCard.astro'
 import { clients } from '../data/clients.js'
 
 const getSizeOf = promisify(sizeOf)
-const allWork = (await Astro.glob('../data/work/*.md'))
+const allWork = (await Astro.glob('/src/pages/work/*.md'))
   .sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf())
 
 const featuredWork = allWork.filter(item => item.frontmatter.featured)

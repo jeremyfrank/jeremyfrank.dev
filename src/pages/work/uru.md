@@ -1,4 +1,5 @@
 ---
+layout: ../../layouts/Work.astro
 title: Urū Sports App
 client: Urū Sports
 date: 2021-08-01

@@ -1,4 +1,5 @@
 ---
+layout: ../../layouts/Work.astro
 title: Shedd Aquarium
 client: Shedd Aquarium
 date: 2019-09-01
