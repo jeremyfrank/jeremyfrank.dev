@@ -76,7 +76,7 @@ featuredClients
         {featuredWork.map((item) => (
           <WorkCard
             title={item.frontmatter.title}
-            url={item.frontmatter.url}
+            url={item.frontmatter.layout ? item.url : ''}
             image={item.frontmatter.image}
             color={item.frontmatter.color}
             summary={item.frontmatter.summary}
@@ -94,7 +94,7 @@ featuredClients
           {remainingWork.map((item) => (
             <WorkCard
               title={item.frontmatter.title}
-              url={item.frontmatter.url}
+              url={item.frontmatter.layout ? item.url : ''}
               image={item.frontmatter.image}
               color={item.frontmatter.color}
               featured={false}
