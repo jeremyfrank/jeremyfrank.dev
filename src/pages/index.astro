@@ -3,8 +3,8 @@ import { promisify } from 'util'
 import sizeOf from 'image-size'
 import cx from 'classnames'
 
+import BaseLayout from '../layouts/BaseLayout.astro'
 import WorkCard from '../components/WorkCard.astro'
-import '../styles/global.css'
 import { clients } from '../data/clients.js'
 
 const getSizeOf = promisify(sizeOf)
@@ -35,131 +35,105 @@ featuredClients
     return client
   })
 ---
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>jeremyfrank.dev</title>
-  </head>
-  <body>
-    <main>
-      <section class="pt-28 px-5 sm:pt-32 sm:pb-12">
-        <div class="flex flex-col gap-5 sm:gap-8 justify-center min-h-max font-serif max-w-4xl mx-auto leading-tight text-xl sm:text-3xl">
-          <div class="absolute top-0 p-1 pt-4 rounded-b-full bg-zinc-900 dark:bg-zinc-50">
-            <img
-              src="/images/jf-logomark.svg"
-              class="h-16 w-16 invert dark:invert-0"
-              alt=""
-            >
-          </div>
+<BaseLayout>
+  <section class="px-5">
+    <div class="flex flex-col gap-5 sm:gap-8 justify-center min-h-max font-serif max-w-4xl mx-auto leading-tight text-xl sm:text-3xl">
+      <p>
+        Hello, I’m Jeremy.
+      </p>
 
-          <p>
-            Hello, I’m Jeremy.
-          </p>
+      <p>
+        I’m a development director at
+        <a href="https://www.viget.com/" class="font-bold">Viget</a>,
+        specializing in <b class="font-bold text-sky-500">user interface</b> and
+        <b class="font-bold text-sky-500">design system</b> development, with a focus on
+        <b class="font-bold text-sky-500">performance</b> and
+        <b class="font-bold text-sky-500">accessibility</b>.
+      </p>
 
-          <p>
-            I’m a development director at
-            <a href="https://www.viget.com/" class="font-bold">Viget</a>,
-            specializing in <b class="font-bold text-sky-500">user interface</b> and
-            <b class="font-bold text-sky-500">design system</b> development, with a focus on
-            <b class="font-bold text-sky-500">performance</b> and
-            <b class="font-bold text-sky-500">accessibility</b>.
-          </p>
+      <p>
+        Over the course of two decades, I've bridged the gap between design and engineering, working with teams to provide technical leadership and mentorship, while building cohesive and intuitive, highly performant and accessible user interfaces.
+      </p>
+    </div>
+  </section>
 
-          <p>
-            Over the course of two decades, I've bridged the gap between design and engineering, working with teams to provide technical leadership and mentorship, while building cohesive and intuitive, highly performant and accessible user interfaces.
-          </p>
-        </div>
-      </section>
+  <section class={ cx(
+    'my-20 px-5 sm:px-8 md:px-12 lg:px-16 xl:px-0',
+  )}>
+    <div class="flex flex-col gap-12 items-center justify-center max-w-5xl mx-auto">
+      <h2>
+        Work
+      </h2>
 
+      <ul class={ cx(
+        'grid gap-12',
+        'sm:grid-cols-2',
+        'sm:gap-8',
+        'md:gap-12',
+        'lg:gap-16',
+        'xl:gap-20',
+      ) }>
+        {featuredWork.map((item) => (
+          <WorkCard
+            title={item.frontmatter.title}
+            url={item.frontmatter.url}
+            image={item.frontmatter.image}
+            color={item.frontmatter.color}
+            summary={item.frontmatter.summary}
+            featured={true}
+          />
+        ))}
+      </ul>
 
-      <section class={ cx(
-        'px-5 py-20 sm:px-8 md:px-12 lg:px-16 xl:px-0',
-      )}>
-        <div class="flex flex-col gap-12 items-center justify-center max-w-5xl mx-auto">
-          <h2>
-            Work
-          </h2>
+      <details class="flex flex-col w-full">
+        <summary class="cursor-pointer select-none text-center mx-auto w-[10ch]">
+          More
+        </summary>
 
-          <ul class={ cx(
-            'grid gap-12',
-            'sm:grid-cols-2',
-            'sm:gap-8',
-            'md:gap-12',
-            'lg:gap-16',
-            'xl:gap-20',
-          ) }>
-            {featuredWork.map((item) => (
-              <WorkCard
-                title={item.frontmatter.title}
-                url={item.frontmatter.url}
-                image={item.frontmatter.image}
-                color={item.frontmatter.color}
-                summary={item.frontmatter.summary}
-                featured={true}
-              />
-            ))}
-          </ul>
-
-          <details class="flex flex-col w-full">
-            <summary class="cursor-pointer select-none text-center mx-auto w-[10ch]">
-              More
-            </summary>
-
-            <ul class="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-5">
-              {remainingWork.map((item) => (
-                <WorkCard
-                  title={item.frontmatter.title}
-                  url={item.frontmatter.url}
-                  image={item.frontmatter.image}
-                  color={item.frontmatter.color}
-                  featured={false}
-                />
-              ))}
-            </ul>
-          </details>
-        </div>
-      </section>
-
-      <section class="bg-white text-zinc-900 flex flex-col items-center justify-center px-5 py-20 text-center">
-        <h2>
-          Select Clients
-        </h2>
-
-        <p class="max-w-2xl mx-auto mt-4 font-serif text-xl sm:text-2xl">
-          I’m proud to have worked with a wide variety of companies and organizations over the years. Here’s just a few of them!
-        </p>
-
-        <ul class="grid grid-cols-2 gap-10 mt-20 md:grid-cols-5">
-          {featuredClients.map(client => (
-            <li class="flex flex-col items-center justify-center p-2 text-center">
-              <img src="/images/${client.image}" loading="lazy" alt={client.name} class="max-w-[75%] max-h-[30px]">
-            </li>
+        <ul class="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-5">
+          {remainingWork.map((item) => (
+            <WorkCard
+              title={item.frontmatter.title}
+              url={item.frontmatter.url}
+              image={item.frontmatter.image}
+              color={item.frontmatter.color}
+              featured={false}
+            />
           ))}
         </ul>
+      </details>
+    </div>
+  </section>
 
-        <details class="mt-10 max-w-4xl">
-          <summary class="cursor-pointer select-none text-center mx-auto w-[10ch]">
-            More
-          </summary>
+  <section class="bg-white text-zinc-900 flex flex-col items-center justify-center px-5 py-20 text-center">
+    <h2>
+      Select Clients
+    </h2>
 
-          <ul class="mt-10 columns-3 sm:columns-4 gap-x-10 leading-4 text-sm text-zinc-500">
-            {remainingClients.map(client => (
-              <li class="break-inside-avoid flex items-center justify-center py-1">
-                {client.name}
-              </li>
-            ))}
-          </ul>
-        </details>
-      </section>
-    </main>
+    <p class="max-w-2xl mx-auto mt-4 font-serif text-xl sm:text-2xl">
+      I’m proud to have worked with a wide variety of companies and organizations over the years. Here’s just a few of them!
+    </p>
 
-    <footer class="bg-white text-zinc-900 p-5 text-center">
-      <p class="border-t pt-5">
-        ©
-        {new Date().getFullYear()}
-        Jeremy Frank
-      </p>
-    </footer>
-  </body>
-</html>
+    <ul class="grid grid-cols-2 gap-10 mt-20 md:grid-cols-5">
+      {featuredClients.map(client => (
+        <li class="flex flex-col items-center justify-center p-2 text-center">
+          <img src="/images/${client.image}" loading="lazy" alt={client.name} class="max-w-[75%] max-h-[30px]">
+        </li>
+      ))}
+    </ul>
+
+    <details class="mt-10 max-w-4xl">
+      <summary class="cursor-pointer select-none text-center mx-auto w-[10ch]">
+        More
+      </summary>
+
+      <ul class="mt-10 columns-3 sm:columns-4 gap-x-10 leading-4 text-sm text-zinc-500">
+        {remainingClients.map(client => (
+          <li class="break-inside-avoid flex items-center justify-center py-1">
+            {client.name}
+          </li>
+        ))}
+      </ul>
+    </details>
+  </section>
+</BaseLayout>

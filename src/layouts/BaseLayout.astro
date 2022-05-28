@@ -1,0 +1,41 @@
+---
+import '../styles/global.css'
+
+const defaultTitle = 'Jeremy Frank UI Developer'
+const { title } = Astro.props
+const formattedTitle = title ? `${title} – ${defaultTitle}` : defaultTitle;
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{formattedTitle}</title>
+  </head>
+  <body>
+    <header class="pb-8 sm:pb-12 px-5">
+      <div class="max-w-4xl mx-auto flex">
+        <div class="p-1 pt-4 rounded-b-full bg-zinc-900 dark:bg-zinc-50">
+          <img
+            src="/images/jf-logomark.svg"
+            class="h-16 w-16 invert dark:invert-0"
+            alt=""
+          >
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="bg-white text-zinc-900 p-5 text-center">
+      <p class="border-t pt-5">
+        ©
+        {new Date().getFullYear()}
+        Jeremy Frank
+      </p>
+    </footer>
+  </body>
+</html>
