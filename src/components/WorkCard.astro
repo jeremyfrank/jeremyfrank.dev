@@ -1,6 +1,5 @@
 ---
 import { renderImg } from "astro-imagetools/api";
-import cx from 'classnames'
 
 const { title, url, image, color, summary, extended = false } = Astro.props
 const renderedImgHTML = await renderImg({
@@ -17,30 +16,28 @@ const renderedImgHTML = await renderImg({
 ---
 
 <li
-  class={cx(
+  class:list={[
     'flex flex-col relative',
     'rounded-md overflow-hidden shadow-lg hover:shadow-xl',
     'transform-gpu duration-200 hover:scale-[1.03]',
-  )}
+  ]}
 >
   <Fragment set:html={renderedImgHTML.img}/>
   <div
-    class={cx(
+    class:list={[
       'flex flex-col flex-grow items-start',
       'border-t-4 bg-zinc-50 dark:text-zinc-800',
       {
         'gap-4 p-6': extended,
         'gap-1 p-4': !extended,
       }
-    )}
+    ]}
     style={`border-color:${color ? color : 'lightblue'}`}
   >
     <h3
-      class={
-        cx({
-          'text-xl sm:text-2xl': extended,
-        })
-      }
+      class:list={[{
+        'text-xl sm:text-2xl': extended,
+      }]}
     >
       {title}
     </h3>
