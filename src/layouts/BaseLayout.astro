@@ -4,6 +4,10 @@ import '../styles/global.css'
 const defaultTitle = 'Jeremy Frank UI Developer'
 const { title } = Astro.props
 const formattedTitle = title ? `${title} – ${defaultTitle}` : defaultTitle;
+const url = new URL(Astro.request.url)
+const isHome = url.pathname === '/'
+const LogomarkTagName = isHome ? 'div' : 'a'
+const logomarkHref = !isHome ? '/' : null
 ---
 
 <!DOCTYPE html>
@@ -14,15 +18,32 @@ const formattedTitle = title ? `${title} – ${defaultTitle}` : defaultTitle;
     <title>{formattedTitle}</title>
   </head>
   <body>
-    <header class="pb-8 sm:pb-12 px-5">
+    <header
+      class:list={[
+        'pb-8 sm:pb-12 px-5',
+        {
+          'sticky top-0': !isHome
+        }
+      ]}
+    >
       <div class="max-w-4xl mx-auto flex">
-        <div class="p-1 pt-4 rounded-b-full bg-zinc-900 dark:bg-zinc-50">
+        <LogomarkTagName
+          href={logomarkHref}
+          class:list={[
+            '-mt-2 p-1 pt-6 rounded-b-full shadow-md',
+            'ring ring-white focus-visible:ring-blue-500 focus-visible:ring-offset-2',
+            'bg-zinc-900 dark:bg-zinc-50',
+            {
+              'duration-150 ease-in hover:translate-y-2': !isHome
+            }
+          ]}
+        >
           <img
             src="/images/jf-logomark.svg"
             class="h-16 w-16 invert dark:invert-0"
             alt=""
           >
-        </div>
+        </LogomarkTagName>
       </div>
     </header>
 
