@@ -56,9 +56,7 @@ featuredClients
     </div>
   </section>
 
-  <section class:list={[
-    'my-20 px-5 sm:px-8 md:px-12 lg:px-16 xl:px-0',
-  ]}>
+  <section class="my-20 px-5 sm:px-8 md:px-12 lg:px-16 xl:px-0">
     <div class="flex flex-col gap-12 items-center justify-center max-w-5xl mx-auto">
       <h2>
         Work
@@ -75,8 +73,8 @@ featuredClients
         {featuredWork.map((item) => (
           <WorkCard
             title={item.frontmatter.title}
-            url={item.frontmatter.layout ? item.url : ''}
-            image={item.frontmatter.image}
+            url={item.url}
+            cardImage={item.frontmatter.cardImage}
             color={item.frontmatter.color}
             summary={item.frontmatter.summary}
             extended={true}
@@ -93,8 +91,8 @@ featuredClients
           {remainingWork.map((item) => (
             <WorkCard
               title={item.frontmatter.title}
-              url={item.frontmatter.layout ? item.url : ''}
-              image={item.frontmatter.image}
+              url={item.url}
+              cardImage={item.frontmatter.cardImage}
               color={item.frontmatter.color}
             />
           ))}

@@ -12,5 +12,11 @@ export default defineConfig({
     tailwind({
       config: { applyBaseStyles: false }
     })
-  ]
+  ],
+  markdown: {
+    shikiConfig: {
+      theme: 'one-dark-pro',
+      wrap: false,
+    },
+  },
 });

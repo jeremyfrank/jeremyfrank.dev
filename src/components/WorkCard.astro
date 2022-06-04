@@ -1,47 +1,37 @@
 ---
-import { renderImg } from "astro-imagetools/api";
+import { renderImg } from 'astro-imagetools/api'
 
-const { title, url, image, color, summary, extended = false } = Astro.props
+const { title, url, cardImage, color, extended = false } = Astro.props
 const renderedImgHTML = await renderImg({
-  src: image,
+  src: cardImage,
   alt: `Screenshot of ${title} work`,
   breakpoints: [750, 900, 1200],
   sizes: '(min-width: 1024px) 682px, (min-width: 640px) 33.33vw, 100vw',
-  attributes: {
-    img: {
-      class: 'col-span-2',
-    }
-  }
 });
 ---
 
 <li
   class:list={[
+    'bg-zinc-50',
     'flex flex-col relative',
-    'rounded-md overflow-hidden shadow-lg hover:shadow-xl',
+    'rounded-md overflow-hidden shadow-md hover:shadow-lg',
     'transform-gpu duration-200 hover:scale-[1.03]',
   ]}
 >
   <Fragment set:html={renderedImgHTML.img}/>
-  <div
+  <h3
     class:list={[
-      'flex flex-col flex-grow items-start',
-      'border-t-4 bg-zinc-50 dark:text-zinc-800',
+      'border-t-4 text-center dark:text-zinc-800',
       {
-        'gap-4 p-6': extended,
-        'gap-1 p-4': !extended,
+        'p-4': extended,
+        'p-2': !extended,
+        'text-lg sm:text-xl': extended,
       }
     ]}
     style={`border-color:${color ? color : 'lightblue'}`}
   >
-    <h3
-      class:list={[{
-        'text-xl sm:text-2xl': extended,
-      }]}
-    >
+    <a href={url} class="no-underline after:absolute after:inset-0">
       {title}
-    </h3>
-    {extended && <p>{summary}</p>}
-    {url && <a href={url} class="after:absolute after:inset-0">View Work →</a>}
-  </div>
+    </a>
+  </h3>
 </li>

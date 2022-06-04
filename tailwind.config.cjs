@@ -1,9 +1,39 @@
 module.exports = {
-  content: ['./src/**/*.{astro,html,js,jsx,svelte,svg,ts,tsx,vue}'],
+  content: ['./src/**/*.{astro,html,md,js,jsx,svelte,svg,ts,tsx,vue}'],
   theme: {
     extend: {
       screens: {
         smd: {'max': '539px'},
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            a: {
+              fontWeight: null,
+            },
+            h2: {
+              fontWeight: null,
+            },
+          },
+        },
+        lg: {
+          css: {
+            h2: {
+              fontSize: '1.5em',
+              marginTop: '1.5em',
+              marginBottom: '0.75em',
+            },
+          },
+        },
+        xl: {
+          css: {
+            h2: {
+              fontSize: '1.5em',
+              marginTop: '1.5em',
+              marginBottom: '0.75em',
+            },
+          },
+        },
       },
     },
     fontFamily: {
@@ -11,5 +41,7 @@ module.exports = {
       serif: ['Calluna', 'ui-serif', 'serif'],
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }

@@ -1,10 +1,15 @@
 ---
+layout: ../../layouts/Work.astro
 title: Water Funds Toolbox
 client: The Nature Conservancy
 date: 2018-02-01
 url: https://waterfundstoolbox.org/
-image: https://ucarecdn.com/f2488f35-20f8-47eb-8d34-15acdf64a6f2/
+cardImage: https://ucarecdn.com/64e969a3-e472-473a-a299-649b419f104b/
+heroImage: https://ucarecdn.com/dacd63fb-fdd0-4097-8f31-26f831e95bc8/
+singleDeviceHero: true
 color: '#23426b'
 role: Craft & UI Developer
 tech: Craft CMS, Twig, SASS
 ---
+
+Part marketing tool and part resource library and information platform, the Water Funds Toolbox site is for conservationists working on water funds, helping educate and equipping them to bring their water funds projects to fruition.

@@ -20,19 +20,20 @@ const logomarkHref = !isHome ? '/' : null
   <body>
     <header
       class:list={[
-        'pb-8 sm:pb-12 px-5',
+        'h-0 mb-24 md:mb-28 xl:mb-20 px-5 pointer-events-none',
         {
           'sticky top-0': !isHome
         }
       ]}
     >
-      <div class="max-w-4xl mx-auto flex">
+      <div class="max-w-6xl mx-auto flex pointer-events-none">
         <LogomarkTagName
           href={logomarkHref}
           class:list={[
             '-mt-2 p-1 pt-6 rounded-b-full shadow-md',
             'ring ring-white focus-visible:ring-blue-500 focus-visible:ring-offset-2',
             'bg-zinc-900 dark:bg-zinc-50',
+            'pointer-events-auto',
             {
               'duration-150 ease-in hover:translate-y-2': !isHome
             }
@@ -40,7 +41,7 @@ const logomarkHref = !isHome ? '/' : null
         >
           <img
             src="/images/jf-logomark.svg"
-            class="h-16 w-16 invert dark:invert-0"
+            class="h-12 w-12 md:h-16 md:w-16 invert dark:invert-0"
             alt=""
           >
         </LogomarkTagName>
@@ -51,7 +52,12 @@ const logomarkHref = !isHome ? '/' : null
       <slot />
     </main>
 
-    <footer class="bg-white text-zinc-900 p-5 text-center">
+    <footer class:list={[
+      'text-zinc-900 p-5 text-center',
+      {
+        'bg-white': isHome
+      }
+    ]}>
       <p class="border-t pt-5">
         ©
         {new Date().getFullYear()}

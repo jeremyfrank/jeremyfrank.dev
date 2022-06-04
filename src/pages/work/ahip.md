@@ -4,10 +4,74 @@ title: AHIP
 client: AHIP
 date: 2022-02-01
 url: https://ahip.org/
-image: https://ucarecdn.com/834e6f87-6816-4e2a-a3aa-e446e584dd38/
+cardImage: https://ucarecdn.com/b5bd7b24-b7da-441e-8eb6-7f40eda3b494/
+heroImage: https://ucarecdn.com/701f580a-3ec9-4533-a718-7dd9d34201da/
 color: '#004b66'
-role: Lead UI Developer
-tech: Craft CMS, Stimulus, Tailwind
+role:
+  - Tech Discovery
+  - Tech Lead
+tech:
+  - Craft CMS
+  - Stimulus
+  - Tailwind
+  - Webpack
+  - Imgix
 summary: Developing a new organizational website built for growth on a flexible CMS.
 featured: true
 ---
+
+America’s Health Insurance Plans (AHIP), a leading national trade association representing the health insurance community, recently worked with Viget to overhaul their website to better serve their customers in this incredebly complex space. We conducted a three month discovery process which included research and strategy, UX and visual design, and technical discovery. This was followed by a separate five month process including CMS configuration, front-end build, and third-party integration.
+
+In the first project, my role was to conduct technical discovery, and in the second project I was technical lead.
+
+## Development Process
+
+With multiple developers on the project, it was important to approach the work with a clear division of responsibilities. We also gave CMS setup and basic template integration a multi-week head start, followed by UI development and third-party integration. This allowed our development process to flow well and enabled the site to take shape structurally, independent of any UI development work.
+
+## Third Party Integration
+
+During the initial technical discovery phase, several third-party service integrations were identified as areas of complexity: an existing single sign-on provider, as well as Algolia for site search. We secured extra development resources for these areas and I oversaw the efforts related to these integrations.
+
+<img src="https://ucarecdn.com/f8294ce7-89df-47e4-9b65-3f5a789eda15/-/resize/1600/-/format/auto/" width="1600" height="800">
+
+## Craft CMS
+
+Employing a clean slate approach to content modeling and front-end development, Craft CMS makes no assumptions about how content should be organized or consumed. Additionally, having a fully fleshed out content model from the phase-one project, provided a perfect blueprint for configuring sections and fields in Craft.
+
+<img src="https://ucarecdn.com/49c37d77-ce27-4b8e-b0aa-77b737e87c3a/-/resize/1600/-/format/auto/" width="1600" height="759" alt="Craft admin screenshot">
+
+## Front-End Interactions
+
+For handling JavaScript interactions on the front-end, we chose [Stimulus](https://stimulus.hotwired.dev/) because of its lightweight “just enough” approach. It’s designed to enhance static or server-rendered HTML by connecting JavaScript controllers to elements on the page using simple data attribute annotations. This gave us a simple and consistent pattern to follow for adding interactivity to the front-end without much complexity.
+
+<iframe src="https://codesandbox.io/embed/proud-sky-p5t6jc?fontsize=14&hidenavigation=1&module=/src/controllers/user-menu_controller.js,/views/user-menu.ejs&theme=dark&hidedevtools=1"
+  class="border-0 overflow-hidden max-w-none xl:mx-[-12%] w-full xl:w-[124%] h-[250px]"
+  title="proud-sky-p5t6jc"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+
+## Tailwind CSS
+
+For styling on the front-end, we needed an approach that provided design system like constraints, yet be flexible enough to would allow the AHIP site to be extended over time, without the common problem of CSS stylesheet growth and bloat. Tailwind CSS solves this problem with its utility-first approach by providing all the necessary UI building blocks.
+
+```twig
+<dl class="space-y-24">
+  <dt class="text-gray-dark uppercase">
+    {{ heading }}
+  </dt>
+  {% for item in items %}
+    <dd>
+      <a href="{{ item.url }}" class="text-blue-dark focus:underline hover:underline">
+        {{ item.title }}
+      </a>
+    </dd>
+  {% endfor %}
+</dl>
+```
+
+## Key Takeaways
+
+1. Conducting an initial technical discovery process up-front was key for determining scope for third-party integrations, and uncovering potential complexity.
+1. A staggered timeline enabled an efficient development process by starting with a focus on structure, followed by UI development work.
+1. For JavaScript functionality, the Stimulus framework provided simple and consistent patterns to follow without adding complexity.

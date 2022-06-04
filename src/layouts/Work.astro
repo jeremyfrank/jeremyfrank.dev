@@ -1,16 +1,74 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import { Img } from 'astro-imagetools/components'
 
 const { content } = Astro.props
 ---
 
 <BaseLayout title={content.title}>
   <div class="px-5">
-    <div class="max-w-5xl mx-auto">
-      <h1>
+    <div class="max-w-4xl mx-auto space-y-8">
+      <div class:list={[
+        {
+          'mx-auto max-w-[44rem]': content.singleDeviceHero
+        }
+      ]}>
+        <Img
+          src={content.heroImage}
+          alt="Device screenshots"
+          placeholder="none"
+          loading={null}
+          breakpoints={{ count: 4, minWidth: 750, maxWidth: 1800 }}
+          sizes="(min-width: 58.875em) 896px, calc(100vw - 2.5rem)"
+        />
+      </div>
+
+      <h1 class="text-center">
         {content.title}
       </h1>
-      <slot />
+
+      <div class="border-y dark:border-zinc-400 py-8 lg:px-8 grid grid-cols-2 sm:flex sm:flex-row sm:justify-around gap-4 sm:gap-8">
+        <dl>
+          <dt class="font-bold text-xs tracking-widest uppercase">
+            Client
+          </dt>
+          <dd class="leading-5 mt-1">
+            {content.client}
+          </dd>
+        </dl>
+        <dl>
+          <dt class="font-bold text-xs tracking-widest uppercase">
+            Role
+          </dt>
+          <dd class="leading-5 mt-1">
+            {Array.isArray(content.role) ? content.role.join(', ') : content.role}
+          </dd>
+        </dl>
+        <dl class="col-span-2">
+          <dt class="font-bold text-xs tracking-widest uppercase">
+            Tech
+          </dt>
+          <dd class="leading-5 mt-1">
+            {Array.isArray(content.tech) ? content.tech.join(', ') : content.tech}
+          </dd>
+        </dl>
+      </div>
+
+      <div
+        class:list={[
+          'prose prose-zinc md:prose-lg lg:prose-xl dark:prose-invert',
+          'lg:prose-img:max-w-none lg:prose-img:mx-[-12%] lg:prose-img:w-[124%]',
+          'prose-figcaption:italic prose-figcaption:text-center',
+          'mx-auto my-12',
+        ]}
+      >
+        <slot />
+      </div>
+
+      <div class="border-y dark:border-zinc-400 py-8 flex justify-center gap-8 text-xl max-w-prose mx-auto">
+        {content.url && <a href={content.url}>View Site →</a>}
+        {content.caseStudyUrl && <a href={content.caseStudyUrl}>Read Case Study →</a>}
+      </div>
     </div>
   </div>
 </BaseLayout>

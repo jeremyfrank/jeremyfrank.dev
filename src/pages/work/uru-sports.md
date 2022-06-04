@@ -1,0 +1,69 @@
+---
+layout: ../../layouts/Work.astro
+title: Urū Sports App
+client: Urū Sports
+date: 2021-08-01
+caseStudyUrl: https://www.viget.com/work/uru-sports-athlete-community-platform/
+cardImage: https://ucarecdn.com/ca5b626b-2c5b-4014-ad34-a2ec7a8aa3b5/
+heroImage: https://ucarecdn.com/527f69bf-3c5f-458f-a60d-83be9c208263/
+color: '#00A84F'
+role: Lead UI Developer
+tech:
+  - Tailwind
+  - Turbo
+  - Stimulus
+  - Rails
+  - Nice Partials
+  - Webpacker
+summary: Creating a platform for elite athletes to connect with each other and maximize the impact of their network.
+featured: true
+---
+
+Elite athletes looking to play overseas often face a challenging and difficult process of finding playing opportunities and sponsorships. Intimately aware of these challenges, entrepreneur and former All-American field hockey player Ainsley McCallister came to Viget for help with creating a platform that would provide information, connection opportunities and peer-to-peer support for elite athletes as they navigate their careers playing overseas.
+
+The result was a user-informed, rapid build MVP, which allowed investors to clearly see the vision, and allowed users to get onboarded and test and influence the future of the platform.
+
+My role in the project was primaraly centered around rapid UI development for priority phase-one features, such as: onboarding and profile creation, member and group discovery, and the news feed.
+
+## Tailwind UI
+
+With only six weeks to build a fully functioning MVP, we turned to [Tailwind UI](https://tailwindui.com/) to give us a head start on UI development. For each component in the application, there was a stock component in Tailwind UI which could be used as a starting point. Most of our use cases necessitated slightly modified or extended versions of these stock components, but it still saved time, and allowed us to build and iterate on features more rapidly, while still allowing for a custom UI.
+
+<figure>
+  <img src="https://ucarecdn.com/0b7fdf49-90eb-4a10-948e-82883008a823/" width="1180" height="74">
+  <figcaption>
+    Tailwind UI Steps Panel Component
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="https://ucarecdn.com/1f6d412e-2034-4949-b889-5f05caf4983a/" width="1216" height="82">
+  <figcaption>
+    Uru Sports Steps Panel Component
+  </figcaption>
+</figure>
+
+## Stimulus Controllers
+
+For UI components that required client-side interactivity, such as a dropdown menu or a displaying a modal, we used [Stimulus](https://stimulus.hotwired.dev/). This allowed us to more rapidly develop features by providing component bootstraping, lifecycle methods and state management, all in a lightweight easy to use package.
+
+<iframe src="https://codesandbox.io/embed/proud-snowflake-n5ndl0?fontsize=14&hidenavigation=1&module=/src/controllers/add_post_controller.js,/views/form.ejs&theme=dark&hidedevtools=1"
+  class="border-0 overflow-hidden max-w-none lg:mx-[-12%] w-full lg:w-[124%] lg:h-[510px]"
+  title="proud-snowflake-n5ndl0"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+
+## Component Slots
+
+Many of our general purpose components had the need for named components slots for presenting different arrangements of content within the same component container. Since Rails partials don’t support anything like this out-of-the-box, we turned to [Nice Partials](https://github.com/bullet-train-co/nice_partials) to accomodate this.
+
+## Key Takeaways
+
+1. Because of the tight project timeline for the MVP, **rapid feature development** was a primary focus.
+1. In order to support this focus, **good collaboration** and support between front-end and back-end work was a must.
+1. Our code review turnaround time needed to be fast in order to keep things moving.
+
+## Results
+
+After initial launch, an invite only pilot program was started, which yielded a nearly 50% conversion rate from additional invitations sent. The app has been pitched to potential investors, and has been accepted into the second class of Comcast NBCUniversal’s SportsTech Accelerator program! 
