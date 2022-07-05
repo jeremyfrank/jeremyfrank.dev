@@ -48,7 +48,7 @@ With only six weeks to build a fully functioning MVP, we turned to [Tailwind UI]
 For UI components that required client-side interactivity, such as a dropdown menu or a displaying a modal, we used [Stimulus](https://stimulus.hotwired.dev/). This allowed us to more rapidly develop features by providing component bootstraping, lifecycle methods and state management, all in a lightweight easy to use package.
 
 <iframe src="https://codesandbox.io/embed/proud-snowflake-n5ndl0?fontsize=14&hidenavigation=1&module=/src/controllers/add_post_controller.js,/views/form.ejs&theme=dark&hidedevtools=1"
-  class="border-0 overflow-hidden max-w-none lg:mx-[-12%] w-full lg:w-[124%] lg:h-[510px]"
+  class="border-0 overflow-hidden max-w-none lg:mx-[-12%] w-full lg:w-[124%] lg:h-[350px]"
   title="proud-snowflake-n5ndl0"
   allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
   sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
