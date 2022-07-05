@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const { content } = Astro.props
+---
+
+<BaseLayout title={content.title}>
+  <div class="px-5 pb-[10vh]">
+    <div class="max-w-3xl mx-auto space-y-8">
+      <h1 class="text-center">
+        {content.title}
+      </h1>
+
+      <p class="max-w-[29rem] mx-auto italic text-center text-lg">
+        {content.byline}
+      </p>
+
+      <hr>
+
+      <div
+        class:list={[
+          'prose prose-zinc md:prose-lg lg:prose-xl dark:prose-invert',
+          'mx-auto my-12',
+        ]}
+      >
+        <slot />
+      </div>
+    </div>
+  </div>
+</BaseLayout>
