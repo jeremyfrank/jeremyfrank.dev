@@ -14,6 +14,11 @@ module.exports = {
             h2: {
               fontWeight: null,
             },
+            li: {
+              marginTop: '0.75em',
+              marginBottom: '0.75em',
+              lineHeight: 1.5,
+            },
           },
         },
         lg: {
@@ -23,6 +28,10 @@ module.exports = {
               marginTop: '1.5em',
               marginBottom: '0.75em',
             },
+            li: {
+              marginTop: '0.75em',
+              marginBottom: '0.75em',
+            },
           },
         },
         xl: {
@@ -30,6 +39,10 @@ module.exports = {
             h2: {
               fontSize: '1.5em',
               marginTop: '1.5em',
+              marginBottom: '0.75em',
+            },
+            li: {
+              marginTop: '0.75em',
               marginBottom: '0.75em',
             },
           },
