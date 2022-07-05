@@ -45,7 +45,7 @@ Employing a clean slate approach to content modeling and front-end development, 
 For handling JavaScript interactions on the front-end, we chose [Stimulus](https://stimulus.hotwired.dev/) because of its lightweight “just enough” approach. It’s designed to enhance static or server-rendered HTML by connecting JavaScript controllers to elements on the page using simple data attribute annotations. This gave us a simple and consistent pattern to follow for adding interactivity to the front-end without much complexity.
 
 <iframe src="https://codesandbox.io/embed/proud-sky-p5t6jc?fontsize=14&hidenavigation=1&module=/src/controllers/user-menu_controller.js,/views/user-menu.ejs&theme=dark&hidedevtools=1"
-  class="border-0 overflow-hidden max-w-none xl:mx-[-12%] w-full xl:w-[124%] h-[250px]"
+  class="border-0 overflow-hidden max-w-none xl:mx-[-12%] w-full xl:w-[124%] h-[350px]"
   title="proud-sky-p5t6jc"
   allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
   sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
