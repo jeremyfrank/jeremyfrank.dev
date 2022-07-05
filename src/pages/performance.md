@@ -16,3 +16,14 @@ byline: A list of accomplishments and specific focus areas related to my efforts
 * Put together a competitive performance analysis for Shedd Aquarium
 * Initiated the use and adoption of Imgix for client projects
 * Conducted several knowlege shares on image formats and optimization
+
+---
+
+<p class="text-center">
+  <a
+    href="https://www.linkedin.com/in/jerfrank/"
+    class="text-center"
+  >
+    LinkedIn →
+  </a>
+</p>
