@@ -53,12 +53,12 @@ const logomarkHref = !isHome ? '/' : null
     </main>
 
     <footer class:list={[
-      'text-zinc-900 p-5 text-center',
+      'p-5 text-center',
       {
-        'bg-white': isHome
+        'bg-white text-zinc-900': isHome
       }
     ]}>
-      <p class="border-t pt-5">
+      <p class="border-t dark:border-zinc-400 pt-5">
         ©
         {new Date().getFullYear()}
         Jeremy Frank
