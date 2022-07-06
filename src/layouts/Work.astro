@@ -65,7 +65,7 @@ const { content } = Astro.props
         <slot />
       </div>
 
-      <div class="border-y dark:border-zinc-400 py-8 flex justify-center gap-8 text-xl max-w-prose mx-auto">
+      <div class="border-t dark:border-zinc-400 pt-8 pb-32 flex justify-center gap-8 text-xl max-w-prose mx-auto">
         {content.url && <a href={content.url}>View Site →</a>}
         {content.caseStudyUrl && <a href={content.caseStudyUrl}>Read Case Study →</a>}
       </div>
