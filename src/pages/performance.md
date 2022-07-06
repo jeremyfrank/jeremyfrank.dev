@@ -19,7 +19,13 @@ byline: A list of accomplishments and specific focus areas related to my efforts
 
 ---
 
-<p class="text-center">
+<p class="flex gap-16 justify-center">
+  <a
+    href="/"
+    class="text-center"
+  >
+    View Work →
+  </a>
   <a
     href="https://www.linkedin.com/in/jerfrank/"
     class="text-center"
