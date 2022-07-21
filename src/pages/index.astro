@@ -121,7 +121,7 @@ featuredClients
     <ul class="grid grid-cols-2 gap-10 mt-20 md:grid-cols-5">
       {featuredClients.map(client => (
         <li class="flex flex-col items-center justify-center p-2 text-center">
-          <img src="/images/${client.image}" loading="lazy" alt={client.name} class="max-w-[75%] max-h-[30px]">
+          <img src={`/images/${client.image}`} loading="lazy" alt={client.name} class="max-w-[75%] max-h-[30px]">
         </li>
       ))}
     </ul>
