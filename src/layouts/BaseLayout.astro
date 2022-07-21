@@ -58,7 +58,12 @@ const logomarkHref = !isHome ? '/' : null
         'bg-white text-zinc-900': isHome
       }
     ]}>
-      <p class="border-t dark:border-zinc-400 pt-5">
+      <p class:list={[
+        'border-t pt-5',
+        {
+          'dark:border-zinc-500 ': !isHome
+        }
+      ]}>
         ©
         {new Date().getFullYear()}
         Jeremy Frank

@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   content: ['./src/**/*.{astro,html,md,js,jsx,svelte,svg,ts,tsx,vue}'],
   theme: {
@@ -5,6 +7,9 @@ module.exports = {
       screens: {
         smd: {'max': '539px'},
       },
+      borderColor: ({ theme }) => ({
+        DEFAULT: theme('colors.zinc.300', 'currentColor'),
+      }),
       typography: {
         DEFAULT: {
           css: {
@@ -47,6 +52,16 @@ module.exports = {
             },
           },
         },
+        invert: {
+          css: {
+            '--tw-prose-hr': colors.zinc[500],
+          }
+        },
+        zinc: {
+          css: {
+            '--tw-prose-hr': colors.zinc[300],
+          }
+        }
       },
     },
     fontFamily: {
