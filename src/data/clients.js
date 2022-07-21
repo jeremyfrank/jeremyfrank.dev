@@ -50,6 +50,9 @@ export const clients = [
     name: 'Craig Hospital',
   },
   {
+    name: 'White House Historical Association',
+  },
+  {
     name: 'Human Rights Campaign',
   },
   {
