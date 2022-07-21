@@ -38,6 +38,9 @@
     @apply font-serif;
     @apply text-2xl sm:text-4xl;
   }
+  hr {
+    @apply dark:border-zinc-500;
+  }
   a {
     @apply focus-visible:outline-none focus-visible:ring focus-visible:ring-blue-500;
     text-decoration: underline;
