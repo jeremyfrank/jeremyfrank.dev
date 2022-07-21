@@ -12,13 +12,13 @@
     "url": "git+https://github.com/jeremyfrank/jeremyfrank.dev.git"
   },
   "dependencies": {
-    "@astrojs/tailwind": "^0.2.1",
-    "astro": "^1.0.0-beta.28",
-    "astro-imagetools": "^0.6.10",
-    "image-size": "^1.0.1",
-    "tailwindcss": "^3.0.24"
+    "astro-imagetools": "0.6.10",
+    "image-size": "1.0.2"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.2"
+    "@astrojs/tailwind": "0.2.4",
+    "@tailwindcss/typography": "0.5.4",
+    "astro": "1.0.0-beta.73",
+    "tailwindcss": "3.1.6"
   }
 }
