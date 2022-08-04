@@ -18,6 +18,7 @@ tech:
 summary: Creating a platform for elite athletes to connect with each other and maximize the impact of their network.
 featured: true
 ---
+import Embed from '../../components/Embed.astro'
 
 Elite athletes looking to play overseas often face a challenging and difficult process of finding playing opportunities and sponsorships. Intimately aware of these challenges, entrepreneur and former All-American field hockey player Ainsley McCallister came to Viget for help with creating a platform that would provide information, connection opportunities and peer-to-peer support for elite athletes as they navigate their careers playing overseas.
 
@@ -30,14 +31,14 @@ My role in the project was primaraly centered around rapid UI development for pr
 With only six weeks to build a fully functioning MVP, we turned to [Tailwind UI](https://tailwindui.com/) to give us a head start on UI development. For each component in the application, there was a stock component in Tailwind UI which could be used as a starting point. Most of our use cases necessitated slightly modified or extended versions of these stock components, but it still saved time, and allowed us to build and iterate on features more rapidly, while still allowing for a custom UI.
 
 <figure>
-  <img src="https://ucarecdn.com/0b7fdf49-90eb-4a10-948e-82883008a823/" width="1180" height="74">
+  <img src="https://ucarecdn.com/0b7fdf49-90eb-4a10-948e-82883008a823/" width="1180" height="74" />
   <figcaption>
     Tailwind UI Steps Panel Component
   </figcaption>
 </figure>
 
 <figure>
-  <img src="https://ucarecdn.com/1f6d412e-2034-4949-b889-5f05caf4983a/" width="1216" height="82">
+  <img src="https://ucarecdn.com/1f6d412e-2034-4949-b889-5f05caf4983a/" width="1216" height="82" />
   <figcaption>
     Uru Sports Steps Panel Component
   </figcaption>
@@ -47,12 +48,7 @@ With only six weeks to build a fully functioning MVP, we turned to [Tailwind UI]
 
 For UI components that required client-side interactivity, such as a dropdown menu or a displaying a modal, we used [Stimulus](https://stimulus.hotwired.dev/). This allowed us to more rapidly develop features by providing component bootstraping, lifecycle methods and state management, all in a lightweight easy to use package.
 
-<iframe src="https://codesandbox.io/embed/proud-snowflake-n5ndl0?fontsize=14&hidenavigation=1&module=/src/controllers/add_post_controller.js,/views/form.ejs&theme=dark&hidedevtools=1"
-  class="border-0 overflow-hidden max-w-none lg:mx-[-12%] w-full lg:w-[124%] lg:h-[350px]"
-  title="proud-snowflake-n5ndl0"
-  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+<Embed url="https://stackblitz.com/edit/vitejs-vite-tnmt6x?embed=1&file=src/controllers/add_post_controller.js" />
 
 ## Component Slots
 
@@ -66,4 +62,4 @@ Many of our general purpose components had the need for named components slots f
 
 ## Results
 
-After initial launch, an invite only pilot program was started, which yielded a nearly 50% conversion rate from additional invitations sent. The app has been pitched to potential investors, and has been accepted into the second class of Comcast NBCUniversal’s SportsTech Accelerator program! 
+After initial launch, an invite only pilot program was started, which yielded a nearly 50% conversion rate from additional invitations sent. The app has been pitched to potential investors, and has been accepted into the second class of Comcast NBCUniversal’s SportsTech Accelerator program!
