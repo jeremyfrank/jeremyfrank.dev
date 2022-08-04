@@ -6,19 +6,21 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   experimental: {
-    integrations: true,
+    integrations: true
   },
   integrations: [
     astroImageTools,
     mdx(),
     tailwind({
-      config: { applyBaseStyles: false }
+      config: {
+        applyBaseStyles: false
+      }
     })
   ],
   markdown: {
     shikiConfig: {
       theme: 'one-dark-pro',
-      wrap: false,
-    },
-  },
+      wrap: false
+    }
+  }
 });
