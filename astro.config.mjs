@@ -23,6 +23,7 @@ export default defineConfig({
       wrap: false
     }
   },
+  site: 'https://jeremyfrank.dev/',
   vite: {
     server: {
       open: '/index.html'
