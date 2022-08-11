@@ -22,5 +22,10 @@ export default defineConfig({
       theme: 'one-dark-pro',
       wrap: false
     }
+  },
+  vite: {
+    server: {
+      open: '/index.html'
+    }
   }
 });
