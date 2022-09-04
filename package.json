@@ -12,7 +12,7 @@
     "url": "git+https://github.com/jeremyfrank/jeremyfrank.dev.git"
   },
   "dependencies": {
-    "astro-imagetools": "0.6.10",
+    "@astrojs/image": "^0.7.0",
     "image-size": "1.0.2"
   },
   "devDependencies": {

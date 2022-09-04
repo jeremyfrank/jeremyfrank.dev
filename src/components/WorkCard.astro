@@ -1,13 +1,7 @@
 ---
-import { renderImg } from 'astro-imagetools/api'
+import { Picture } from '@astrojs/image/components';
 
 const { title, url, cardImage, color, extended = false } = Astro.props
-const renderedImgHTML = await renderImg({
-  src: cardImage,
-  alt: `Screenshot of ${title} work`,
-  breakpoints: [750, 900, 1200],
-  sizes: '(min-width: 1024px) 682px, (min-width: 640px) 33.33vw, 100vw',
-});
 ---
 
 <li
@@ -18,7 +12,14 @@ const renderedImgHTML = await renderImg({
     'transform-gpu duration-200 hover:scale-[1.03]',
   ]}
 >
-  <Fragment set:html={renderedImgHTML.img}/>
+  <Picture
+    src={cardImage}
+    alt={`Screenshot of ${title} work`}
+    aspectRatio="16:9"
+    widths={[750, 900, 1200]}
+    sizes="(min-width: 1024px) 682px, (min-width: 640px) 33.33vw, 100vw"
+    loading={null}
+  />
   <h3
     class:list={[
       'border-t-4 text-center dark:text-zinc-50',

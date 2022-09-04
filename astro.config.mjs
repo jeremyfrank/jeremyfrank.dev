@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import { astroImageTools } from 'astro-imagetools';
+import image from '@astrojs/image';
 import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 
@@ -9,7 +9,7 @@ export default defineConfig({
     integrations: true
   },
   integrations: [
-    astroImageTools,
+    image(),
     mdx(),
     tailwind({
       config: {

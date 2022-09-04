@@ -1,25 +1,28 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import { Img } from 'astro-imagetools/components'
+import { Picture } from '@astrojs/image/components';
 
 const { content } = Astro.props
+const imageResponse = await fetch(`${content.heroImage}-/json/`)
+const imageData = await imageResponse.json();
 ---
 
 <BaseLayout title={content.title}>
   <div class="px-5">
-    <div class="max-w-4xl mx-auto space-y-8">
+    <div class="max-w-4xl mx-auto space-y-8 mb-24">
       <div class:list={[
         {
           'mx-auto max-w-[44rem]': content.singleDeviceHero
         }
       ]}>
-        <Img
+        <Picture
           src={content.heroImage}
           alt="Device screenshots"
-          placeholder="none"
-          loading={null}
-          breakpoints={{ count: 4, minWidth: 750, maxWidth: 1800 }}
+          width="1200"
+          aspectRatio={`${imageData.width}:${imageData.height}`}
+          widths={[750, 1000, 1250, 1500, 1800]}
           sizes="(min-width: 58.875em) 896px, calc(100vw - 2.5rem)"
+          loading={null}
         />
       </div>
 
@@ -67,8 +70,13 @@ const { content } = Astro.props
         <slot />
       </div>
 
-      <div class="border-t dark:border-zinc-500 pt-8 pb-32 flex justify-center gap-8 text-xl max-w-prose mx-auto">
-        {content.url && <a href={content.url}>View Site →</a>}
+      <div class:list={[
+        {
+          'py-8 flex justify-center gap-8 text-xl max-w-prose mx-auto': content.websiteUrl || content.caseStudyUrl,
+          'border-t dark:border-zinc-500': content.websiteUrl || content.caseStudyUrl,
+        }
+      ]}>
+        {content.websiteUrl && <a href={content.websiteUrl}>View Site →</a>}
         {content.caseStudyUrl && <a href={content.caseStudyUrl}>Read Case Study →</a>}
       </div>
     </div>
