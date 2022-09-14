@@ -16,7 +16,7 @@
     "image-size": "1.0.2"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^0.7.0",
+    "@astrojs/mdx": "^0.11.1",
     "@astrojs/tailwind": "0.2.5",
     "@tailwindcss/typography": "0.5.4",
     "astro": "^1.1.5",
