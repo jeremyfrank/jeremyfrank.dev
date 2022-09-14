@@ -3,7 +3,7 @@ layout: ../../layouts/Work.astro
 title: Belonging Begins with Us
 client: Ad Council
 date: 2020-12-03
-url: https://belongingbeginswithus.org/
+websiteUrl: https://belongingbeginswithus.org/
 cardImage: https://ucarecdn.com/d49c8df9-c35d-442d-bc47-f0874a9188fc/
 heroImage: https://ucarecdn.com/4699b7c0-79ec-4708-b2da-c5c328893e81/
 color: '#005494'

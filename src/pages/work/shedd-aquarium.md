@@ -3,7 +3,7 @@ layout: ../../layouts/Work.astro
 title: Shedd Aquarium
 client: Shedd Aquarium
 date: 2019-09-01
-url: https://sheddaquarium.org/
+websiteUrl: https://sheddaquarium.org/
 cardImage: https://ucarecdn.com/29c00fa2-86c2-4800-be87-ecda05ba9edd/
 heroImage: https://ucarecdn.com/62f69a43-e052-4dc6-89e0-2786284114aa/
 color: '#004c7e'
