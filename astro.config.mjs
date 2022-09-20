@@ -5,6 +5,9 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
+  compilerOptions: {
+    types: ["@astrojs/image/client"]
+  },
   experimental: {
     integrations: true
   },
