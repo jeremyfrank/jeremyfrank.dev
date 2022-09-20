@@ -18,7 +18,6 @@ const imageData = await imageResponse.json();
         <Picture
           src={content.heroImage}
           alt="Device screenshots"
-          width="1200"
           aspectRatio={`${imageData.width}:${imageData.height}`}
           widths={[750, 1000, 1250, 1500, 1800]}
           sizes="(min-width: 58.875em) 896px, calc(100vw - 2.5rem)"
