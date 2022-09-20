@@ -109,7 +109,7 @@ featuredClients
     </div>
   </section>
 
-  <section class="bg-white text-zinc-900 flex flex-col items-center justify-center px-5 py-20 text-center">
+  <section class="flex flex-col items-center justify-center px-5 py-20 text-center">
     <h2>
       Select Clients
     </h2>
@@ -118,7 +118,7 @@ featuredClients
       I’m proud to have worked with a wide variety of companies and organizations over the years. Here’s just a few of them!
     </p>
 
-    <ul class="grid grid-cols-2 gap-10 mt-20 md:grid-cols-5">
+    <ul class="grid grid-cols-2 gap-10 mt-20 md:grid-cols-5 dark:invert dark:grayscale">
       {featuredClients.map(client => (
         <li class="flex flex-col items-center justify-center p-2 text-center">
           <img src={`/images/${client.image}`} loading="lazy" alt={client.name} class="max-w-[75%] max-h-[30px]">
