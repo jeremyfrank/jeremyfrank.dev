@@ -45,6 +45,9 @@
     @apply focus-visible:outline-none focus-visible:ring focus-visible:ring-blue-500;
     text-decoration: underline;
   }
+  picture {
+    display: block;
+  }
 }
 
 @layer components {
