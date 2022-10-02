@@ -18,6 +18,8 @@ const { title, url, cardImage, color, extended = false } = Astro.props
     aspectRatio="16:9"
     widths={[750, 900, 1200]}
     sizes="(min-width: 1024px) 682px, (min-width: 640px) 33.33vw, 100vw"
+    style={`background-color:${color}`}
+    class="aspect-video"
     loading={null}
   />
   <h3
@@ -29,7 +31,7 @@ const { title, url, cardImage, color, extended = false } = Astro.props
         'text-lg sm:text-xl': extended,
       }
     ]}
-    style={`border-color:${color ? color : 'lightblue'}`}
+    style={`border-color:${color}`}
   >
     <a href={url} class="no-underline after:absolute after:inset-0">
       {title}
