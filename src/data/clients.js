@@ -5,7 +5,6 @@ export const clients = [
   },
   {
     name: 'Urū Sports',
-    image: 'uru.svg',
   },
   {
     name: 'Ad Council',
@@ -36,6 +35,7 @@ export const clients = [
   },
   {
     name: 'The Nature Conservancy',
+    image: 'tnc.svg',
   },
   {
     name: 'Conservation International',
