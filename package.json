@@ -12,7 +12,7 @@
     "url": "git+https://github.com/jeremyfrank/jeremyfrank.dev.git"
   },
   "dependencies": {
-    "@astrojs/image": "^0.10.0",
+    "@astrojs/image": "^0.11.0",
     "image-size": "1.0.2"
   },
   "devDependencies": {
