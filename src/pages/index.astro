@@ -5,6 +5,7 @@ import sizeOf from 'image-size'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import WorkCard from '../components/WorkCard.astro'
 import { clients } from '../data/clients.js'
+import { social } from "../data/social.js";
 
 const getSizeOf = promisify(sizeOf)
 const allWork = (await Astro.glob('/src/pages/work/*.{md,mdx}'))
@@ -55,12 +56,20 @@ featuredClients
         Over the course of two decades, I've bridged the gap between design and engineering, working with teams to provide technical leadership and mentorship, while building cohesive and intuitive, highly performant and accessible user interfaces.
       </p>
 
-      <a
-        href="https://www.linkedin.com/in/jerfrank/"
-        class="self-center font-sans text-lg text-center"
-      >
-        LinkedIn →
-      </a>
+      <ul class:list={[
+        'bg-white dark:bg-zinc-900',
+        'drop-shadow-sm rounded-md',
+        'mt-5 px-3',
+        'inline-flex self-center',
+      ]}>
+        {social.map(link => (
+          <li>
+            <a href={link.url} class="block no-underline p-3">
+              <img src={`/images/icons/${link.image}`} class="h-4 w-4" alt="">
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
