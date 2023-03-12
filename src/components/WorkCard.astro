@@ -1,5 +1,5 @@
 ---
-import { Picture } from '@astrojs/image/components';
+import { Picture } from '@astrojs/image/components'
 
 const { title, url, cardImage, color, extended = false } = Astro.props
 ---
@@ -29,7 +29,7 @@ const { title, url, cardImage, color, extended = false } = Astro.props
         'p-4': extended,
         'p-2': !extended,
         'text-lg sm:text-xl': extended,
-      }
+      },
     ]}
     style={`border-color:${color}`}
   >

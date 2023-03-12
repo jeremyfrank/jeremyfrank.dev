@@ -5,42 +5,45 @@ import sizeOf from 'image-size'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import WorkCard from '../components/WorkCard.astro'
 import { clients } from '../data/clients.js'
-import { social } from "../data/social.js";
+import { social } from '../data/social.js'
 
 const getSizeOf = promisify(sizeOf)
-const allWork = (await Astro.glob('/src/pages/work/*.{md,mdx}'))
-  .sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf())
+const allWork = (await Astro.glob('/src/pages/work/*.{md,mdx}')).sort(
+  (a, b) =>
+    new Date(b.frontmatter.date).valueOf() -
+    new Date(a.frontmatter.date).valueOf()
+)
 
-const featuredWork = allWork.filter(item => item.frontmatter.featured)
-const remainingWork = allWork.filter(item => !item.frontmatter.featured)
+const featuredWork = allWork.filter((item) => item.frontmatter.featured)
+const remainingWork = allWork.filter((item) => !item.frontmatter.featured)
 
 const allClients = clients.sort((a, b) => {
   var nameA = a.name.toUpperCase()
   var nameB = b.name.toUpperCase()
-  return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0
+  return nameA < nameB ? -1 : nameA > nameB ? 1 : 0
 })
 
-const featuredClients = allClients.filter(item => item.image)
-const remainingClients = allClients.filter(item => !item.image)
+const featuredClients = allClients.filter((item) => item.image)
+const remainingClients = allClients.filter((item) => !item.image)
 
-featuredClients
-  .map(async client => {
-    await getSizeOf(`./public/images/${client.image}`)
-      .then(dimensions => {
-        client.width = dimensions.width
-        client.height = dimensions.height
-        client.aspectRatio = dimensions.height / dimensions.width
-      })
-      .catch(err => console.error(err))
-    return client
-  })
+featuredClients.map(async (client) => {
+  await getSizeOf(`./public/images/${client.image}`)
+    .then((dimensions) => {
+      client.width = dimensions.width
+      client.height = dimensions.height
+      client.aspectRatio = dimensions.height / dimensions.width
+    })
+    .catch((err) => console.error(err))
+  return client
+})
 ---
+
 <BaseLayout>
   <section class="px-5">
-    <div class="flex flex-col gap-5 sm:gap-8 min-h-max font-serif max-w-4xl mx-auto leading-tight text-xl sm:text-3xl">
-      <p>
-        Hello, I’m Jeremy.
-      </p>
+    <div
+      class="flex flex-col gap-5 sm:gap-8 min-h-max font-serif max-w-4xl mx-auto leading-tight text-xl sm:text-3xl"
+    >
+      <p>Hello, I’m Jeremy.</p>
 
       <p>
         I’m a development director at
@@ -53,95 +56,123 @@ featuredClients
       </p>
 
       <p>
-        I bridge the gap between design and engineering, and work with teams to provide technical leadership and mentorship, while building cohesive and intuitive, highly performant and accessible user interfaces.
+        I bridge the gap between design and engineering, and work with teams to
+        provide technical leadership and mentorship, while building cohesive and
+        intuitive, highly performant and accessible user interfaces.
       </p>
 
-      <ul class:list={[
-        'bg-white dark:bg-zinc-900',
-        'drop-shadow-sm rounded-md',
-        'mt-5 px-3',
-        'inline-flex self-center',
-      ]}>
-        {social.map(link => (
-          <li>
-            <a href={link.url} class="block no-underline p-3">
-              <img src={`/images/icons/${link.image}`} class="h-4 w-4 dark:invert" alt="">
-            </a>
-          </li>
-        ))}
+      <ul
+        class:list={[
+          'bg-white dark:bg-zinc-900',
+          'drop-shadow-sm rounded-md',
+          'mt-5 px-3',
+          'inline-flex self-center',
+        ]}
+      >
+        {
+          social.map((link) => (
+            <li>
+              <a href={link.url} class="block no-underline p-3">
+                <img
+                  src={`/images/icons/${link.image}`}
+                  class="h-4 w-4 dark:invert"
+                  alt=""
+                />
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </section>
 
   <section class="my-20 px-5 sm:px-8 md:px-12 lg:px-16 xl:px-0">
-    <div class="flex flex-col gap-12 items-center justify-center max-w-5xl mx-auto">
-      <h2>
-        Work
-      </h2>
+    <div
+      class="flex flex-col gap-12 items-center justify-center max-w-5xl mx-auto"
+    >
+      <h2>Work</h2>
 
-      <ul class:list={[
-        'grid gap-12',
-        'sm:grid-cols-2',
-        'sm:gap-8',
-        'md:gap-12',
-        'lg:gap-16',
-        'xl:gap-20',
-      ]}>
-        {featuredWork.map((item) => (
-          <WorkCard
-            title={item.frontmatter.title}
-            url={item.url}
-            cardImage={item.frontmatter.cardImage}
-            color={item.frontmatter.color}
-            summary={item.frontmatter.summary}
-            extended={true}
-          />
-        ))}
-      </ul>
-
-      <details class="flex flex-col w-full">
-        <summary class="cursor-pointer select-none text-center mx-auto w-[10ch]">
-          More
-        </summary>
-
-        <ul class="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-5">
-          {remainingWork.map((item) => (
+      <ul
+        class:list={[
+          'grid gap-12',
+          'sm:grid-cols-2',
+          'sm:gap-8',
+          'md:gap-12',
+          'lg:gap-16',
+          'xl:gap-20',
+        ]}
+      >
+        {
+          featuredWork.map((item) => (
             <WorkCard
               title={item.frontmatter.title}
               url={item.url}
               cardImage={item.frontmatter.cardImage}
               color={item.frontmatter.color}
+              summary={item.frontmatter.summary}
+              extended={true}
             />
-          ))}
+          ))
+        }
+      </ul>
+
+      <details class="flex flex-col w-full">
+        <summary
+          class="cursor-pointer select-none text-center mx-auto w-[10ch]"
+        >
+          More
+        </summary>
+
+        <ul class="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-5">
+          {
+            remainingWork.map((item) => (
+              <WorkCard
+                title={item.frontmatter.title}
+                url={item.url}
+                cardImage={item.frontmatter.cardImage}
+                color={item.frontmatter.color}
+              />
+            ))
+          }
         </ul>
       </details>
     </div>
   </section>
 
-  <section class="flex flex-col items-center justify-center px-5 py-20 text-center">
-    <h2>
-      Select Clients
-    </h2>
+  <section
+    class="flex flex-col items-center justify-center px-5 py-20 text-center"
+  >
+    <h2>Select Clients</h2>
 
     <p class="max-w-2xl mx-auto mt-4 font-serif text-xl sm:text-2xl">
-      I’m proud to have worked with a wide variety of companies and organizations over the years. Here’s just a few of them!
+      I’m proud to have worked with a wide variety of companies and
+      organizations over the years. Here’s just a few of them!
     </p>
 
-    <ul class="grid grid-cols-2 gap-10 mt-20 md:grid-cols-5 dark:invert dark:grayscale">
-      {featuredClients.map(client => (
-        <li class="flex flex-col items-center justify-center p-2 text-center">
-          <img src={`/images/${client.image}`} loading="lazy" alt={client.name} class="max-w-[75%] max-h-[30px]">
-        </li>
-      ))}
+    <ul
+      class="grid grid-cols-2 gap-10 mt-20 md:grid-cols-5 dark:invert dark:grayscale"
+    >
+      {
+        featuredClients.map((client) => (
+          <li class="flex flex-col items-center justify-center p-2 text-center">
+            <img
+              src={`/images/${client.image}`}
+              loading="lazy"
+              alt={client.name}
+              class="max-w-[75%] max-h-[30px]"
+            />
+          </li>
+        ))
+      }
     </ul>
 
-    <details class="mt-10 max-w-4xl">
+    <details class="mt-10 max-w-4xl space-y-10">
       <summary class="cursor-pointer select-none text-center mx-auto w-[10ch]">
         More
       </summary>
 
-      <ul class="mt-10 columns-3 sm:columns-4 gap-x-10 leading-4 text-sm text-zinc-500">
-        {remainingClients.map(client => (
+      <ul class="columns-3 sm:columns-4 gap-x-10 leading-4 text-sm text-zinc-500">
+        {remainingClients.map((client) => (
           <li class="break-inside-avoid flex items-center justify-center py-1.5">
             {client.name}
           </li>

@@ -1,20 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import { Picture } from '@astrojs/image/components';
+import { Picture } from '@astrojs/image/components'
 
 const { content } = Astro.props
 const imageResponse = await fetch(`${content.heroImage}-/json/`)
-const imageData = await imageResponse.json();
+const imageData = await imageResponse.json()
 ---
 
 <BaseLayout title={content.title}>
   <div class="px-5">
     <div class="max-w-4xl mx-auto space-y-8 mb-24">
-      <div class:list={[
-        {
-          'mx-auto max-w-[44rem]': content.singleDeviceHero
-        }
-      ]}>
+      <div
+        class:list={[
+          {
+            'mx-auto max-w-[44rem]': content.singleDeviceHero,
+          },
+        ]}
+      >
         <Picture
           src={content.heroImage}
           alt="Device screenshots"
@@ -30,29 +32,33 @@ const imageData = await imageResponse.json();
         {content.title}
       </h1>
 
-      <div class="border-y dark:border-zinc-500 py-8 lg:px-8 grid grid-cols-2 sm:flex sm:flex-row sm:justify-around gap-4 sm:gap-8">
+      <div
+        class="border-y dark:border-zinc-500 py-8 lg:px-8 grid grid-cols-2 sm:flex sm:flex-row sm:justify-around gap-4 sm:gap-8"
+      >
         <dl>
-          <dt class="font-bold text-xs tracking-widest uppercase">
-            Client
-          </dt>
+          <dt class="font-bold text-xs tracking-widest uppercase">Client</dt>
           <dd class="leading-5 mt-1">
             {content.client}
           </dd>
         </dl>
         <dl>
-          <dt class="font-bold text-xs tracking-widest uppercase">
-            Role
-          </dt>
+          <dt class="font-bold text-xs tracking-widest uppercase">Role</dt>
           <dd class="leading-5 mt-1">
-            {Array.isArray(content.role) ? content.role.join(', ') : content.role}
+            {
+              Array.isArray(content.role)
+                ? content.role.join(', ')
+                : content.role
+            }
           </dd>
         </dl>
         <dl class="col-span-2">
-          <dt class="font-bold text-xs tracking-widest uppercase">
-            Tech
-          </dt>
+          <dt class="font-bold text-xs tracking-widest uppercase">Tech</dt>
           <dd class="leading-5 mt-1">
-            {Array.isArray(content.tech) ? content.tech.join(', ') : content.tech}
+            {
+              Array.isArray(content.tech)
+                ? content.tech.join(', ')
+                : content.tech
+            }
           </dd>
         </dl>
       </div>
@@ -70,14 +76,22 @@ const imageData = await imageResponse.json();
         <slot />
       </div>
 
-      <div class:list={[
-        {
-          'py-8 flex justify-center gap-8 text-xl max-w-prose mx-auto': content.websiteUrl || content.caseStudyUrl,
-          'border-t dark:border-zinc-500': content.websiteUrl || content.caseStudyUrl,
-        }
-      ]}>
+      <div
+        class:list={[
+          {
+            'py-8 flex justify-center gap-8 text-xl max-w-prose mx-auto':
+              content.websiteUrl || content.caseStudyUrl,
+            'border-t dark:border-zinc-500':
+              content.websiteUrl || content.caseStudyUrl,
+          },
+        ]}
+      >
         {content.websiteUrl && <a href={content.websiteUrl}>View Site →</a>}
-        {content.caseStudyUrl && <a href={content.caseStudyUrl}>Read Case Study →</a>}
+        {
+          content.caseStudyUrl && (
+            <a href={content.caseStudyUrl}>Read Case Study →</a>
+          )
+        }
       </div>
     </div>
   </div>

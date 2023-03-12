@@ -3,7 +3,7 @@ import '../styles/global.css'
 
 const defaultTitle = 'Jeremy Frank UI Developer'
 const { title } = Astro.props
-const formattedTitle = title ? `${title} – ${defaultTitle}` : defaultTitle;
+const formattedTitle = title ? `${title} – ${defaultTitle}` : defaultTitle
 const url = new URL(Astro.request.url)
 const isHome = url.pathname === '/' || url.pathname === '/index.html'
 const LogomarkTagName = isHome ? 'div' : 'a'
@@ -13,8 +13,8 @@ const logomarkHref = !isHome ? '/' : null
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{formattedTitle}</title>
   </head>
   <body>
@@ -22,8 +22,8 @@ const logomarkHref = !isHome ? '/' : null
       class:list={[
         'h-0 mb-24 md:mb-28 xl:mb-20 px-5 pointer-events-none',
         {
-          'sticky top-0': !isHome
-        }
+          'sticky top-0': !isHome,
+        },
       ]}
     >
       <div class="max-w-6xl mx-auto flex pointer-events-none">
@@ -36,8 +36,8 @@ const logomarkHref = !isHome ? '/' : null
             'bg-zinc-900 dark:bg-zinc-50',
             'pointer-events-auto',
             {
-              'hover:duration-150 hover:ease-in hover:translate-y-2': !isHome
-            }
+              'hover:duration-150 hover:ease-in hover:translate-y-2': !isHome,
+            },
           ]}
         >
           <img
@@ -46,7 +46,7 @@ const logomarkHref = !isHome ? '/' : null
             height="64"
             class="h-12 w-12 md:h-16 md:w-16 invert dark:invert-0"
             alt=""
-          >
+          />
         </LogomarkTagName>
       </div>
     </header>
@@ -59,9 +59,7 @@ const logomarkHref = !isHome ? '/' : null
       <p class="border-t dark:border-zinc-500 dark:text-zinc-500 pt-5">
         ©
         {new Date().getFullYear()}
-        Jeremy Frank
-        —
-        Built with <a href="https://astro.build/">Astro</a>
+        Jeremy Frank — Built with <a href="https://astro.build/">Astro</a>
       </p>
     </footer>
   </body>
