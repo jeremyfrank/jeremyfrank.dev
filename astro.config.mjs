@@ -8,9 +8,6 @@ export default defineConfig({
   compilerOptions: {
     types: ["@astrojs/image/client"]
   },
-  experimental: {
-    integrations: true
-  },
   integrations: [
     image(),
     mdx(),
