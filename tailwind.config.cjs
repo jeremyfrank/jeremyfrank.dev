@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-const colors = require('tailwindcss/colors');
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   content: ['./src/**/*.{astro,html,md,mdx,js,jsx,svelte,svg,ts,tsx,vue}'],
@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        smd: {'max': '539px'},
+        smd: { max: '539px' },
       },
       borderColor: ({ theme }) => ({
         DEFAULT: theme('colors.zinc.300', 'currentColor'),
@@ -58,13 +58,13 @@ module.exports = {
         invert: {
           css: {
             '--tw-prose-hr': colors.zinc[500],
-          }
+          },
         },
         zinc: {
           css: {
             '--tw-prose-hr': colors.zinc[300],
-          }
-        }
+          },
+        },
       },
     },
     fontFamily: {
@@ -72,7 +72,5 @@ module.exports = {
       serif: ['Calluna', 'ui-serif', 'serif'],
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('@tailwindcss/typography')],
 }
