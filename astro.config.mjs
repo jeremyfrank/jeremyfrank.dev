@@ -12,9 +12,7 @@ export default defineConfig({
     image(),
     mdx(),
     tailwind({
-      config: {
-        applyBaseStyles: false
-      }
+      applyBaseStyles: false
     })
   ],
   markdown: {
