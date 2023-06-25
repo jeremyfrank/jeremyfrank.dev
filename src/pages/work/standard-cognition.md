@@ -3,7 +3,6 @@ layout: ../../layouts/Work.astro
 title: Standard Cognition
 client: Standard Cognition
 date: 2020-05-15
-websiteUrl: https://standard.ai/
 cardImage: https://ucarecdn.com/fe119628-55a3-4092-8c8f-d7af913fbb72/
 heroImage: https://ucarecdn.com/2c499184-f5ca-46a5-a893-2fe616d59030/
 color: '#18191e'
