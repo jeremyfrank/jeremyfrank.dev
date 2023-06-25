@@ -24,6 +24,7 @@ const imageData = await imageResponse.json()
           widths={[750, 1000, 1250, 1500, 1800]}
           sizes="(min-width: 58.875em) 896px, calc(100vw - 2.5rem)"
           style={`aspect-ratio: ${imageData.width} / ${imageData.height}`}
+          class="w-full"
           loading={null}
         />
       </div>
