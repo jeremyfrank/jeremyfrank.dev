@@ -1,5 +1,8 @@
 export const clients = [
   {
+    name: 'Bezos Earth Fund',
+  },
+  {
     name: 'AHIP',
     image: 'ahip.svg',
   },
