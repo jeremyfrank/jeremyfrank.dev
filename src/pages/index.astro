@@ -48,10 +48,19 @@ featuredClients.map(async (client) => {
         I’m a development director at
         <a href="https://www.viget.com/" class="font-bold relative">Viget</a>,
         focusing on
-        <b class="bg-sky-200 dark:bg-sky-300 dark:text-zinc-800 font-bold -mx-0.5 px-0.5">user interface</b>
-        development, and specializing in
-        <b class="bg-sky-200 dark:bg-sky-300 dark:text-zinc-800 font-bold -mx-0.5 px-0.5">performance</b> and
-        <b class="bg-sky-200 dark:bg-sky-300 dark:text-zinc-800 font-bold -mx-0.5 px-0.5">accessibility</b>.
+        <b
+          class="bg-sky-200 dark:bg-sky-300 dark:text-zinc-800 font-bold -mx-0.5 px-0.5"
+          >user interface</b
+        >
+         development, and specializing in
+        <b
+          class="bg-sky-200 dark:bg-sky-300 dark:text-zinc-800 font-bold -mx-0.5 px-0.5"
+          >performance</b
+        > and
+        <b
+          class="bg-sky-200 dark:bg-sky-300 dark:text-zinc-800 font-bold -mx-0.5 px-0.5"
+          >accessibility</b
+        >.
       </p>
 
       <p>
@@ -122,7 +131,9 @@ featuredClients.map(async (client) => {
           More
         </summary>
 
-        <ul class="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5 sm:gap-5">
+        <ul
+          class="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5 sm:gap-5"
+        >
           {
             remainingWork.map((item) => (
               <WorkCard
@@ -170,12 +181,16 @@ featuredClients.map(async (client) => {
         More
       </summary>
 
-      <ul class="columns-3 sm:columns-4 gap-x-10 leading-4 text-sm text-zinc-500">
-        {remainingClients.map((client) => (
-          <li class="break-inside-avoid flex items-center justify-center py-1.5">
-            {client.name}
-          </li>
-        ))}
+      <ul
+        class="columns-3 sm:columns-4 gap-x-10 leading-4 text-sm text-zinc-500"
+      >
+        {
+          remainingClients.map((client) => (
+            <li class="break-inside-avoid flex items-center justify-center py-1.5">
+              {client.name}
+            </li>
+          ))
+        }
       </ul>
     </details>
   </section>
