@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/Work.astro
 title: Welcome.US
 client: Welcome.US
 date: 2023-04-01

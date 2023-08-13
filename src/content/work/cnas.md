@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/Work.astro
 title: Center for a New American Security
 client: Center for a New American Security
 date: 2016-10-01

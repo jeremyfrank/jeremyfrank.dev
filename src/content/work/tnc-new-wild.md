@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/Work.astro
 title: A New Hope for a New Wild
 client: The Nature Conservancy
 date: 2015-02-01

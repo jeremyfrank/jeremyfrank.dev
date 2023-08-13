@@ -13,6 +13,7 @@
     "types": ["vite/client"],
     // add integrations type definitions
     "compilerOptions": {
+      "strictNullChecks": true,
       // Replace `astro/client` with `@astrojs/image/client`
       "types": ["@astrojs/image/client"]
     }

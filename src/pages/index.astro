@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content'
 import { promisify } from 'util'
 import sizeOf from 'image-size'
 
@@ -8,14 +9,12 @@ import { clients } from '../data/clients.js'
 import { social } from '../data/social.js'
 
 const getSizeOf = promisify(sizeOf)
-const allWork = (await Astro.glob('/src/pages/work/*.{md,mdx}')).sort(
-  (a, b) =>
-    new Date(b.frontmatter.date).valueOf() -
-    new Date(a.frontmatter.date).valueOf()
+const allWork = (await getCollection('work')).sort(
+  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
 )
 
-const featuredWork = allWork.filter((item) => item.frontmatter.featured)
-const remainingWork = allWork.filter((item) => !item.frontmatter.featured)
+const featuredWork = allWork.filter((item) => item.data.featured)
+const remainingWork = allWork.filter((item) => !item.data.featured)
 
 const allClients = clients.sort((a, b) => {
   var nameA = a.name.toUpperCase()
@@ -105,11 +104,11 @@ featuredClients.map(async (client) => {
         {
           featuredWork.map((item) => (
             <WorkCard
-              title={item.frontmatter.title}
-              url={item.url}
-              cardImage={item.frontmatter.cardImage}
-              color={item.frontmatter.color}
-              summary={item.frontmatter.summary}
+              title={item.data.title}
+              url={`work/${item.slug}`}
+              cardImage={item.data.cardImage}
+              color={item.data.color}
+              summary={item.data.summary}
               extended={true}
             />
           ))
@@ -127,10 +126,10 @@ featuredClients.map(async (client) => {
           {
             remainingWork.map((item) => (
               <WorkCard
-                title={item.frontmatter.title}
-                url={item.url}
-                cardImage={item.frontmatter.cardImage}
-                color={item.frontmatter.color}
+                title={item.data.title}
+                url={`work/${item.slug}`}
+                cardImage={item.data.cardImage}
+                color={item.data.color}
               />
             ))
           }

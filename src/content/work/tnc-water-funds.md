@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/Work.astro
 title: Water Funds Toolbox
 client: The Nature Conservancy
 date: 2018-02-01

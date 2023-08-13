@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/Work.astro
 title: Saving Places
 client: National Trust for Historic Preservation
 date: 2015-10-03
