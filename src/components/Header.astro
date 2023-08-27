@@ -3,17 +3,19 @@ const url = new URL(Astro.request.url)
 const isHome = url.pathname === '/' || url.pathname === '/index.html'
 const LogomarkTagName = isHome ? 'div' : 'a'
 const logomarkHref = !isHome ? '/' : null
+
+import { social } from '../data/social.js'
 ---
 
 <header
   class:list={[
-    'h-0 mb-24 md:mb-28 xl:mb-20 px-5 pointer-events-none',
+    'mb-7 xl:mb-0 pointer-events-none',
     {
       'sticky top-0': !isHome,
     },
   ]}
 >
-  <div class="max-w-6xl mx-auto flex pointer-events-none">
+  <div class="flex justify-between w-full">
     <LogomarkTagName
       href={logomarkHref}
       class:list={[
@@ -35,5 +37,50 @@ const logomarkHref = !isHome ? '/' : null
         alt=""
       />
     </LogomarkTagName>
+
+    <ul
+      class:list={[
+        'bg-white dark:bg-zinc-900',
+        'drop-shadow-sm rounded-md',
+        'inline-flex self-center',
+        'pointer-events-auto',
+      ]}
+    >
+      {
+        social.map((link) => (
+          <li>
+            <a
+              href={link.url}
+              class="block no-underline p-3"
+              aria-label={link.name}
+            >
+              <img
+                src={`/images/icons/${link.image}`}
+                class="h-4 w-4 dark:invert"
+                alt=""
+              />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </header>
+
+<style>
+  header {
+    --gap: clamp(1rem, 6vw, 3rem);
+    --full: minmax(var(--gap), 1fr);
+    --middle: min(100vw, 100% - var(--gap) * 2);
+
+    display: grid;
+    grid-template-columns:
+      var(--full)
+      var(--middle)
+      var(--full);
+
+    > div {
+      grid-column: 2;
+    }
+  }
+</style>

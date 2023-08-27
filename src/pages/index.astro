@@ -3,74 +3,31 @@ import { getCollection } from 'astro:content'
 
 import BaseLayout from '../layouts/BaseLayout.astro'
 import Intro from '../components/Intro.astro'
-import WorkCard from '../components/WorkCard.astro'
+import Articles from '../components/Articles.astro'
 import Clients from '../components/Clients.astro'
+import WorkScroller from '../components/WorkScroller.astro'
+import { pens } from '../data/codepen.js'
 
 const allWork = (await getCollection('work')).sort(
   (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
 )
-
-const featuredWork = allWork.filter((item) => item.data.featured)
-const remainingWork = allWork.filter((item) => !item.data.featured)
 ---
 
 <BaseLayout>
   <Intro />
-
-  <section class="my-20 px-5 sm:px-8 md:px-12 lg:px-16 xl:px-0">
-    <div
-      class="flex flex-col gap-12 items-center justify-center max-w-5xl mx-auto"
-    >
-      <h2>Work</h2>
-
-      <ul
-        class:list={[
-          'grid gap-12',
-          'sm:grid-cols-2',
-          'sm:gap-8',
-          'md:gap-12',
-          'lg:gap-16',
-          'xl:gap-20',
-        ]}
-      >
-        {
-          featuredWork.map((item) => (
-            <WorkCard
-              title={item.data.title}
-              url={`work/${item.slug}`}
-              cardImage={item.data.cardImage}
-              color={item.data.color}
-              summary={item.data.summary}
-              extended={true}
-            />
-          ))
-        }
-      </ul>
-
-      <details class="flex flex-col w-full">
-        <summary
-          class="cursor-pointer select-none text-center mx-auto w-[10ch]"
-        >
-          More
-        </summary>
-
-        <ul
-          class="mt-10 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5 sm:gap-5"
-        >
-          {
-            remainingWork.map((item) => (
-              <WorkCard
-                title={item.data.title}
-                url={`work/${item.slug}`}
-                cardImage={item.data.cardImage}
-                color={item.data.color}
-              />
-            ))
-          }
-        </ul>
-      </details>
-    </div>
-  </section>
-
+  <h2 class="gc-popout">Work</h2>
+  <WorkScroller items={allWork} />
+  <h2 class="gc-popout">Prototypes</h2>
+  <WorkScroller items={pens} />
+  <h2 class="gc-popout">Writing</h2>
+  <Articles />
+  <h2 class="gc-popout">Select Clients</h2>
   <Clients />
 </BaseLayout>
+
+<style>
+  h2 {
+    margin-block-start: clamp(2rem, 8vw, 6rem);
+    margin-block-end: clamp(0rem, 3vw - 1rem, 1rem);
+  }
+</style>

@@ -5,6 +5,7 @@ export const clients = [
   {
     name: 'AHIP',
     image: 'ahip.svg',
+    featured: true,
   },
   {
     name: 'Urū Sports',
@@ -16,14 +17,17 @@ export const clients = [
   {
     name: 'Standard Cognition',
     image: 'standard.svg',
+    featured: true,
   },
   {
     name: 'Gooten',
     image: 'gooten.svg',
+    featured: true,
   },
   {
     name: 'National Trust for Historic Preservation',
     image: 'nthp.svg',
+    featured: true,
   },
   {
     name: 'Center for a New American Security',
@@ -31,14 +35,17 @@ export const clients = [
   {
     name: 'University of Chicago',
     image: 'uchicago.svg',
+    featured: true,
   },
   {
     name: 'Shedd Aquarium',
     image: 'shedd.svg',
+    featured: true,
   },
   {
     name: 'The Nature Conservancy',
     image: 'tnc.svg',
+    featured: true,
   },
   {
     name: 'Conservation International',
@@ -71,6 +78,7 @@ export const clients = [
   {
     name: 'University of Pennsylvania',
     image: 'upenn.svg',
+    featured: true,
   },
   {
     name: 'Discovery',

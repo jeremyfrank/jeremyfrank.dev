@@ -1,0 +1,284 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+type Pen = {
+  id: string
+  title: string
+}
+
+type Work = CollectionEntry<'work'>
+
+type Props = {
+  items: Pen[] | Work[]
+}
+
+const { items }: Props = Astro.props
+
+const isPen = (item: any): item is Pen => {
+  return typeof item === 'object' && 'id' in item && 'title' in item
+}
+---
+
+<work-scroller current="0" class="gc-full scroller">
+  <ul class="gc-popout list">
+    {
+      items.map((item: Pen | Work, index: number) => (
+        <li class="item">
+          {isPen(item) && (
+            <a href={`https://codepen.io/jeremyfrank/full/${item.id}`}>
+              <span class="sr-only">{item.title}</span>
+              <img
+                src={`https://shots.codepen.io/jeremyfrank/pen/${item.id}-800.jpg`}
+                width="400"
+                height="225"
+                loading={index > 2 ? 'lazy' : 'eager'}
+                alt=""
+              />
+            </a>
+          )}
+
+          {!isPen(item) && (
+            <a href={`work/${item.slug}`}>
+              <span class="sr-only">{item.data.title}</span>
+              <img
+                src={`${item.data.cardImage}-/resize/800x/-/format/auto/`}
+                width="400"
+                height="225"
+                loading={index > 2 ? 'lazy' : 'eager'}
+                alt=""
+              />
+            </a>
+          )}
+        </li>
+      ))
+    }
+    <template id="keyboard-instructions-template">
+      <p id="keyboard-instructions-text">
+        Use <kbd>←</kbd> and <kbd>→</kbd> to navigate
+      </p>
+    </template>
+  </ul>
+</work-scroller>
+
+<style>
+  .scroller {
+    --scrollbar-color: var(--color-text);
+    --scrollbar-offset: 4px;
+
+    display: grid;
+    grid-template-columns: inherit;
+    max-width: 100%;
+    margin-block-end: -2rem;
+    padding-block-start: 0.75rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    @media (prefers-reduced-motion: no-preference) {
+      &:focus-within {
+        scroll-behavior: smooth;
+      }
+    }
+
+    @media not all and (any-hover: hover) {
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      height: 12px;
+    }
+    &::-webkit-scrollbar-track {
+      margin: 0 var(--scrollbar-offset);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar:active,
+    &:hover::-webkit-scrollbar {
+      background-color: var(--scrollbar-color);
+      box-shadow: inset var(--color-bg) 0 0 0 var(--scrollbar-offset);
+    }
+
+    &::-webkit-scrollbar-thumb:active,
+    &:hover::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-color);
+      box-shadow:
+        var(--color-bg) var(--scrollbar-offset) 0,
+        var(--color-bg) calc(var(--scrollbar-offset) * -1) 0;
+      border-radius: 99px;
+    }
+  }
+
+  .list {
+    display: flex;
+    gap: 1.5rem;
+
+    &::after {
+      content: '';
+      display: block;
+      padding-inline-end: 1px;
+    }
+  }
+
+  .item {
+    flex-shrink: 0;
+    width: min(300px + 3vw, 100%);
+    position: relative;
+    scroll-snap-align: center;
+  }
+
+  a {
+    border-radius: var(--radius);
+    background: #eee;
+    display: block;
+    transform-style: preserve-3d;
+    transform: translate3d(0, 0, 0) scale(1);
+    transition-duration: 200ms;
+
+    &:hover {
+      transform: translate3d(0, 0, 0) scale(1.03);
+    }
+
+    &:focus-visible {
+      @apply ring-offset-4;
+    }
+  }
+
+  img {
+    border-radius: inherit;
+  }
+
+  p {
+    padding-block: 0.75em 0.25em;
+    text-align: center;
+    visibility: hidden;
+
+    .list:not(.active) :focus-visible + & {
+      visibility: visible;
+    }
+  }
+
+  kbd {
+    border-radius: 2px;
+    display: inline-block;
+    background: var(--color-bg-accent);
+    line-height: 1em;
+    padding: 0 3px 1px;
+  }
+</style>
+
+<script>
+  class WorkScroller extends HTMLElement {
+    static readonly activeClass = 'active'
+
+    constructor() {
+      super()
+    }
+
+    connectedCallback() {
+      this.initKeyboardInstructions()
+      this.setTabIndexes()
+      this.list.addEventListener('keydown', this.handleKeyDown)
+    }
+
+    static get observedAttributes() {
+      return ['current']
+    }
+
+    attributeChangedCallback(name: string, oldValue: number, newValue: number) {
+      if (name !== 'current' || oldValue === newValue || oldValue === null) {
+        return
+      }
+
+      this.scrollToCurrent()
+    }
+
+    private get current() {
+      return Number(this.getAttribute('current'))
+    }
+
+    private set current(value: number) {
+      this.setAttribute('current', String(value))
+    }
+
+    private get list() {
+      return this.querySelector<HTMLUListElement>('.list')
+    }
+
+    private get anchors() {
+      return Array.from(
+        this.list?.querySelectorAll<HTMLAnchorElement>('a') || [],
+      )
+    }
+
+    private handleKeyDown = (e: {
+      key: string
+      preventDefault: () => void
+    }) => {
+      if (e.key === 'Tab') {
+        this.list.classList.remove(WorkScroller.activeClass)
+      }
+
+      if (e.key === 'ArrowRight') {
+        if (this.current < this.anchors.length - 1) {
+          this.current++
+        } else {
+          this.current = 0
+        }
+      }
+
+      if (e.key === 'ArrowLeft') {
+        if (this.current === 0) {
+          this.current = this.anchors.length - 1
+        } else {
+          this.current--
+        }
+      }
+
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault()
+        this.list.classList.add(WorkScroller.activeClass)
+        this.appendFocusText()
+        this.setTabIndexes()
+      }
+    }
+
+    private appendFocusText = () => {
+      const instructions = this.querySelector('#keyboard-instructions-text')
+      this.anchors[this.current].parentNode.appendChild(instructions)
+    }
+
+    private initKeyboardInstructions = () => {
+      const template = this.querySelector<HTMLTemplateElement>(
+        '#keyboard-instructions-template',
+      )
+      const fragment = template.content.cloneNode(true)
+      this.anchors[this.current].parentNode.appendChild(fragment)
+    }
+
+    private scrollToCurrent() {
+      const currentItem = this.anchors[this.current]
+      currentItem.scrollIntoView({ block: 'nearest', inline: 'center' })
+      currentItem.focus({ preventScroll: true })
+    }
+
+    private setTabIndexes = () => {
+      this.anchors.forEach((a) => {
+        if (a === this.anchors[this.current]) {
+          a.tabIndex = 0
+        } else {
+          a.tabIndex = -1
+        }
+      })
+    }
+  }
+
+  customElements.define('work-scroller', WorkScroller)
+</script>

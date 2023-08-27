@@ -13,9 +13,13 @@ module.exports = {
       borderColor: ({ theme }) => ({
         DEFAULT: theme('colors.zinc.300', 'currentColor'),
       }),
+      gridTemplateColumns: {
+        inherit: 'inherit',
+      },
       typography: {
         DEFAULT: {
           css: {
+            maxWidth: 'none',
             a: {
               fontWeight: null,
             },

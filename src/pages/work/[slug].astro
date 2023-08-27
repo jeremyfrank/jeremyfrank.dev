@@ -25,80 +25,79 @@ const imageData = await imageResponse.json()
 ---
 
 <BaseLayout title={data.title}>
-  <div class="px-5">
-    <div class="max-w-4xl mx-auto space-y-8 mb-24">
+  <div
+    class:list={[
+      'gc-feature',
+      {
+        'mx-auto max-w-[44rem]': data.singleDeviceHero,
+      },
+    ]}
+  >
+    <Picture
+      src={data.heroImage}
+      alt="Device screenshots"
+      aspectRatio={`${imageData.width}:${imageData.height}`}
+      widths={[750, 1000, 1250, 1500, 1800]}
+      sizes="(min-width: 58.875em) 896px, calc(100vw - 2.5rem)"
+      style={`aspect-ratio: ${imageData.width} / ${imageData.height}`}
+      class="w-full"
+      loading={null}
+    />
+  </div>
+
+  <h1 class="mt-8 text-center">
+    {data.title}
+  </h1>
+
+  <div
+    class="gc-feature border-y dark:border-zinc-500 mt-8 py-8 grid grid-cols-2 sm:flex sm:flex-row sm:justify-around gap-4 sm:gap-8"
+  >
+    <dl>
+      <dt class="font-bold text-xs tracking-widest uppercase">Client</dt>
+      <dd class="leading-5 mt-1">
+        {data.client}
+      </dd>
+    </dl>
+    <dl>
+      <dt class="font-bold text-xs tracking-widest uppercase">Role</dt>
+      <dd class="leading-5 mt-1">
+        {Array.isArray(data.role) ? data.role.join(', ') : data.role}
+      </dd>
+    </dl>
+    <dl class="col-span-2">
+      <dt class="font-bold text-xs tracking-widest uppercase">Tech</dt>
+      <dd class="leading-5 mt-1">
+        {Array.isArray(data.tech) ? data.tech.join(', ') : data.tech}
+      </dd>
+    </dl>
+  </div>
+
+  <div
+    class:list={[
+      'prose md:prose-lg lg:prose-xl',
+      'prose-zinc dark:prose-invert',
+      'prose-img:rounded-lg lg:prose-img:max-w-none lg:prose-img:mx-[-12%] lg:prose-img:w-[124%]',
+      'lg:prose-pre:mx-[-12%] lg:prose-pre:w-[124%]',
+      'lg:[&>iframe]:mx-[-12%] lg:[&>iframe]:w-[124%]',
+      'prose-figcaption:italic prose-figcaption:text-center',
+      'mx-auto my-8',
+    ]}
+  >
+    <Content />
+  </div>
+
+  {
+    (data.websiteUrl || data.caseStudyUrl) && (
       <div
         class:list={[
-          {
-            'mx-auto max-w-[44rem]': data.singleDeviceHero,
-          },
-        ]}
-      >
-        <Picture
-          src={data.heroImage}
-          alt="Device screenshots"
-          aspectRatio={`${imageData.width}:${imageData.height}`}
-          widths={[750, 1000, 1250, 1500, 1800]}
-          sizes="(min-width: 58.875em) 896px, calc(100vw - 2.5rem)"
-          style={`aspect-ratio: ${imageData.width} / ${imageData.height}`}
-          class="w-full"
-          loading={null}
-        />
-      </div>
-
-      <h1 class="text-center">
-        {data.title}
-      </h1>
-
-      <div
-        class="border-y dark:border-zinc-500 py-8 lg:px-8 grid grid-cols-2 sm:flex sm:flex-row sm:justify-around gap-4 sm:gap-8"
-      >
-        <dl>
-          <dt class="font-bold text-xs tracking-widest uppercase">Client</dt>
-          <dd class="leading-5 mt-1">
-            {data.client}
-          </dd>
-        </dl>
-        <dl>
-          <dt class="font-bold text-xs tracking-widest uppercase">Role</dt>
-          <dd class="leading-5 mt-1">
-            {Array.isArray(data.role) ? data.role.join(', ') : data.role}
-          </dd>
-        </dl>
-        <dl class="col-span-2">
-          <dt class="font-bold text-xs tracking-widest uppercase">Tech</dt>
-          <dd class="leading-5 mt-1">
-            {Array.isArray(data.tech) ? data.tech.join(', ') : data.tech}
-          </dd>
-        </dl>
-      </div>
-
-      <div
-        class:list={[
-          'prose prose-zinc md:prose-lg lg:prose-xl dark:prose-invert',
-          'lg:prose-img:max-w-none lg:prose-img:mx-[-12%] lg:prose-img:w-[124%]',
-          'lg:prose-pre:mx-[-12%] lg:prose-pre:w-[124%]',
-          'lg:[&>iframe]:mx-[-12%] lg:[&>iframe]:w-[124%]',
-          'prose-figcaption:italic prose-figcaption:text-center',
-          'mx-auto my-12',
-        ]}
-      >
-        <Content />
-      </div>
-
-      <div
-        class:list={[
-          {
-            'py-8 flex justify-center gap-8 text-xl max-w-prose mx-auto':
-              data.websiteUrl || data.caseStudyUrl,
-            'border-t dark:border-zinc-500':
-              data.websiteUrl || data.caseStudyUrl,
-          },
+          'border-t dark:border-zinc-500',
+          'flex justify-center gap-8',
+          'py-8 text-xl',
         ]}
       >
         {data.websiteUrl && <a href={data.websiteUrl}>View Site →</a>}
         {data.caseStudyUrl && <a href={data.caseStudyUrl}>Read Case Study →</a>}
       </div>
-    </div>
-  </div>
+    )
+  }
 </BaseLayout>

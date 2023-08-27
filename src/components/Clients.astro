@@ -9,7 +9,7 @@ const allClients = clients.sort((a, b) => {
   return nameA < nameB ? -1 : nameA > nameB ? 1 : 0
 })
 
-const featuredClients = allClients.filter((item) => item.image)
+const featuredClients = allClients.filter((item) => item.image && item.featured)
 const remainingClients = allClients.filter((item) => !item.image)
 const getSizeOf = promisify(sizeOf)
 
@@ -25,18 +25,19 @@ featuredClients.map(async (client) => {
 })
 ---
 
-<section
-  class="flex flex-col items-center justify-center px-5 py-20 text-center"
->
-  <h2>Select Clients</h2>
-
-  <p class="max-w-2xl mx-auto mt-4 font-serif text-xl sm:text-2xl">
+<div class="gc-popout grid">
+  <p
+    class:list={[
+      'prose md:prose-lg lg:prose-xl',
+      'prose-zinc dark:prose-invert',
+    ]}
+  >
     I’m proud to have worked with a wide variety of companies and organizations
     over the years. Here’s just a few of them!
   </p>
 
   <ul
-    class="grid grid-cols-2 gap-10 mt-20 md:grid-cols-5 dark:invert dark:grayscale"
+    class="grid grid-cols-2 gap-10 mt-10 mb-6 md:grid-cols-4 dark:invert dark:grayscale"
   >
     {
       featuredClients.map((client) => (
@@ -52,19 +53,19 @@ featuredClients.map(async (client) => {
     }
   </ul>
 
-  <details class="mt-10 max-w-4xl space-y-10">
-    <summary class="cursor-pointer select-none text-center mx-auto w-[10ch]">
+  <details class="space-y-4">
+    <summary
+      class="cursor-pointer select-none w-[10ch] text-center mx-auto p-2"
+    >
       More
     </summary>
 
     <ul class="columns-3 sm:columns-4 gap-x-10 leading-4 text-sm text-zinc-500">
       {
         remainingClients.map((client) => (
-          <li class="break-inside-avoid flex items-center justify-center py-1.5">
-            {client.name}
-          </li>
+          <li class="break-inside-avoid flex py-1">{client.name}</li>
         ))
       }
     </ul>
   </details>
-</section>
+</div>
