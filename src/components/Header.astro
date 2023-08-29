@@ -1,0 +1,39 @@
+---
+const url = new URL(Astro.request.url)
+const isHome = url.pathname === '/' || url.pathname === '/index.html'
+const LogomarkTagName = isHome ? 'div' : 'a'
+const logomarkHref = !isHome ? '/' : null
+---
+
+<header
+  class:list={[
+    'h-0 mb-24 md:mb-28 xl:mb-20 px-5 pointer-events-none',
+    {
+      'sticky top-0': !isHome,
+    },
+  ]}
+>
+  <div class="max-w-6xl mx-auto flex pointer-events-none">
+    <LogomarkTagName
+      href={logomarkHref}
+      class:list={[
+        '-mt-2 p-1 pt-6 rounded-b-full drop-shadow-md',
+        'ring ring-white dark:ring-zinc-900',
+        'focus-visible:ring-blue-500 focus-visible:ring-offset-2',
+        'bg-zinc-900 dark:bg-zinc-50',
+        'pointer-events-auto',
+        {
+          'hover:duration-150 hover:ease-in hover:translate-y-2': !isHome,
+        },
+      ]}
+    >
+      <img
+        src="/images/jf-logomark.svg"
+        width="64"
+        height="64"
+        class="h-12 w-12 md:h-16 md:w-16 invert dark:invert-0"
+        alt=""
+      />
+    </LogomarkTagName>
+  </div>
+</header>
