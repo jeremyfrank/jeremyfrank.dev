@@ -2,9 +2,9 @@
 import { getCollection } from 'astro:content'
 
 import BaseLayout from '../layouts/BaseLayout.astro'
+import Intro from '../components/Intro.astro'
 import WorkCard from '../components/WorkCard.astro'
 import Clients from '../components/Clients.astro'
-import { social } from '../data/social.js'
 
 const allWork = (await getCollection('work')).sort(
   (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
@@ -15,61 +15,7 @@ const remainingWork = allWork.filter((item) => !item.data.featured)
 ---
 
 <BaseLayout>
-  <section class="px-5">
-    <div
-      class="flex flex-col gap-5 sm:gap-8 min-h-max font-serif max-w-4xl mx-auto leading-tight text-xl sm:text-3xl"
-    >
-      <p>Hello, I’m Jeremy.</p>
-
-      <p>
-        I’m a development director at
-        <a href="https://www.viget.com/" class="font-bold relative">Viget</a>,
-        focusing on
-        <b
-          class="bg-sky-200 dark:bg-sky-300 dark:text-zinc-800 font-bold -mx-0.5 px-0.5"
-          >user interface</b
-        >
-         development, and specializing in
-        <b
-          class="bg-sky-200 dark:bg-sky-300 dark:text-zinc-800 font-bold -mx-0.5 px-0.5"
-          >performance</b
-        > and
-        <b
-          class="bg-sky-200 dark:bg-sky-300 dark:text-zinc-800 font-bold -mx-0.5 px-0.5"
-          >accessibility</b
-        >.
-      </p>
-
-      <p>
-        I bridge the gap between design and engineering, and work with teams to
-        provide technical leadership and mentorship, while building cohesive and
-        intuitive, highly performant and accessible user interfaces.
-      </p>
-
-      <ul
-        class:list={[
-          'bg-white dark:bg-zinc-900',
-          'drop-shadow-sm rounded-md',
-          'mt-5 px-3',
-          'inline-flex self-center',
-        ]}
-      >
-        {
-          social.map((link) => (
-            <li>
-              <a href={link.url} class="block no-underline p-3">
-                <img
-                  src={`/images/icons/${link.image}`}
-                  class="h-4 w-4 dark:invert"
-                  alt=""
-                />
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
+  <Intro />
 
   <section class="my-20 px-5 sm:px-8 md:px-12 lg:px-16 xl:px-0">
     <div
