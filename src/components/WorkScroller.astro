@@ -68,7 +68,7 @@ const isPen = (item: any): item is Pen => {
     display: grid;
     grid-template-columns: inherit;
     max-width: 100%;
-    margin-block-end: -2rem;
+    margin-block-end: calc(clamp(2rem, 3vw, 4rem) * -1);
     padding-block-start: 0.75rem;
     overflow-x: scroll;
     overflow-y: hidden;
