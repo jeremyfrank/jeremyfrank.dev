@@ -1,18 +1,24 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 
-const { content } = Astro.props
+const title = [Astro.props.title, Astro.props.content?.title]
+  .filter(Boolean)
+  .join()
+
+const byline = [Astro.props.byline, Astro.props.content?.byline]
+  .filter(Boolean)
+  .join()
 ---
 
-<BaseLayout title={content.title}>
+<BaseLayout title={title}>
   <div class="px-5 pb-[10vh]">
     <div class="max-w-3xl mx-auto space-y-8">
       <h1 class="text-center">
-        {content.title}
+        {title}
       </h1>
 
       <p class="max-w-[29rem] mx-auto italic text-center text-lg">
-        {content.byline}
+        {byline}
       </p>
 
       <hr />
