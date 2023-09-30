@@ -1,5 +1,9 @@
 export const articles = [
   {
+    title: 'Component Driven Development and the QA Process',
+    url: 'https://www.viget.com/articles/component-driven-development-and-the-qa-process/',
+  },
+  {
     title:
       'Color Outside the Lines with Partial Circular Gradient Image Borders',
     url: 'https://www.viget.com/articles/color-outside-the-lines-with-partial-circular-gradient-image-borders/',
