@@ -32,11 +32,12 @@
   }
   h1 {
     @apply font-serif;
-    @apply text-3xl sm:text-5xl;
+    font-size: clamp(1.875rem, 5vw, 3rem);
+    line-height: 1;
   }
   h2 {
     @apply font-serif;
-    @apply text-2xl sm:text-4xl;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
   }
   hr {
     @apply dark:border-zinc-500;

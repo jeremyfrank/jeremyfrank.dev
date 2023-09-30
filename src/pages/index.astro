@@ -15,13 +15,13 @@ const allWork = (await getCollection('work')).sort(
 
 <BaseLayout>
   <Intro />
-  <h2 class="gc-popout">Work</h2>
+  <h2>Work</h2>
   <WorkScroller items={allWork} />
-  <h2 class="gc-popout">Prototypes</h2>
+  <h2>Prototypes</h2>
   <WorkScroller items={pens} />
-  <h2 class="gc-popout">Writing</h2>
+  <h2>Writing</h2>
   <Articles />
-  <h2 class="gc-popout">Select Clients</h2>
+  <h2>Select Clients</h2>
   <Clients />
 </BaseLayout>
 
