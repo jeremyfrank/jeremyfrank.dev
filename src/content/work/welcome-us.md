@@ -12,7 +12,6 @@ tech:
   - Tailwind
   - Storybook
 summary: Building a new marketing site with a component driven development approah using Storybook and Next.js.
-featured: true
 ---
 
 Welcome.US is a national initiative which mobilizes Americans to help resettle newcomers seeking refuge in the U.S.

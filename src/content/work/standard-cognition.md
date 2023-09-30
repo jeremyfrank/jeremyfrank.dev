@@ -11,7 +11,6 @@ tech:
   - Tailwind
   - Netlify CMS
 summary: Building a new marketing site powered by a headless CMS and a modern front-end framework, running on a global network built for speed.
-featured: true
 ---
 
 Having developed a state of the art autonomous checkout platform for brick & mortar retailers, Standard Cognition needed help with developing an updated marketing website to better reflect the maturity of their platform, while providing flexibility in managing content.

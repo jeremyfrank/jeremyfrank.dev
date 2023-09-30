@@ -14,7 +14,6 @@ tech:
   - Webpacker
   - Imgix
 summary: Developing a bold new site and integrating with a custom CMS on a proven platform.
-featured: true
 ---
 
 Being one of the largest aquariums in the world, with ~2 million visitors per year, Shedd Aquarium is loved by attendees, and also well known and respected in the conservation space. Shedd’s new website, being their primary digital experience through which they show and connect with visitors, invites users to get as close as possible to what matters, “to look nature in the eye.”
