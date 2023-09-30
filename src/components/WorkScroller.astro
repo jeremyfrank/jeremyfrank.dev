@@ -4,6 +4,7 @@ import type { CollectionEntry } from 'astro:content'
 type Pen = {
   id: string
   title: string
+  alternateImage?: string
 }
 
 type Work = CollectionEntry<'work'>
@@ -28,7 +29,9 @@ const isPen = (item: any): item is Pen => {
             <a href={`https://codepen.io/jeremyfrank/full/${item.id}`}>
               <span class="sr-only">{item.title}</span>
               <img
-                src={`https://shots.codepen.io/jeremyfrank/pen/${item.id}-800.jpg`}
+                src={`https://shots.codepen.io/jeremyfrank/pen/${
+                  item.alternateImage ?? item.id
+                }-800.jpg`}
                 width="400"
                 height="225"
                 loading={index > 2 ? 'lazy' : 'eager'}

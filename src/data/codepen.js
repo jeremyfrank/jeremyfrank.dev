@@ -1,7 +1,8 @@
 export const pens = [
   {
-    id: 'wvQLyEL',
-    title: 'Animated Cylindrical Sine Wave',
+    id: 'zYyYQxy',
+    title: 'Animated Cylindrical Sine Wave v2',
+    alternateImage: 'wvQLyEL',
   },
   {
     id: 'PoajdwX',
