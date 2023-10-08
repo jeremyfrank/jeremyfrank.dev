@@ -15,4 +15,4 @@ summary: Building a new marketing site powered by a headless CMS and a modern fr
 
 Having developed a state of the art autonomous checkout platform for brick & mortar retailers, Standard Cognition needed help with developing an updated marketing website to better reflect the maturity of their platform, while providing flexibility in managing content.
 
-Being a smaller marketing site with a blog, a lightweight approach was taken with [Netlify CMS](https://www.netlifycms.org/), a Git-based headless CMS, and [Gatsby](https://www.gatsbyjs.com/) for the front-end. All of this is automatically built and deployed to Netlify’s global network whenever there are content or code updates.
+Being a smaller marketing site with a blog, a lightweight approach was taken with [Netlify CMS](https://www.netlifycms.org/), a Git-based headless CMS, and [Gatsby](https://www.gatsbyjs.com/) for the front-end. Hosted on Netlify, automatic deployments occured whenever Netlify CMS made a content update, via commit to the GitHub repo.
