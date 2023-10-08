@@ -1,6 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 
 const colors = require('tailwindcss/colors')
+const round = (num) =>
+  num
+    .toFixed(7)
+    .replace(/(\.[0-9]+?)0+$/, '$1')
+    .replace(/\.0$/, '')
+const em = (px, base) => `${round(px / base)}em`
 
 module.exports = {
   content: ['./src/**/*.{astro,html,md,mdx,js,jsx,svelte,svg,ts,tsx,vue}'],
@@ -31,6 +37,22 @@ module.exports = {
               marginBottom: '0.75em',
               lineHeight: 1.5,
             },
+            ':not(pre) > code': {
+              backgroundColor: 'rgba(0,0,0,0.1)',
+              borderRadius: '0.15em',
+              fontWeight: 'normal',
+              padding: '0.1em 0.2em',
+            },
+            'code::before': {
+              content: 'none',
+            },
+            'code::after': {
+              content: 'none',
+            },
+            iframe: {
+              marginTop: em(24, 14),
+              marginBottom: em(24, 14),
+            },
           },
         },
         lg: {
@@ -43,6 +65,10 @@ module.exports = {
             li: {
               marginTop: '0.75em',
               marginBottom: '0.75em',
+            },
+            iframe: {
+              marginTop: '2em',
+              marginBottom: '2em',
             },
           },
         },
