@@ -14,15 +14,23 @@ tech:
 summary: Developing a campaign site for a new nationwide advertising campaign by the Ad Council.
 ---
 
-import Embed from '../../components/Embed.astro'
-
 Ad Council’s new Belonging Begins with Us campaign empowers viewers to foster a more welcoming nation where everyone, regardless of background, feels they belong. The goal for the campaign site was to present a rich and diverse “American tapestry” of stories and their accompanying objects.
 
-My role on this project was to learn Ad Council’s existing CMS platform, then build and integrate the site using the its built-in theme system.
+My role on this project was to learn Ad Council’s existing CMS platform, then build and integrate the site using the its built-in templating and theming system.
 
-## Early Concept Prototype
+## Interactive Prototyping
 
-<Embed
-  url="https://codepen.io/jeremyfrank/embed/preview/YzqVzJy?default-tab=result"
-  height="600"
-/>
+For the home page, my team and I wanted to do an interactive card grid with paning and zooming and smooth transitions to detail pages. I put together a series of prototypes which were used for vetting and confirming that this approach would work.
+
+- [Prototype 1](https://codepen.io/jeremyfrank/pen/XWdMMQj) – Layout and card hovers using CSS Grid, Transforms
+- [Prototype 2](https://codepen.io/jeremyfrank/pen/YzqVzJy) – Card transitions using the [FLIP](https://aerotwist.com/blog/flip-your-animations/) technique
+- [Prototype 3](https://codepen.io/jeremyfrank/pen/mdPMwMo) – Pan & zoom using the [Panzoom](https://github.com/timmywil/panzoom) library
+
+These prototypes were then combined to produce the finished interactive card grid.
+
+<video controls autoplay loop>
+  <source
+    src="https://jeremyfrank-dev-assets.s3.amazonaws.com/belongings.mp4"
+    type="video/mp4"
+  />
+</video>
