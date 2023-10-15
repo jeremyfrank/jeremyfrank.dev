@@ -1,4 +1,13 @@
 ---
+type Article = {
+  title: string
+  url: string
+}
+
+type Props = {
+  articles: Article[]
+}
+
 const { articles } = Astro.props
 ---
 

@@ -1,4 +1,12 @@
 ---
+type Props = {
+  url: string
+  title?: string
+  classes?: string
+  width?: number
+  height?: number
+}
+
 const { url, title, classes, width = 800, height = 400 } = Astro.props
 ---
 
