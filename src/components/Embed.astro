@@ -1,5 +1,5 @@
 ---
-const { url, width = 800, height = 400 } = Astro.props
+const { url, classes, width = 800, height = 400 } = Astro.props
 ---
 
 <iframe
@@ -7,6 +7,5 @@ const { url, width = 800, height = 400 } = Astro.props
   width={width}
   height={height}
   frameborder="0"
-  class="rounded-md w-full"
-  loading="lazy"
-></iframe>
+  class:list={['rounded-md w-full', classes]}
+  loading="lazy"></iframe>
