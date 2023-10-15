@@ -1,0 +1,20 @@
+---
+type Props = {
+  src: string
+  bordered: boolean
+}
+
+const { src, bordered = false } = Astro.props
+---
+
+<video class:list={{ border: bordered }} controls autoplay loop>
+  <source src={src} type="video/mp4" />
+</video>
+
+<style>
+  video {
+    {if bordered {
+      border-color: var(--color-text);
+    }}
+  }
+</style>
