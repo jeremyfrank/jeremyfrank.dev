@@ -1,0 +1,41 @@
+---
+title: Viget Explorations
+client: Viget
+date: 2023-10-12
+websiteUrl: https://explorations.viget.com/
+cardImage: https://ucarecdn.com/f347c9e9-ccde-43c9-a832-a66d92abf932/
+heroImage: https://ucarecdn.com/cfebae22-b607-4432-aeab-9fc96d140e86/
+color: '#1b1b1b'
+role: Tech Lead & Front-End Developer
+tech:
+  - Astro
+  - Tailwind
+  - Canvas API
+  - CSS Scroll-Driven Animations
+summary: Building a new landing page with Astro and migrating legacy explorations from oudated tooling to a modernized setup.
+---
+
+import Embed from '../../components/Embed.astro'
+import Video from '../../components/Video.astro'
+
+Explorations are the result of teams exploring ideas and uncovering insights about what the digital future might bring, from AI assisted meal selection to the future of fantasy football. I led a small team of developers in modernizing the infrastructure, migrating legacy explorations to a new framework, and building a new primary landing page.
+
+## New Landing Page
+
+The new landing page was built with Astro, a web framework which is focused on fast content-first websites. Astro's content collections feature was implemented for landing page content, which provided automatic Typescript type safety for Markdown content, as well as a `getCollection()` function for retrieving lists of content collection entries by collection name.
+
+## Animations
+
+The top of the landing page featured a dynamically rendered star field, with a shooting star animation following a path resembling a sine wave. Both of these were rendered with the Canvas API.
+
+<Embed
+  url="https://codepen.io/jeremyfrank/embed/preview/zYyYQxy?default-tab=result"
+  height="675"
+/>
+
+The rest of the landing page featured individual sections for each exploration, each with a scroll-triggered reveal effect. The technique used a combination of the new Scroll-Driven Animations Level 1 Specification, with Custom Properties, Style Queries, and Transitions. The end result was a CSS-only Scroll-Triggered animation, nearly indstinguishable from similar approaches done with the IntersectionObserver API.
+
+<Video
+  src="https://jeremyfrank-dev-assets.s3.amazonaws.com/explorations.mp4"
+  bordered={true}
+/>
