@@ -1,9 +1,10 @@
 ---
-const { url, classes, width = 800, height = 400 } = Astro.props
+const { url, title, classes, width = 800, height = 400 } = Astro.props
 ---
 
 <iframe
   src={url}
+  title={title}
   width={width}
   height={height}
   frameborder="0"
