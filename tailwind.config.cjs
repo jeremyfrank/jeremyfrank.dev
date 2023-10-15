@@ -15,6 +15,7 @@ module.exports = {
     extend: {
       screens: {
         smd: { max: '539px' },
+        mdd: { max: '767px' },
       },
       borderColor: ({ theme }) => ({
         DEFAULT: theme('colors.zinc.300', 'currentColor'),
