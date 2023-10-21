@@ -1,5 +1,9 @@
 export const articles = [
   {
+    title: 'View Transitions in Astro',
+    url: 'https://www.viget.com/articles/view-transitions-in-astro/',
+  },
+  {
     title: 'Component Driven Development and the QA Process',
     url: 'https://www.viget.com/articles/component-driven-development-and-the-qa-process/',
   },
