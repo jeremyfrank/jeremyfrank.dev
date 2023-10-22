@@ -1,0 +1,52 @@
+---
+title: Easy Textures with CSS Masks
+description: Gritty, earthy textures, for use on headlines and graphics are easy with CSS Masking!
+date: 2015-02-04
+tags:
+  - css
+url: https://www.viget.com/articles/easy-textures-with-css-masks/
+---
+
+import Embed from '../../components/Embed.astro'
+
+We recently worked with The Nature Conservancy on a [microsite](http://www.nature.org/new-wild/) and campaign strategy to promote a new PBS series, “EARTH A New Wild.” One small detail of the overall design language was a gritty, earthy texture, which was reserved for use on headlines, buttons and icons, and the brand’s identity marks.
+
+![](https://viget.com/uploads/image/blog/tnc-brand.jpg)
+
+![](https://viget.com/uploads/image/blog/tnc-heading.jpg)
+
+![](https://viget.com/uploads/image/blog/tnc-buttons-icons.jpg)
+
+There are a few different ways to achieve this effect in today’s browsers, from CSS background-clip and mask-image, to SVG `<clippath>`, `<pattern>` and `<mask>`, and even `canvas`. Each have their own varying levels of support and implementation peculiarities; however, one of these rises above the rest in terms of its ease of implementation and flexibility of use.
+
+## CSS mask-image
+
+To start, simply save your texture image as a PNG-24.
+
+![](https://viget.com/uploads/image/blog/grit.png)
+
+With the above image, the areas with partial and full transparency will mask the element (allowing the background to show through), while fully opaque areas (of any color) will allow the element to be visible.
+
+Then simply apply it as a mask image in CSS with only 2 lines of code!
+
+```css
+.grit {
+  -webkit-mask-image: url('grit.png');
+  mask-image: url('grit.png');
+}
+```
+
+## Great Flexibility
+
+The beauty of this technique is that it is very flexible. It can be applied to elements of any color, and the background will show through! Use it on headlines, buttons, borders, SVG vectors, and icons to achieve a similar effect.
+
+<Embed
+  url="https://codepen.io/jeremyfrank/embed/yyzwoo?default-tab=result"
+  height="600"
+/>
+
+To learn more about this project, read this [article](https://www.viget.com/articles/inspiring-a-new-hope-for-a-new-wild/), by Amanda Ruehlen, as well as our full project [case study](https://www.viget.com/work/the-nature-conservancy-a-new-hope-for-a-new-wild).
+
+---
+
+_At the time of this writing, [CSS Masking](http://www.w3.org/TR/css-masking/) is a W3C Candidate Recommendation, which currently works in most [modern browsers](http://caniuse.com/#feat=css-masks), with the exception of Internet Explorer and Firefox. Non-supporting browsers will simply receive the un-textured version as a fallback. For the EARTH A New Wild microsite, the loss of this subtle detail in non-supporting browsers was perfectly acceptable._

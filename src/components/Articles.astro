@@ -1,8 +1,14 @@
 ---
+import type { CollectionEntry } from 'astro:content'
 import ArticlesList from '../components/ArticlesList.astro'
-import { articles } from '../data/articles.js'
 
-const latestArticles = articles.slice(0, 5)
+type Article = CollectionEntry<'articles'>
+
+type Props = {
+  articles: Article[]
+}
+
+const { articles } = Astro.props
 ---
 
 <div
@@ -12,6 +18,6 @@ const latestArticles = articles.slice(0, 5)
     'prose-ul:pl-[1em]',
   ]}
 >
-  <ArticlesList articles={latestArticles} />
+  <ArticlesList articles={articles} />
   <a href="/articles">More Articles →</a>
 </div>

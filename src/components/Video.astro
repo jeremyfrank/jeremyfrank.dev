@@ -2,14 +2,19 @@
 type Props = {
   src: string
   bordered?: boolean
+  width?: number | null
+  caption?: string
 }
 
-const { src, bordered = false } = Astro.props
+const { src, bordered = false, width, caption } = Astro.props
 ---
 
-<video class:list={{ border: bordered }} controls autoplay loop>
-  <source src={src} type="video/mp4" />
-</video>
+<figure>
+  <video width={width} class:list={{ border: bordered }} controls autoplay loop>
+    <source src={src} type="video/mp4" />
+  </video>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
 
 <style>
   video {

@@ -1,0 +1,36 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content'
+import { getDomainFromUrl } from '../../helpers/url'
+import PageLayout from '../../layouts/Page.astro'
+
+export async function getStaticPaths() {
+  const articleEntries = await getCollection('articles')
+  return articleEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }))
+}
+
+type Props = {
+  entry: CollectionEntry<'articles'>
+}
+
+const { entry } = Astro.props
+
+const { data, render } = entry
+const { Content } = await render()
+---
+
+<PageLayout title={data.title} byline={data.description}>
+  {
+    data.url && (
+      <p class="italic">
+        Originally published on{' '}
+        <a href={data.url} rel="noopener noreferrer">
+          {getDomainFromUrl(data.url)}
+        </a>
+      </p>
+    )
+  }
+  <Content />
+</PageLayout>

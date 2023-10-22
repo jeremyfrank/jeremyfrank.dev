@@ -11,6 +11,11 @@ import { pens } from '../data/codepen.js'
 const allWork = (await getCollection('work')).sort(
   (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
 )
+const latestArticles = (await getCollection('articles'))
+  .sort(
+    (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
+  )
+  .slice(0, 5)
 ---
 
 <BaseLayout>
@@ -20,7 +25,7 @@ const allWork = (await getCollection('work')).sort(
   <h2>Prototypes</h2>
   <WorkScroller items={pens} />
   <h2>Writing</h2>
-  <Articles />
+  <Articles articles={latestArticles} />
   <h2>Select Clients</h2>
   <Clients />
 </BaseLayout>

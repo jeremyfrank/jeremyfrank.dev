@@ -1,0 +1,114 @@
+---
+title: Color Outside the Lines with Partial Circular Gradient Image Borders
+description: Using a conic-gradient background and a radial-gradient mask, you can achieve stunning partial gradient borders that give your images a distinct style.
+date: 2023-06-07
+tags:
+  - css
+url: https://www.viget.com/articles/color-outside-the-lines-with-partial-circular-gradient-image-borders/
+---
+
+import Embed from '../../components/Embed.astro'
+
+Applying gradient borders to elements is fairly straightforward these days with CSS border-image and color functions. However, applying the effect to other use cases might require other approaches. For example: applying a simple border-radius, applying the effect to an image with padding, or creating a partial border that does not fully surround an element.
+
+The design treatment below, for example, has all of the above constraints. The border is offset from the image and it only partially surrounds the image.
+
+<img
+  src="https://viget.imgix.net/circle-gradient-border-1.png?auto=format%2Ccompress&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&ixlib=php-3.3.1&q=90&w=1280&s=e58621d4bc0a09d324e33d870f7adedd"
+  width="460"
+  height="460"
+  alt=""
+/>
+
+To replicate this effect in code, we’ll need to do several things:
+
+1.  Use a wrapper element
+2.  Apply a conic-gradient background to a pseudo element
+3.  Apply a radial-gradient mask to the pseudo element
+
+## Use a wrapper element
+
+Since the effect requires the use of a background with a mask (described below), we’ll need to use a wrapper element.
+
+```html
+<div class="img-wrapper">
+  <img src="https://picsum.photos/id/823/720" width="360" height="360" alt="" />
+</div>
+```
+
+```css
+.img-wrapper {
+  position: relative;
+  padding: 30px;
+}
+img {
+  border-radius: 999px;
+  display: block;
+}
+```
+
+<img
+  src="https://viget.imgix.net/circle-gradient-border-2.png?auto=format%2Ccompress&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&ixlib=php-3.3.1&q=90&w=1280&s=de05961d707cfb27a99fb14ce3c36acd"
+  width="460"
+  height="460"
+  alt=""
+/>
+
+## Apply a conic-gradient background to a pseudo element
+
+The [conic-gradient](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/conic-gradient) CSS function creates an image consisting of a gradient with color transitions rotated around a center point. This is exactly what we need for starting the border at one color and transitioning it to another. Applying the background directly to the wrapper element could work, but to achieve the gap between the image and the border, we need to apply a mask. Since the mask would also conceal the image, we need to make sure the conic gradient background is applied to a pseudo element instead.
+
+```css
+.img-wrapper::after {
+  content: '';
+  border-radius: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: conic-gradient(from 30deg, #6be89b, #0076a5 46%, transparent 46%);
+}
+```
+
+This conic-gradient function is simply setting the gradient’s start position (30deg), starting color (#6be89b), ending color (#0076a5) and position (46%), and finally the color of the remaining portion of the gradient (transparent).
+
+## Apply a radial-gradient mask to the pseudo element
+
+Finally, we apply a [radial-gradient](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/radial-gradient) CSS function as a [mask](https://developer.mozilla.org/en-US/docs/Web/CSS/mask) to the pseudo element containing the conic gradient background.
+
+```css
+.img-wrapper::after {
+  /* ... */
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 3px),
+    #fff calc(100% - 2px)
+  );
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 3px),
+    #fff calc(100% - 2px)
+  );
+}
+```
+
+This radial-gradient function simply draws a thin stroke as the image mask around the circumference of the circle. Note that as of this writing, the -webkit prefix is [required in Chrome and Edge](https://caniuse.com/css-masks).
+
+<img
+  src="https://viget.imgix.net/circle-gradient-border-3.png?auto=format%2Ccompress&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&ixlib=php-3.3.1&q=90&w=1280&s=faae1311ea077d004579fb69b73fccde"
+  width="460"
+  height="460"
+  alt=""
+/>
+
+And there you have it – an incredibly unique stylized border achieved with a combination
+of CSS functions and masking!
+
+## Demo
+
+<Embed
+  url="https://codepen.io/jeremyfrank/embed/PoajdwX?default-tab=result"
+  height="520"
+/>

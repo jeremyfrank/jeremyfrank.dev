@@ -1,0 +1,178 @@
+---
+title: View Transitions in Astro
+description: Astro 3.0 makes it super easy to add animated transitions between two pages!
+date: 2023-10-21
+tags:
+url: https://www.viget.com/articles/view-transitions-in-astro/
+---
+
+import Video from '../../components/Video.astro'
+
+Astro 3.0 was [released](https://astro.build/blog/astro-3/) recently and it includes some great improvements, but the most exciting feature by far is its support for the [View Transitions API](https://developer.chrome.com/docs/web-platform/view-transitions/) ([MDN](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API))! In this article, I’ll briefly introduce Astro and View Transitions, and walk through a demo which showcases how easy it is to get set up and running.
+
+## About Astro
+
+Astro is an all-in-one open-source web framework focused on building fast, content-focused websites, as well as web applications & APIs. It takes an HTML-first approach, outputs zero JavaScript by default, and follows an [islands architecture](https://docs.astro.build/en/concepts/islands/) pattern. It supports both static site generation (SSG) and server-side rendering (SSR), and also supports importing components from other UI frameworks like React, Vue, Svelte, and more. 🤯
+
+We’ve been watching Astro since its pre-1.0 days and have been impressed with how it's developed and where it’s going. We most recently used it for a revamp of [Viget Explorations](https://explorations.viget.com/) and [two](https://explorations.viget.com/ai-food/) [new](https://explorations.viget.com/healthcare/) Explorations.
+
+## About View Transitions
+
+The View Transitions API provides a mechanism for creating animated transitions between two different pages, all while updating the DOM in a single step. The result is a seamless transition between pages which can help users stay in context, reducing cognitive load and improving perceived performance. Historically, this has been rather difficult to do for multi-page apps (MPAs), but the View Transitions API makes this more achievable, and Astro makes it downright easy!
+
+## Demo
+
+Earlier this month, [Andrew Greeson](https://www.viget.com/about/team/agreeson/) and [Eric Fuhrmann](https://www.viget.com/about/team/efuhrmann/) teamed up to build a [demo](https://trailbuddy-astro-view-transition-demo.netlify.app/) ([repo](https://github.com/vigetlabs/trailbuddy-view-transition)), which illustrates some fun possibilities with View Transitions. Be sure to check out Eric's article on the [collaboration and design process](https://www.viget.com/articles/how-we-designed-and-built-a-view-transition-demo/) for this demo. The key parts of the implementation in Astro are highlighted here.
+
+<Video
+  src="https://static.viget.com/trailbuddy-preview.mp4"
+  caption="Video showing Trail Buddy interface with view transitions."
+/>
+
+### Setup
+
+To get started using View Transitions in an Astro 3 codebase, you’ll need to enable it since it’s an opt-in feature. First import the `ViewTransitions` routing component.
+
+```js
+import { ViewTransitions } from 'astro:transitions'
+```
+
+Then add it to the `<head>` in your base layout (or shared) component.
+
+```astro
+<head>
+  <title>Astro</title>
+  <ViewTransitions />
+</head>
+```
+
+Boom, you’re done! That’s all it takes to enable page transitions using a default crossfade animation! For some use-cases, the default `fade` animation might be all you need. There’s also a built-in `slide` animation. But for other cases where you need element specific transitions, as is the case for our demo, Astro provides some directives which help with that.
+
+### Transitioning Specific Elements
+
+We can identify any matching elements in both the grid view and the detail page as matching pairs, and seamlessly transition between the two. To accomplish this in Astro, we add the `transition:name` directive with a unique value to each element in both views, and make sure it has the same value for each one to bind them together. Just make sure that the value matches each instance of the matched pair.
+
+```astro
+// index.astro
+<Image
+  ...
+  transition:name={`avatar ${slug} image`}
+/>
+```
+
+```astro
+// [slug].astro
+<Image
+  ...
+  transition:name={`avatar ${slug} image`}
+/>
+```
+
+Now our page-to-page transitions are enhanced with a linked element seamlessly transitioning from the grid view to the detail view. In order to produce a more comprehensive transition where the entire interface seems to move into place, we need to identify more elements to transition. Prime candidates are images, buttons, and backgrounds.
+
+### Persisting Video Playback
+
+For use cases where each view is utilizing video playback, the video element will restart after a transition has completed. In order to have videos continue to play as you navigate to another page that contains the same video element, add the `transition:persist` directive. This is a feature unique to Astro.
+
+In the case of our demo, we have videos which we’ve added persistence to, however the effect is subtle since the videos themselves are short and contain small visual changes. Persistence is also helpful for components which rely on state, such as a counter or a progress bar.
+
+### Staggered Transitions
+
+In our detail page, there are some elements which could sequentially transition into view, as shown below.
+
+<Video
+  src="https://static.viget.com/trailbuddy-stagger.mp4"
+  width="640"
+  caption="Video showing staggered transitions in Trail Buddy"
+/>
+
+This requires some customization. Fortunately, Astro 3 has accounted for [customizing animations](https://docs.astro.build/en/guides/view-transitions/#customizing-animations) in a few ways. The first is by importing their built-in animations and passing in any customization options. However, at the time of this writing, `duration` is the only property available for setting.
+
+The second way is by allowing you to define your own animations for use within the `transition:animate` directive. This would be necessary for cases where you want to specify a custom delay, easing, fill mode, or custom CSS animations, and involves a few things:
+
+1. Defining both old and new content animation settings for both the forwards and backwards navigation.
+
+   ```astro
+   ---
+   // components/Metadata/Value.astro
+   const { index } = Astro.props
+   const slideAnim = {
+     old: {
+       name: 'slideDown',
+       duration: '0.3s',
+       easing: 'ease-out',
+       fillMode: 'backwards',
+     },
+     new: {
+       name: 'slideUp',
+       duration: '0.3s',
+       delay: `${index * 0.1 + 0.1}s`,
+       easing: 'ease-out',
+       fillMode: 'backwards',
+     },
+   }
+   const verticalSlide = {
+     forwards: animSlideUp,
+     backwards: animSlideUp,
+   }
+   ---
+
+   <li transition:animate={verticalSlide}>
+     ...
+   </li>
+   ```
+
+2. Defining the custom CSS animations in a global style tag.
+
+   ```astro
+   @keyframes slideUp {
+     from {
+       transform: translateY(20%);
+       opacity: 0;
+     }
+     to {
+       opacity: 1;
+       transform: translateY(0);
+     }
+   }
+   @keyframes slideDown {
+     from {
+       transform: translateY(0);
+       opacity: 1;
+     }
+     to {
+       opacity: 0;
+       transform: translateY(20%);
+     }
+   }
+   ```
+
+## Browser Support
+
+As of March ‘23, View Transitions are supported in Chromium-based browsers (Chrome, Edge, and Opera), with both Safari and Firefox signaling support for the API in the near future. In the meantime, Astro’s implementation provides cross browser support via a built-in polyfill; however, it’s important to note that Firefox and Safari receive slightly different transitions which are not a 1:1 match, but still perfectly acceptable. Astro refers to this as the fallback animation, which can also be [controlled](https://docs.astro.build/en/guides/view-transitions/#fallback-control) with a fallback property.
+
+## Accessibility
+
+Using View Transitions does come with some accessibility challenges; however, the Astro team has taken measures to ensure that accessibility features are built-in. They’ve done this in two ways: by including CSS media queries using `prefer-reduced-motion` to disable all view transitions animations, and by including a route announcer (as of 3.2.0) which automatically announces new pages for assistive technology. No configuration is needed to enable these features. [Read more about them in Astro's documentation](https://docs.astro.build/en/guides/view-transitions/#accessibility).
+
+## Future Improvements
+
+View Transitions in Astro will undoubtedly receive some good updates in upcoming releases, and we have our own small list of hopeful improvements we’d like to see:
+
+- The ability to control the z-index of a transitioning element. In our work so far, we’ve seen some odd z-index things where elements sometimes appear like they are moving underneath other elements, when they should be moving over top of them.
+- The ability to set different animations for transitioning into and out of view. For example, fade in, and slide out.
+- Exposing additional animation properties for the built-in fade and slide animations, for example, `delay`, `easing`, `direction`, and `fillMode`. Currently, `duration` is the only property that you can set.
+
+## Summary
+
+The potential for View Transitions on the web is promising! It has the potential to level the navigation transition playing field between MPAs and mobile apps and SPAs. Astro being the first framework to include support for View Transitions (with others currently working on it), has given the feature a huge boost. Astro’s batteries-included approach of wrapping the browser primitives and providing good defaults, with accessibility built-in, will prove to be a big win for developers looking to implement View Transitions. We’re certainly hopeful for and excited to see how View Transitions will begin to be used!
+
+## Resources
+
+If you’re curious and would like to see some other Astro & View Transitions resources, here are the best ones we’ve seen:
+
+- [Spotify App Clone](https://spotify-astro-transitions.vercel.app/)
+- [Astro Movies](https://astro-movies.pages.dev/)
+- [Music Library](https://astro-records.pages.dev/)
+- [Playlist](https://live-transitions.pages.dev/)
+- [Astro View Transitions: Fact vs Fiction](https://youtu.be/veCxKeLl35A?si=Ed5_73ClLz8RVgWg&t=29040) – Fred K. Schott (ViteConf 23)

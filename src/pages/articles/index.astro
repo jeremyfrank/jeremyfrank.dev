@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content'
+
+import PageLayout from '../../layouts/Page.astro'
+import ArticlesList from '../../components/ArticlesList.astro'
+
+const allArticles = (await getCollection('articles')).sort(
+  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
+)
+---
+
+<PageLayout title="Articles">
+  <ArticlesList articles={allArticles} />
+</PageLayout>
