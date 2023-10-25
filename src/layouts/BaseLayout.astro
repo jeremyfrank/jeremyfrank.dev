@@ -13,6 +13,8 @@ const title = [Astro.props.title, defaultTitle].filter(Boolean).join(' – ')
     <title>{title}</title>
     <meta name="generator" content={Astro.generator} />
     <meta name="viewport" content="width=device-width" />
+    <meta itemprop="name" content={title} />
+    <meta property="og:title" content={title} />
     <link
       rel="preload"
       href="/fonts/Calluna-Regular-webfont.woff2"
