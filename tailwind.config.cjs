@@ -33,6 +33,9 @@ module.exports = {
             h2: {
               fontWeight: null,
             },
+            h3: {
+              fontWeight: null,
+            },
             li: {
               marginTop: '0.75em',
               marginBottom: '0.75em',
@@ -63,6 +66,11 @@ module.exports = {
               marginTop: '1.5em',
               marginBottom: '0.75em',
             },
+            h3: {
+              fontSize: '1.2em',
+              marginTop: '1.5em',
+              marginBottom: '0.75em',
+            },
             li: {
               marginTop: '0.75em',
               marginBottom: '0.75em',
@@ -77,6 +85,11 @@ module.exports = {
           css: {
             h2: {
               fontSize: '1.5em',
+              marginTop: '1.5em',
+              marginBottom: '0.75em',
+            },
+            h3: {
+              fontSize: '1.2em',
               marginTop: '1.5em',
               marginBottom: '0.75em',
             },
