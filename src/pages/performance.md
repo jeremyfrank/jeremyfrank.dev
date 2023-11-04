@@ -16,7 +16,6 @@ byline: A list of accomplishments and specific focus areas related to my efforts
 - Wrote performance related blog posts on viget.com, and recruited co-workers from other teams to do the same
 - Started a **performance working group** at Viget
 - Ran performance audits and put together a competitive performance analysis for Shedd Aquarium
-- Initiated the use and adoption of Imgix for client projects
 - Advocated for and initiated the use of Imgix for client projects resulting in it’s inclusion as a standard recommended service
 - Conducted several knowlege shares on image formats and optimization
 
