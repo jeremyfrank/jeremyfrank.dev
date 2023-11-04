@@ -1,0 +1,26 @@
+---
+type Props = {
+  /** Date in ISO-8601 standard format. */
+  date: Date
+  /** CSS display value, e.g. block, inline, flex, etc. */
+  display?: string
+}
+
+const { date, display } = Astro.props
+---
+
+<time datetime={date.toISOString()}>
+  {
+    date.toLocaleDateString('en-us', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    })
+  }
+</time>
+
+<style define:vars={{ display }}>
+  time {
+    display: var(--display);
+  }
+</style>

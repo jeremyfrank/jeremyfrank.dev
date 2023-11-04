@@ -2,6 +2,7 @@
 import { CollectionEntry, getCollection } from 'astro:content'
 import { getDomainFromUrl } from '../../helpers/url'
 import PageLayout from '../../layouts/Page.astro'
+import FormattedDate from '../../components/FormattedDate.astro'
 
 export async function getStaticPaths() {
   const articleEntries = await getCollection('articles')
@@ -22,15 +23,19 @@ const { Content } = await render()
 ---
 
 <PageLayout title={data.title} byline={data.description}>
-  {
-    data.url && (
-      <p class="italic">
-        Originally published on{' '}
-        <a href={data.url} rel="noopener noreferrer">
-          {getDomainFromUrl(data.url)}
-        </a>
-      </p>
-    )
-  }
+  <p class="italic text-lg">
+    {!data.url && <span>Published on</span>}
+    <FormattedDate date={data.date} />
+    {
+      data.url && (
+        <span>
+          – Originally published on
+          <a href={data.url} rel="noopener noreferrer">
+            {getDomainFromUrl(data.url)}
+          </a>
+        </span>
+      )
+    }
+  </p>
   <Content />
 </PageLayout>

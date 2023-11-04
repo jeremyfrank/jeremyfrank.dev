@@ -1,13 +1,15 @@
 ---
 import type { CollectionEntry } from 'astro:content'
+import FormattedDate from './FormattedDate.astro'
 
 type Article = CollectionEntry<'articles'>
 
 type Props = {
   articles: Article[]
+  dates?: boolean
 }
 
-const { articles } = Astro.props
+const { articles, dates = true } = Astro.props
 ---
 
 <ul>
@@ -15,6 +17,7 @@ const { articles } = Astro.props
     articles.map((article) => (
       <li>
         <a href={`/articles/${article.slug}`}>{article.data.title}</a>
+        {dates && <FormattedDate date={article.data.date} display="block" />}
       </li>
     ))
   }
