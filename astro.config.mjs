@@ -19,9 +19,4 @@ export default defineConfig({
     },
   },
   site: 'https://jeremyfrank.dev/',
-  vite: {
-    server: {
-      open: '/index.html',
-    },
-  },
 })
