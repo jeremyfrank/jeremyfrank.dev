@@ -1,7 +1,7 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import { Picture } from '@astrojs/image/components'
+import { Picture } from 'astro:assets'
 
 export async function getStaticPaths() {
   const workEntries = await getCollection('work')
@@ -36,12 +36,14 @@ const imageData = await imageResponse.json()
     <Picture
       src={data.heroImage}
       alt="Device screenshots"
-      aspectRatio={`${imageData.width}:${imageData.height}`}
+      width={imageData.width}
+      height={imageData.height}
       widths={[750, 1000, 1250, 1500, 1800]}
       sizes="(min-width: 58.875em) 896px, calc(100vw - 2.5rem)"
-      style={`aspect-ratio: ${imageData.width} / ${imageData.height}`}
+      formats={['avif', 'webp']}
+      fallbackFormat="webp"
       class="w-full"
-      loading={null}
+      loading="eager"
     />
   </div>
 
