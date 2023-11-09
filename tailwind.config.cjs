@@ -6,7 +6,7 @@ const round = (num) =>
     .toFixed(7)
     .replace(/(\.[0-9]+?)0+$/, '$1')
     .replace(/\.0$/, '')
-const em = (px, base) => `${round(px / base)}em`
+const em = (px) => `${round(px / 16)}em`
 
 module.exports = {
   content: ['./src/**/*.{astro,html,md,mdx,js,jsx,svelte,svg,ts,tsx,vue}'],
@@ -54,8 +54,8 @@ module.exports = {
               content: 'none',
             },
             iframe: {
-              marginTop: em(24, 14),
-              marginBottom: em(24, 14),
+              marginTop: em(24),
+              marginBottom: em(24),
             },
           },
         },
