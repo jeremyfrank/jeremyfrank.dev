@@ -13,10 +13,6 @@ module.exports = {
   safelist: ['language-id'],
   theme: {
     extend: {
-      screens: {
-        smd: { max: '539px' },
-        mdd: { max: '767px' },
-      },
       borderColor: ({ theme }) => ({
         DEFAULT: theme('colors.zinc.300', 'currentColor'),
       }),
@@ -114,6 +110,14 @@ module.exports = {
     fontFamily: {
       sans: ['"Calluna Sans"', 'system-ui', 'ui-sans-serif', 'sans-serif'],
       serif: ['Calluna', 'ui-serif', 'serif'],
+    },
+    screens: {
+      '<sm': { max: em(639) },
+      sm: em(640),
+      '<md': { max: em(767) },
+      md: em(768),
+      lg: em(1024),
+      xl: em(1280),
     },
   },
   plugins: [require('@tailwindcss/typography')],
