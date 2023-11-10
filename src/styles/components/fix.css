@@ -1,0 +1,6 @@
+@layer components {
+  /* Temp fix for syntax highlighting */
+  .language-id {
+    display: none;
+  }
+}
