@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
-const colors = require('tailwindcss/colors')
+// const colors = require('tailwindcss/colors')
 const round = (num) =>
   num
     .toFixed(7)
