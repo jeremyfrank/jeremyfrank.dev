@@ -90,4 +90,13 @@ const title = [Astro.props.title, defaultTitle].filter(Boolean).join(' – ')
       grid-column: full;
     }
   }
+
+  .subgrid {
+    display: grid;
+    grid-template-columns: subgrid;
+
+    > * {
+      grid-column: content;
+    }
+  }
 </style>

@@ -58,6 +58,16 @@
   max-width: calc(100vw - calc(var(--page-gutter) * 2));
 }
 
+/* extra width for code */
+.prose pre {
+  grid-column: popout;
+}
+
+/* extra width for media */
+.prose :is(figure, video, iframe, p:has(img)) {
+  grid-column: feature;
+}
+
 /* extra space around some elements */
 .prose :is(pre, pre + *, figure, figure + *, p:has(img), hr, hr + *) {
   --flow-space: var(--space-m-l);
