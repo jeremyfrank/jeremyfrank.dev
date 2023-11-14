@@ -38,17 +38,19 @@ const title = [Astro.props.title, defaultTitle].filter(Boolean).join(' – ')
   :root {
     --radius: 0.25rem;
     --color-bg: #fafafa;
-    --color-bg-accent: #d4d4d8;
-    --color-text: #18181b;
+    --color-bg-accent: #dfdfdf;
+    --color-text: #181818;
+    --color-headings: #181818;
     --page-gutter: clamp(1rem, 6vw, 3rem);
     --page-max-width: 85ch;
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --color-bg: #18181b;
-      --color-bg-accent: #4b5563;
-      --color-text: #d4d4d8;
+      --color-bg: #181818;
+      --color-bg-accent: #393939;
+      --color-text: #dfdfdf;
+      --color-headings: #fff;
     }
   }
 
@@ -70,10 +72,6 @@ const title = [Astro.props.title, defaultTitle].filter(Boolean).join(' – ')
 
     > * {
       grid-column: content;
-    }
-
-    .prose > pre {
-      max-width: calc(100vw - calc(var(--page-gutter) * 2));
     }
 
     .gc-content {

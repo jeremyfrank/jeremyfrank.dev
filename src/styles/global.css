@@ -1,6 +1,11 @@
 @import 'base/fonts';
+@import 'base/variables';
 @import 'base/core';
 @import 'tailwindcss/base';
+
 @import 'tailwindcss/components';
+@import 'components/prose';
 @import 'components/fix';
+
 @import 'tailwindcss/utilities';
+@import 'utilities/flow';

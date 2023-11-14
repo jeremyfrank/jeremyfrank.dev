@@ -11,13 +11,7 @@ type Props = {
 const { articles } = Astro.props
 ---
 
-<div
-  class:list={[
-    'prose md:prose-lg lg:prose-xl',
-    'prose-zinc dark:prose-invert',
-    'prose-ul:pl-[1em]',
-  ]}
->
+<div class="flow prose">
   <ArticlesList articles={articles} dates={false} />
-  <a href="/articles">More Articles →</a>
+  <p><a href="/articles">More Articles →</a></p>
 </div>

@@ -1,0 +1,95 @@
+.prose {
+  --flow-space: var(--space-s-m);
+
+  font-size: var(--step-0);
+  max-width: 50rem;
+  line-height: 1.8;
+}
+
+.prose img,
+.prose video {
+  border-radius: var(--radius);
+  margin-inline: auto;
+}
+
+.prose figcaption {
+  color: color-mix(in srgb, var(--color-text), transparent 35%);
+  font-size: 0.9em;
+  font-style: italic;
+  margin-block-start: var(--space-2xs-xs);
+  text-align: center;
+}
+
+.prose :is(ol, ul) {
+  padding-inline-start: 1.5em;
+}
+
+.prose ol {
+  list-style: decimal;
+}
+
+.prose ul {
+  list-style: disc;
+}
+
+.prose li {
+  line-height: 1.5;
+  padding-inline-start: 0.5em;
+}
+
+.prose li + li,
+.prose li pre {
+  margin-top: var(--space-s);
+}
+
+.prose ol li::marker {
+  color: color-mix(in srgb, var(--color-text), transparent 30%);
+}
+
+.prose ul li::marker {
+  color: color-mix(in srgb, var(--color-text), transparent 70%);
+  font-weight: bold;
+}
+
+.prose pre {
+  border-radius: var(--radius);
+  font-size: var(--step--1);
+  padding: 2ch;
+  max-width: calc(100vw - calc(var(--page-gutter) * 2));
+}
+
+/* extra space around some elements */
+.prose :is(pre, pre + *, figure, figure + *, p:has(img), hr, hr + *) {
+  --flow-space: var(--space-m-l);
+}
+.prose :is(h2, h3, h4) {
+  --flow-space: var(--space-s-m);
+}
+
+/* less space for elements following headings */
+.prose h1 + * {
+  --flow-space: 0.5em;
+}
+
+.prose :is(h2 + *, h3 + *, h4 + *) {
+  --flow-space: var(--space-2xs);
+}
+
+/* 16:9 aspect ratio on some iframe elements */
+.prose iframe:not([id*='cp_embed']) {
+  aspect-ratio: 16/9;
+  height: unset;
+  width: 100%;
+}
+
+@media screen(<md) {
+  /* break long words */
+  .prose > *,
+  .prose a {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    /* adds a hyphen where the word breaks, if supported (No Blink) */
+    hyphens: auto;
+  }
+}

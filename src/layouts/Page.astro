@@ -25,19 +25,7 @@ const byline = [Astro.props.byline, Astro.props.content?.byline]
 
       <hr />
 
-      <div
-        class:list={[
-          'prose md:prose-lg lg:prose-xl',
-          'prose-zinc dark:prose-invert',
-          'prose-img:rounded-lg prose-img:mx-auto',
-          'prose-video:rounded-lg prose-video:mx-auto',
-          'lg:prose-pre:mx-[-12%] lg:prose-pre:w-[124%]',
-          'lg:[&>pre>code]:whitespace-break-spaces',
-          'lg:[&>iframe]:mx-[-12%] lg:[&>iframe]:w-[124%]',
-          'prose-figcaption:italic prose-figcaption:text-center',
-          'mx-auto my-8',
-        ]}
-      >
+      <div class="flow prose mx-auto my-8">
         <slot />
       </div>
     </div>
