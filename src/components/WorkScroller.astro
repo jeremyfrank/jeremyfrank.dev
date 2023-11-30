@@ -41,7 +41,7 @@ const isPen = (item: any): item is Pen => {
           )}
 
           {!isPen(item) && (
-            <a href={`work/${item.slug}`}>
+            <a href={`work/${item.slug}/`} data-astro-prefetch>
               <span class="sr-only">{item.data.title}</span>
               <img
                 src={`${item.data.cardImage}-/resize/800x/-/format/auto/`}

@@ -19,5 +19,6 @@ export default defineConfig({
       wrap: false,
     },
   },
+  prefetch: true,
   site: 'https://jeremyfrank.dev/',
 })
