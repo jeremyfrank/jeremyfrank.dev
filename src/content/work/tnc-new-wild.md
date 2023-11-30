@@ -11,4 +11,4 @@ role: Front-End Developer
 tech: Swig, SASS
 ---
 
-A new microsite and campaign strategy for promoting the PBS series, “Earth A New Wild.” Personal and focused content featured on the site highlights innovative work with a more positive outlook on conservation.
+A new microsite and campaign strategy for promoting the PBS series, _Earth A New Wild_. Personal and focused content featured on the site highlights innovative work with a more positive outlook on conservation.
