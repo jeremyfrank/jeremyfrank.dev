@@ -22,6 +22,8 @@ With a refined and expanded design, and codified style and pattern library, my r
 
 Following a [component driven](https://www.componentdriven.org/) approach, development occured from the bottom up, focusing on individual components and building them in isolation. This allowed us to focus on discrete pieces of the interface and define relevant states and variations for each piece.
 
+## Storybook
+
 All of this was acheived using [Storybook](https://storybook.js.org/), which provides a workshop area for building, documenting and testing UI components in isolation. Additionally, the new version of Storybook (v7), provided a new component story format with improved type safety for its integrated TypeScript experience.
 
 ![Storybook component library screenshot](https://ucarecdn.com/fd0e95e3-b6b5-44dc-9d55-a8ad4809b0c6/-/resize/1600/-/format/auto/)

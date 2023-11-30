@@ -24,7 +24,7 @@ Explorations are the result of teams exploring ideas and uncovering insights abo
 
 The new landing page was built with Astro, a web framework which is focused on fast content-first websites. Astro's content collections feature was implemented for landing page content, which provided automatic Typescript type safety for Markdown content, as well as a `getCollection()` function for retrieving lists of content collection entries by collection name.
 
-## Animations
+## Canvas Animations
 
 The top of the landing page featured a dynamically rendered star field, with a shooting star animation following a path resembling a sine wave. Both of these were rendered with the Canvas API.
 
@@ -34,6 +34,8 @@ The top of the landing page featured a dynamically rendered star field, with a s
   height="675"
   classes="<md:aspect-[10/9] <md:h-auto"
 />
+
+## CSS Scroll-Driven Animations
 
 The rest of the landing page featured individual sections for each exploration, each with a scroll-triggered reveal effect. The technique used a combination of the new Scroll-Driven Animations Level 1 Specification, with Custom Properties, Style Queries, and Transitions. The end result was a CSS-only Scroll-Triggered animation, nearly indstinguishable from similar approaches done with the IntersectionObserver API.
 
