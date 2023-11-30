@@ -3,6 +3,7 @@ const url = new URL(Astro.request.url)
 const isHome = url.pathname === '/' || url.pathname === '/index.html'
 const LogomarkTagName = isHome ? 'div' : 'a'
 const logomarkHref = !isHome ? '/' : null
+const logomarkLabel = !isHome ? 'Home' : null
 
 import { social } from '../data/social.js'
 ---
@@ -28,6 +29,7 @@ import { social } from '../data/social.js'
           'hover:duration-150 hover:ease-in hover:translate-y-2': !isHome,
         },
       ]}
+      aria-label={logomarkLabel}
     >
       <img
         src="/images/jf-logomark.svg"
