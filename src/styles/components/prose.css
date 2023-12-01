@@ -86,7 +86,7 @@
 }
 
 /* 16:9 aspect ratio on some iframe elements */
-.prose iframe:not([id*='cp_embed']) {
+.prose iframe:not([src*='codepen.io']) {
   aspect-ratio: 16/9;
   height: unset;
   width: 100%;
