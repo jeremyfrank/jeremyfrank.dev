@@ -19,7 +19,7 @@ Assuming you’re already setup with virtual hosts in Apache and have Web Sharin
 </VirtualHost>
 ```
 
-The [ServerAlias directive](http://httpd.apache.org/docs/2.2/mod/core.html#ServerAlias) allows for alternate names that Apache should map to the virtual host. The [xip.io](http://xip.io/) domain is a free wildcard DNS service from 37signals, which essentially resolves to your local ip address, and sends it back in the response. Now just fire up your various mobile devices and browse to the server alias above, substituting \* with your local ip address.
+The [ServerAlias directive](http://httpd.apache.org/docs/2.2/mod/core.html#ServerAlias) allows for alternate names that Apache should map to the virtual host. The [xip.io](http://xip.io/) domain is a free wildcard DNS service from 37signals, which essentially resolves to your local ip address, and sends it back in the response. Now just fire up your various mobile devices and browse to the server alias above, substituting \* with your local ip address.
 
 ```
 http://myproject.local.[local ip address].xip.io/
@@ -32,4 +32,4 @@ So that’s my setup. How can it be improved? What device testing tricks are up 
 
 ---
 
-<sup>1</sup> Apple chose to [remove the web sharing option](http://support.apple.com/kb/HT5230) in Mountain Lion. To get this working again you can run a [series of commands in terminal](http://osxdaily.com/2012/09/07/start-web-sharing-os-x-mountain-lion-easy/), or simply install this [preference pane by Tyler Hall](http://clickontyler.com/blog/2012/02/web-sharing-mountain-lion/). I’m still on Lion currently so I’m not yet affected by this change.
+<sup>1</sup> Apple chose to [remove the web sharing option](http://support.apple.com/kb/HT5230) in Mountain Lion. To get this working again you can run a [series of commands in terminal](http://osxdaily.com/2012/09/07/start-web-sharing-os-x-mountain-lion-easy/), or simply install this [preference pane by Tyler Hall](http://clickontyler.com/blog/2012/02/web-sharing-mountain-lion/). I’m still on Lion currently so I’m not yet affected by this change.

@@ -6,11 +6,11 @@ tags:
 url: https://www.viget.com/articles/component-driven-development-and-the-qa-process/
 ---
 
-It’s no secret that [component driven](https://www.componentdriven.org/) development has many advantages and has streamlined the development process. Building user interfaces from the bottom up with modular components as part of a design system makes it easier to build robust yet flexible UIs, which are more efficient to support and scale long-term. But beyond its impact on the software development process itself, component driven workflows have also positively affected the QA (quality assurance) process and collaboration across both internal and external teams.
+It’s no secret that [component driven](https://www.componentdriven.org/) development has many advantages and has streamlined the development process. Building user interfaces from the bottom up with modular components as part of a design system makes it easier to build robust yet flexible UIs, which are more efficient to support and scale long-term. But beyond its impact on the software development process itself, component driven workflows have also positively affected the QA (quality assurance) process and collaboration across both internal and external teams.
 
 In our recent work with [Welcome.US](https://welcome.us/), [Human Rights Campaign](https://www.viget.com/work/human-rights-campaign/), and [National Park Foundation](https://www.viget.com/work/national-park-foundation-nationalparks-org-redesign/), we have relied heavily on component driven development to rapidly decrease the time it takes to go from UX and design to testing in development. This provides the opportunity to quickly confirm UX and design approaches by testing data models, layouts, and functionality built out at the component level. By identifying areas that require iteration early through testing, component driven development reduces the overall risk of the project. Additionally, the creation of new layouts can be easily achieved through assembly from the library of components.
 
-Here are some of the ways our teams have benefited from component driven development:
+Here are some of the ways our teams have benefited from component driven development:
 
 ## Improved Focus
 
@@ -18,7 +18,7 @@ Because components are built and presented in isolation, they are much easier to
 
 ![Article Card component for Bezos Earth Fund](https://viget.imgix.net/bef-article-card.png?auto=format%2Ccompress&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&ixlib=php-3.3.1&q=90&w=1520&s=46468e3749fd2a75c5e3c773236c27f0)
 
-## More Easily Accessible Variations
+## More Easily Accessible Variations
 
 When components with different display states and variations are presented in isolation, it is much easier to verify that they appear and function as intended across those display states and variations. In many cases, we have found opportunities for improvement or additional use cases through testing component states and variations.
 

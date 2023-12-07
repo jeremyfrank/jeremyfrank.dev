@@ -17,7 +17,7 @@ This was the case recently while working with the University of Pennsylvania. Th
 
 ![](https://viget.com/uploads/image/blog/upenn-logo-style-guide.png)
 
-The small version of the logo simply has the logotype removed and the mark expanded to match the height of the shield. Looking at how each of these options would look in a condensed header on a 320px wide small screen, it’s clear that the smaller format (bottom) is more legible and less cluttered.
+The small version of the logo simply has the logotype removed and the mark expanded to match the height of the shield. Looking at how each of these options would look in a condensed header on a 320px wide small screen, it’s clear that the smaller format (bottom) is more legible and less cluttered.
 
 <img
   src="https://viget.com/uploads/image/blog/upenn-comparison.png"

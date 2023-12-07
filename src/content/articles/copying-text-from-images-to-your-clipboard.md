@@ -37,7 +37,7 @@ cat /tmp/ocr.txt | pbcopy
 
 ![](https://static.viget.com/blog/screenshot-to-text-automator-2x.png)
 
-The first line loads your bash profile. The `screencapture` command displays crosshairs on the screen and saves the screenshot in /tmp. The tesseract command gets the previously saved screenshot for parsing and will save the result as a text file in in the same /tmp directory. Finally, the cat command gets the contents of the text file and copies it to your clipboard.
+The first line loads your bash profile. The `screencapture` command displays crosshairs on the screen and saves the screenshot in /tmp. The tesseract command gets the previously saved screenshot for parsing and will save the result as a text file in in the same /tmp directory. Finally, the cat command gets the contents of the text file and copies it to your clipboard.
 
 ## Step 3: Set Up a Keyboard Shortcut
 

@@ -18,7 +18,7 @@ Imagine you’re implementing responsive image markup using srcset, and you’re
 />
 ```
 
-This approach works well, but it gets cumbersome fast when you’re dealing with multiple templates and lots of shared partials. What if we could instead, do something more simplified like this?
+This approach works well, but it gets cumbersome fast when you’re dealing with multiple templates and lots of shared partials. What if we could instead, do something more simplified like this?
 
 ```twig
 <!-- input -->
@@ -53,7 +53,7 @@ This simply accepts a Craft asset, and sets up an array of output targets and an
 
 ## Step 2: Build the srcset Array
 
-We’ll need to loop through the outputWidths array and add the output to the srcset array using [Twig’s merge filter](http://twig.sensiolabs.org/doc/filters/merge.html). In order to prevent unintentional upsize transforms on images that happen to be smaller than an output width, we need to compare the output width to the image’s width. Fortunately, [AssetFileModel](https://craftcms.com/docs/templating/assetfilemodel) objects in Craft contain information about an image’s dimensions, which we can use to conditionally output each transformed image source if and only if the original image is large enough.
+We’ll need to loop through the outputWidths array and add the output to the srcset array using [Twig’s merge filter](http://twig.sensiolabs.org/doc/filters/merge.html). In order to prevent unintentional upsize transforms on images that happen to be smaller than an output width, we need to compare the output width to the image’s width. Fortunately, [AssetFileModel](https://craftcms.com/docs/templating/assetfilemodel) objects in Craft contain information about an image’s dimensions, which we can use to conditionally output each transformed image source if and only if the original image is large enough.
 
 ```twig
 {%- for outputWidth in outputWidths -%}

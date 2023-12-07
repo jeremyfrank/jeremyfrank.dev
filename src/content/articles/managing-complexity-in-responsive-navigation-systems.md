@@ -110,9 +110,9 @@ require([
 })
 ```
 
-_\* The handlebars runtime is being used for faster render times. It requires that the desktop header template (referenced on line 22 above) be a pre-compiled handlebar template. It looks like [this](http://laravel.io/bin/4XMw8) and can be auto-generated using [grunt-contrib-handlebars](https://github.com/gruntjs/grunt-contrib-handlebars)._
+_\* The handlebars runtime is being used for faster render times. It requires that the desktop header template (referenced on line 22 above) be a pre-compiled handlebar template. It looks like [this](http://laravel.io/bin/4XMw8) and can be auto-generated using [grunt-contrib-handlebars](https://github.com/gruntjs/grunt-contrib-handlebars)._
 
-Finally, desktop-header.js loads the necessary script dependencies for the desktop header and navigation. Another enquire block is set up for fetching and rendering the template, and showing and hiding.
+Finally, desktop-header.js loads the necessary script dependencies for the desktop header and navigation. Another enquire block is set up for fetching and rendering the template, and showing and hiding.
 
 ## Pros & Cons
 
@@ -124,4 +124,4 @@ On the plus side, the advantage here is that the desktop header and associated a
 
 ## Taking it Further
 
-Several ways this could be taken to the next level would be to modularize the styles required for rendering the mobile and desktop header and navigation, and bundle those within their respective modules. Another completely different approach for managing this type of complexity would be to implement a [RESS](http://www.lukew.com/ff/entry.asp?1392) solution with something like [Detector](http://detector.dmolsen.com/). If you have any other clever ways of managing complexity in responsive navigation patterns, or any responsive components for that matter, let me know in the comments below.
+Several ways this could be taken to the next level would be to modularize the styles required for rendering the mobile and desktop header and navigation, and bundle those within their respective modules. Another completely different approach for managing this type of complexity would be to implement a [RESS](http://www.lukew.com/ff/entry.asp?1392) solution with something like [Detector](http://detector.dmolsen.com/). If you have any other clever ways of managing complexity in responsive navigation patterns, or any responsive components for that matter, let me know in the comments below.

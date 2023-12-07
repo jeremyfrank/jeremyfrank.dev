@@ -35,7 +35,7 @@ _Note that the font-face specification requires that fonts are loaded in "anonym
 
 ## Faster Video Display
 
-If you have a video within the viewport on page load, or if you are lazy-loading videos further down on a page, then we can use preconnect to make the player assets load and thumbnail images display a little more quickly. For YouTube videos, use the following preconnect hints:
+If you have a video within the viewport on page load, or if you are lazy-loading videos further down on a page, then we can use preconnect to make the player assets load and thumbnail images display a little more quickly. For YouTube videos, use the following preconnect hints:
 
 ```html
 <link rel="preconnect" href="https://www.youtube.com" />

@@ -24,7 +24,7 @@ Fortunately, there’s a much better way, which gives us resolution independence
 3.  Adjust the position, size, color, visibility, etc. of individual logo elements for each state using media queries in CSS.
 4.  If the proportions of the logo change in any way, then adjust the SVG viewBox property for each format using JS.
 
-For the examples below, resize the browser window or click the size buttons to see the technique in action. Be sure to check out the full Codepen examples to see actual code samples.
+For the examples below, resize the browser window or click the size buttons to see the technique in action. Be sure to check out the full Codepen examples to see actual code samples.
 
 ## Example 1: University of Pennsylvania
 
@@ -100,7 +100,7 @@ This example uses three states for the logo: the large state being the default, 
 
 This example is the simplest in that CSS opacity is the only adjustment necessary for each state. No JavaScript is required since the proportions are always square. The SVG’s viewBox property can remain unchanged.
 
-## Bonus - SVG Injection
+## Bonus - SVG Injection
 
 For an even more streamlined approach, you could implement SVG injection. This essentially uses a standard img tag to reference an external SVG file, and JavaScript to load and inject the appropriate SVG markup. This allows for a greater separation of concerns between the logo markup and the page markup. I highly recommend using Iconic’s lightweight [SVGInjector](https://github.com/iconic/SVGInjector) library for this purpose.
 

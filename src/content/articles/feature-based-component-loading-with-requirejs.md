@@ -7,7 +7,7 @@ url: https://www.viget.com/articles/feature-based-component-loading-with-require
 
 One way to cut down on the initial download of site assets is to load the JavaScript necessary for special components only when those components are present on the page, instead of including the scripts all in a single concatenated global file. Depending on the number of components and the frequency with which they appear on a given site, this can be an easy win, especially for mobile. In theory, less JS to download on a page without any components = less JS to process = faster performance on mobile devices.
 
-Similar in concept to the [feature-based execution + script loader pattern](https://viget.com/extend/javascript-execution-patterns-for-non-web-apps) that Trevor shared last year, this approach simply identifies the components in a different way and uses [RequireJS](http://requirejs.org/) to handle the script loading aspect.
+Similar in concept to the [feature-based execution + script loader pattern](https://viget.com/extend/javascript-execution-patterns-for-non-web-apps) that Trevor shared last year, this approach simply identifies the components in a different way and uses [RequireJS](http://requirejs.org/) to handle the script loading aspect.
 
 Using a carousel and a video player as examples, which may appear on any page:
 

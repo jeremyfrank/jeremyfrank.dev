@@ -58,8 +58,8 @@ TOTAL            :  173 kb
 
 In order to achieve more efficient file sizes and loading, we can do two things:
 
-1.  Only load a single weight (400) for the font picker preview. Even though other weights may be required in the app, the font picker only requires one weight for display. Fortunately, the Google Fonts API provides the regular version of requested fonts by default.
-2.  [Optimize font requests](https://developers.google.com/fonts/docs/getting_started#optimizing_your_font_requests_beta) by specifying a `text` parameter and value. This will return a font file that contains only the characters necessary to display the name of the font in the font picker. File size will be drastically smaller, in some cases, up to 90% smaller.
+1.  Only load a single weight (400) for the font picker preview. Even though other weights may be required in the app, the font picker only requires one weight for display. Fortunately, the Google Fonts API provides the regular version of requested fonts by default.
+2.  [Optimize font requests](https://developers.google.com/fonts/docs/getting_started#optimizing_your_font_requests_beta) by specifying a `text` parameter and value. This will return a font file that contains only the characters necessary to display the name of the font in the font picker. File size will be drastically smaller, in some cases, up to 90% smaller.
 
 Using the above recommendations, our font requests look a little different:
 
