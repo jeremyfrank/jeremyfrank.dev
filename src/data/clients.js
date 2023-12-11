@@ -1,6 +1,10 @@
 export const clients = [
   {
-    name: 'Bezos Earth Fund',
+    name: 'Ad Council',
+    image: 'adcouncil.svg',
+  },
+  {
+    name: 'Adaptive Path',
   },
   {
     name: 'AHIP',
@@ -8,50 +12,22 @@ export const clients = [
     featured: true,
   },
   {
-    name: 'Urū Sports',
+    name: 'American Chemical Society',
   },
   {
-    name: 'Ad Council',
-    image: 'adcouncil.svg',
+    name: 'Avizia',
   },
   {
-    name: 'Standard Cognition',
-    image: 'standard.svg',
-    featured: true,
+    name: 'Bezos Earth Fund',
   },
   {
-    name: 'Gooten',
-    image: 'gooten.svg',
-    featured: true,
-  },
-  {
-    name: 'National Trust for Historic Preservation',
-    image: 'nthp.svg',
-    featured: true,
+    name: 'Brady',
   },
   {
     name: 'Center for a New American Security',
   },
   {
-    name: 'University of Chicago',
-    image: 'uchicago.svg',
-    featured: true,
-  },
-  {
-    name: 'Shedd Aquarium',
-    image: 'shedd.svg',
-    featured: true,
-  },
-  {
-    name: 'The Nature Conservancy',
-    image: 'tnc.svg',
-    featured: true,
-  },
-  {
     name: 'Conservation International',
-  },
-  {
-    name: 'American Chemical Society',
   },
   {
     name: 'Cradle To Cradle',
@@ -60,20 +36,80 @@ export const clients = [
     name: 'Craig Hospital',
   },
   {
-    name: 'White House Historical Association',
+    name: 'Dick’s Sporting Goods',
+  },
+  {
+    name: 'Discovery',
+  },
+  {
+    name: 'Get Satisfaction',
+  },
+  {
+    name: 'Gooten',
+    image: 'gooten.svg',
+    featured: true,
+  },
+  {
+    name: 'Hershey Entertainment',
   },
   {
     name: 'Human Rights Campaign',
   },
   {
-    name: 'OnGood',
+    name: 'Johns Hopkins University',
   },
   {
-    name: 'iContact',
+    name: 'Lenovo',
+  },
+  {
+    name: 'Massachusetts General Hospital',
+  },
+  {
+    name: 'Milton Hershey School',
+  },
+  {
+    name: 'Mount Nittany Medical Center',
+  },
+  {
+    name: 'MW Industries',
+  },
+  {
+    name: 'National Trust for Historic Preservation',
+    image: 'nthp.svg',
+    featured: true,
+  },
+  {
+    name: 'Nest Realty',
+  },
+  {
+    name: 'OnGood',
   },
   {
     name: 'Politico',
     image: 'politico.svg',
+  },
+  {
+    name: 'Puma',
+  },
+  {
+    name: 'Shedd Aquarium',
+    image: 'shedd.svg',
+    featured: true,
+  },
+  {
+    name: 'Standard Cognition',
+    image: 'standard.svg',
+    featured: true,
+  },
+  {
+    name: 'The Nature Conservancy',
+    image: 'tnc.svg',
+    featured: true,
+  },
+  {
+    name: 'University of Chicago',
+    image: 'uchicago.svg',
+    featured: true,
   },
   {
     name: 'University of Pennsylvania',
@@ -81,51 +117,18 @@ export const clients = [
     featured: true,
   },
   {
-    name: 'Discovery',
+    name: 'Urū Sports',
   },
   {
-    name: 'Avizia',
-  },
-  {
-    name: 'Dick’s Sporting Goods',
-  },
-  {
-    name: 'Massachusetts General Hospital',
-  },
-  {
-    name: 'Nest Realty',
+    name: 'White House Historical Association',
   },
   {
     name: 'Wildlife Conservation Society',
   },
   {
-    name: 'World Monuments Fund',
-  },
-  {
-    name: 'Johns Hopkins University',
-  },
-  {
-    name: 'Puma',
-  },
-  {
-    name: 'Lenovo',
-  },
-  {
-    name: 'Adaptive Path',
-  },
-  {
-    name: 'Get Satisfaction',
-  },
-  {
-    name: 'Mount Nittany Medical Center',
-  },
-  {
-    name: 'Hershey Entertainment',
-  },
-  {
-    name: 'Milton Hershey School',
-  },
-  {
     name: 'Winestore',
+  },
+  {
+    name: 'World Monuments Fund',
   },
 ]
