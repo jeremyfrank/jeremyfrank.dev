@@ -1,0 +1,75 @@
+---
+title: Bezos Earth Fund
+client: Bezos Earth Fund
+date: 2023-06-22
+websiteUrl: https://www.bezosearthfund.org/how-we-work
+cardImage: https://ucarecdn.com/8444d196-da9b-48c0-ad1f-e6773ed0d5ae/
+heroImage: https://ucarecdn.com/146450eb-e3e6-4bbd-8c3e-49f303d4a1e3/
+color: '#183b72'
+role:
+  - Motion Development
+  - Website Support
+tech:
+  - GSAP
+  - Tailwind
+summary: Building a new motion centric landing page with scroll-driven reverse panel transitions and a color shifting background.
+---
+
+import Video from '../../components/Video.astro'
+
+Shortly after launching a newly redesigned website, the Bezos Earth Fund team sought to rework the motion implementation in their “How We Work” landing page, in an effort to better tell their story. The new version of this landing page balanced text and visuals more effectively, and gave the eye a better path to follow down the page.
+
+## Design Collaboration & Interactive Concept Prototyping
+
+Early designer produced sketches were used as collaboration pieces allowing the approach to be vetted more easily. This collaboration process helped in identifying potential issues early on, and it set things up for the creation of an interactive prototype using CodePen.
+
+<figure>
+  <img
+    src="https://ucarecdn.com/4e0cc31d-f192-4109-83ef-c9fd1865782f/-/quality/lightest/-/format/auto/"
+    width="500"
+    height="708"
+    alt=""
+  />
+  <figcaption>Original sketches by Owen S.</figcaption>
+</figure>
+
+<Video
+  src="https://jeremyfrank-dev-assets.s3.amazonaws.com/bezos-prototype.mp4"
+  caption="Initial CodePen prototype"
+/>
+
+## GSAP ScrollTrigger
+
+The prototype was built using GSAP’s [ScrollTrigger](https://gsap.com/scroll/) plugin, which allowed for the creation of scroll triggered animations within each panel. As the user scrolls down the page, the text area maintains natural page scrolling behavior, while the visual area slides into view from the top, and out of view towards the bottom, creating a staggered reveal animation effect.
+
+## Background Color Shifting
+
+An array of background colors in hsla format were applied to a GSAP timeline, which was then referenced as an animation in another GSAP ScrollTrigger instance with the parent container as the trigger. This allowed for the background color to automatically shift as the user scrolled down the page, creating a more dynamic visual experience.
+
+```js
+const bgTimeline = gsap.timeline()
+
+this.backgroundsValue.forEach((value) => {
+  bgTimeline.to(this.panelContainerTarget, {
+    backgroundColor: value,
+    ease: 'none',
+  })
+})
+
+ScrollTrigger.create({
+  animation: bgTimeline,
+  trigger: this.panelContainerTarget,
+  start: 'top top',
+  end: 'bottom bottom',
+  scrub: true,
+})
+```
+
+<Video
+  src="https://jeremyfrank-dev-assets.s3.amazonaws.com/bezos-page.mp4"
+  caption="GSAP ScrollTrigger animations and color shifting background"
+/>
+
+## Results
+
+This work led to the creation of a new CMS managed and templated system for creating new scrollytelling pages, which allows them to create new landing pages without requiring extra development efforts. This new system allows panels to be added to the page, and configured with different layouts, colors, backgrounds and animation effects.
