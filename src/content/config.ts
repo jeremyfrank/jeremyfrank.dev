@@ -10,6 +10,19 @@ const articlesCollection = defineCollection({
   }),
 })
 
+const craftCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    preview: z.object({
+      src: z.string(),
+      poster: z.string().optional(),
+      width: z.number(),
+      height: z.number(),
+    }),
+  }),
+})
+
 const workCollection = defineCollection({
   schema: z.object({
     title: z.string(),
@@ -30,5 +43,6 @@ const workCollection = defineCollection({
 
 export const collections = {
   articles: articlesCollection,
+  craft: craftCollection,
   work: workCollection,
 }
