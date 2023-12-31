@@ -1,0 +1,112 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+type Craft = CollectionEntry<'craft'>
+
+type Props = {
+  item: Craft
+  index: number
+}
+
+const { item, index }: Props = Astro.props
+
+const isVideo = (src: string) => src.includes('mp4')
+---
+
+<li class="item">
+  <a href={`craft/${item.slug}/`} data-astro-prefetch>
+    {
+      isVideo(item.data.preview.src) && (
+        <video
+          width={item.data.preview.width}
+          height={item.data.preview.height}
+          poster={
+            item.data.preview.poster ? item.data.preview.poster : undefined
+          }
+          onmouseover="this.play()"
+          onmouseout="this.pause()"
+          preload="metadata"
+          loop
+          muted
+        >
+          <source src={item.data.preview.src} type="video/mp4" />
+        </video>
+      )
+    }
+    {
+      !isVideo(item.data.preview.src) && (
+        <img
+          src={item.data.preview.src}
+          width={item.data.preview.width}
+          height={item.data.preview.height}
+          loading={index > 2 ? 'lazy' : 'eager'}
+          alt=""
+        />
+      )
+    }
+  </a>
+  <span>{item.data.title}</span>
+</li>
+
+<style>
+  .item {
+    flex-shrink: 0;
+    inline-size: min(300px + 2.25vw, 100%);
+    position: relative;
+    scroll-snap-align: center;
+  }
+
+  a {
+    border-radius: var(--radius);
+    background: var(--color-bg-accent);
+    display: block;
+    transform-style: preserve-3d;
+    transform: translate3d(0, 0, 0) scale(1);
+    transition-duration: 200ms;
+
+    &:hover {
+      transform: translate3d(0, 0, 0) scale(1.03);
+    }
+
+    &:focus-visible {
+      @apply ring-offset-4;
+    }
+  }
+
+  img,
+  video {
+    border-radius: inherit;
+  }
+
+  span {
+    text-transform: uppercase;
+    font-family: monospace;
+    padding: 1em 0;
+    display: block;
+    text-align: center;
+
+    /* display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1ch; */
+
+    /* &:before,
+      &:after {
+        --arrow-size: 3px;
+
+        content: '';
+        border: var(--arrow-size) solid transparent;
+        background: linear-gradient(var(--color-text), var(--color-text))
+          no-repeat;
+        height: calc(var(--arrow-size) * 2 + 1px);
+        flex-grow: 1;
+        vertical-align: middle;
+      }
+      &:before {
+        border-right-color: var(--color-text);
+      }
+      &:after {
+        border-left-color: var(--color-text);
+      } */
+  }
+</style>
