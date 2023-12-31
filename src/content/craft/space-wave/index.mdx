@@ -1,0 +1,18 @@
+---
+title: Space Wave
+date: 2023-11-01
+preview:
+  src: https://jeremyfrank-dev-assets.s3.amazonaws.com/space-wave.mp4
+  poster: https://ucarecdn.com/d5087b02-cb2e-406f-9a7b-746a2b0a1965/-/preview/500x500/
+  width: 400
+  height: 225
+---
+
+import ComponentPreview from '@/components/ComponentPreview.astro'
+import SpaceWave from './_components/SpaceWave.astro'
+
+<ComponentPreview forceDark={true}>
+  <SpaceWave />
+</ComponentPreview>
+
+SVG path animation emulating a star traveling along a cylindrical sign wave path. The `.getTotalLength()` method is used to determine `stroke-dasharray` values, while the `stroke-dashoffset` value is calculated with a distance per frame constant using `requestAnimationFrame()`. Currently implemented on [Viget Explorations](https://explorations.viget.com/).

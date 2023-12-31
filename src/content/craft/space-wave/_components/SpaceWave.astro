@@ -1,0 +1,59 @@
+<space-wave></space-wave>
+
+<style>
+  space-wave {
+    position: absolute;
+    inset: 1em;
+
+    :global(svg) {
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    :global(path) {
+      stroke: #ffffff80;
+      stroke-width: 2;
+    }
+  }
+</style>
+
+<script>
+  import SVG from './space-wave.svg?raw'
+
+  class SpaceWave extends HTMLElement {
+    constructor() {
+      super()
+      this.innerHTML = SVG
+      this.animatePath()
+    }
+
+    private animatePath = () => {
+      const path = this.querySelector('path')!
+      const pathLength = path.getTotalLength()
+
+      let dashOffset = 0
+      const dashDpf = 15 // distance per frame
+      const dashLength = 300
+      const dashGap = pathLength - dashLength
+
+      const draw = () => {
+        path.style.strokeDashoffset = `${-dashOffset}`
+        path.style.strokeDasharray = `${dashLength} ${dashGap}`
+      }
+
+      const animate = () => {
+        dashOffset = dashOffset + dashDpf
+        if (dashOffset > dashGap + dashLength) {
+          dashOffset = 0
+        }
+        draw()
+        requestAnimationFrame(animate)
+      }
+
+      animate()
+    }
+  }
+
+  customElements.define('space-wave', SpaceWave)
+</script>
