@@ -1,6 +1,4 @@
 ---
-import { promisify } from 'util'
-import sizeOf from 'image-size'
 import { clients } from '../data/clients.js'
 
 const allClients = clients.sort((a, b) => {
@@ -11,18 +9,6 @@ const allClients = clients.sort((a, b) => {
 
 const featuredClients = allClients.filter((item) => item.image && item.featured)
 const remainingClients = allClients.filter((item) => !item.image)
-const getSizeOf = promisify(sizeOf)
-
-featuredClients.map(async (client) => {
-  await getSizeOf(`./public/images/${client.image}`)
-    .then((dimensions) => {
-      client.width = dimensions.width
-      client.height = dimensions.height
-      client.aspectRatio = dimensions.height / dimensions.width
-    })
-    .catch((err) => console.error(err))
-  return client
-})
 ---
 
 <div class="grid">
