@@ -44,7 +44,7 @@ const isPen = (item: any): item is Pen => {
             <a href={`work/${item.slug}/`} data-astro-prefetch>
               <span class="sr-only">{item.data.title}</span>
               <img
-                src={`${item.data.cardImage}-/resize/800x/-/format/auto/`}
+                src={`${item.data.cardImage}-/resize/800x/`}
                 width="400"
                 height="225"
                 loading={index > 2 ? 'lazy' : 'eager'}
