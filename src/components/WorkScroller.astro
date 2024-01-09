@@ -212,7 +212,7 @@ const isPen = (item: any): item is Pen => {
     }
 
     private get list() {
-      return this.querySelector<HTMLUListElement>('.list')
+      return this.querySelector<HTMLUListElement>('.list')!
     }
 
     private get anchors() {
@@ -254,16 +254,16 @@ const isPen = (item: any): item is Pen => {
     }
 
     private appendFocusText = () => {
-      const instructions = this.querySelector('#keyboard-instructions-text')
-      this.anchors[this.current].parentNode.appendChild(instructions)
+      const instructions = this.querySelector('#keyboard-instructions-text')!
+      this.anchors[this.current].parentNode?.appendChild(instructions)
     }
 
     private initKeyboardInstructions = () => {
       const template = this.querySelector<HTMLTemplateElement>(
         '#keyboard-instructions-template',
-      )
+      )!
       const fragment = template.content.cloneNode(true)
-      this.anchors[this.current].parentNode.appendChild(fragment)
+      this.anchors[this.current].parentNode?.appendChild(fragment)
     }
 
     private scrollToCurrent() {
