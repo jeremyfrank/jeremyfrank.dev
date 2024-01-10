@@ -1,60 +1,6 @@
----
-import type { CollectionEntry } from 'astro:content'
-
-type Pen = {
-  id: string
-  title: string
-  alternateImage?: string
-}
-
-type Work = CollectionEntry<'work'>
-
-type Props = {
-  items: Pen[] | Work[]
-}
-
-const { items }: Props = Astro.props
-
-const isPen = (item: any): item is Pen => {
-  return typeof item === 'object' && 'id' in item && 'title' in item
-}
----
-
 <work-scroller current="0" class="gc-full scroller">
   <ul class="gc-content list">
-    {
-      items.map((item: Pen | Work, index: number) => (
-        <li class="item">
-          {isPen(item) && (
-            <a href={`https://codepen.io/jeremyfrank/full/${item.id}`}>
-              <span class="sr-only">{item.title}</span>
-              <img
-                src={`https://shots.codepen.io/jeremyfrank/pen/${
-                  item.alternateImage ?? item.id
-                }-800.jpg`}
-                width="400"
-                height="225"
-                loading={index > 2 ? 'lazy' : 'eager'}
-                alt=""
-              />
-            </a>
-          )}
-
-          {!isPen(item) && (
-            <a href={`work/${item.slug}/`} data-astro-prefetch>
-              <span class="sr-only">{item.data.title}</span>
-              <img
-                src={`${item.data.cardImage}-/resize/800x/`}
-                width="400"
-                height="225"
-                loading={index > 2 ? 'lazy' : 'eager'}
-                alt=""
-              />
-            </a>
-          )}
-        </li>
-      ))
-    }
+    <slot />
     <template id="keyboard-instructions-template">
       <p id="keyboard-instructions-text">
         Use <kbd>←</kbd> and <kbd>→</kbd> to navigate
@@ -130,40 +76,12 @@ const isPen = (item: any): item is Pen => {
     }
   }
 
-  .item {
-    flex-shrink: 0;
-    inline-size: min(300px + 2.25vw, 100%);
-    position: relative;
-    scroll-snap-align: center;
-  }
-
-  a {
-    border-radius: var(--radius);
-    background: var(--color-bg-accent);
-    display: block;
-    transform-style: preserve-3d;
-    transform: translate3d(0, 0, 0) scale(1);
-    transition-duration: 200ms;
-
-    &:hover {
-      transform: translate3d(0, 0, 0) scale(1.03);
-    }
-
-    &:focus-visible {
-      @apply ring-offset-4;
-    }
-  }
-
-  img {
-    border-radius: inherit;
-  }
-
   p {
     padding-block: 0.75em 0.25em;
     text-align: center;
     visibility: hidden;
 
-    .list:not(.active) :focus-visible + & {
+    .list:not(.active) :global(:focus-visible) + & {
       visibility: visible;
     }
   }

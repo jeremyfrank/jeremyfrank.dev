@@ -1,12 +1,22 @@
 ---
 import { getCollection } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
 
 import BaseLayout from '../layouts/BaseLayout.astro'
 import Intro from '../components/Intro.astro'
 import Articles from '../components/Articles.astro'
 import Clients from '../components/Clients.astro'
 import WorkScroller from '../components/WorkScroller.astro'
+import WorkCard from '../components/WorkCard.astro'
+import PenCard from '../components/PenCard.astro'
 import { pens } from '../data/codepen.js'
+
+type Pen = {
+  id: string
+  title: string
+  alternateImage?: string
+}
+type Work = CollectionEntry<'work'>
 
 const allWork = (await getCollection('work')).sort(
   (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
@@ -21,9 +31,21 @@ const latestArticles = (await getCollection('articles'))
 <BaseLayout>
   <Intro />
   <h2>Work</h2>
-  <WorkScroller items={allWork} />
+  <WorkScroller>
+    {
+      allWork.map((item: Work, index: number) => (
+        <WorkCard item={item} index={index} />
+      ))
+    }
+  </WorkScroller>
   <h2>Prototypes</h2>
-  <WorkScroller items={pens} />
+  <WorkScroller>
+    {
+      pens.map((item: Pen, index: number) => (
+        <PenCard item={item} index={index} />
+      ))
+    }
+  </WorkScroller>
   <h2>Writing</h2>
   <Articles articles={latestArticles} />
   <h2>Select Clients</h2>

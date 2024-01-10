@@ -1,0 +1,55 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+type Work = CollectionEntry<'work'>
+
+type Props = {
+  item: Work
+  index: number
+}
+
+const { item, index }: Props = Astro.props
+---
+
+<li class="item">
+  <a href={`work/${item.slug}/`} data-astro-prefetch>
+    <span class="sr-only">{item.data.title}</span>
+    <img
+      src={`${item.data.cardImage}-/resize/800x/`}
+      width="400"
+      height="225"
+      loading={index > 2 ? 'lazy' : 'eager'}
+      alt=""
+    />
+  </a>
+</li>
+
+<style>
+  .item {
+    flex-shrink: 0;
+    inline-size: min(300px + 2.25vw, 100%);
+    position: relative;
+    scroll-snap-align: center;
+  }
+
+  a {
+    border-radius: var(--radius);
+    background: var(--color-bg-accent);
+    display: block;
+    transform-style: preserve-3d;
+    transform: translate3d(0, 0, 0) scale(1);
+    transition-duration: 200ms;
+
+    &:hover {
+      transform: translate3d(0, 0, 0) scale(1.03);
+    }
+
+    &:focus-visible {
+      @apply ring-offset-4;
+    }
+  }
+
+  img {
+    border-radius: inherit;
+  }
+</style>
