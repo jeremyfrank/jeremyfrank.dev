@@ -1,0 +1,144 @@
+---
+title: Logo Marquee
+date: 2024-01-01
+preview:
+  src: https://jeremyfrank-dev-assets.s3.amazonaws.com/logo-marquee.mp4
+  poster: https://ucarecdn.com/9bf97b98-eac9-4ae6-862f-2b791544a0f0/-/preview/800x450/-/quality/smart_retina/-/format/auto/
+  width: 400
+  height: 225
+---
+
+import ComponentPreview from '@/components/ComponentPreview.astro'
+import LogoMarquee from './_components/LogoMarquee.astro'
+import { logos } from './_assets/logos.js'
+
+<ComponentPreview>
+  <LogoMarquee logos={logos} />
+</ComponentPreview>
+
+The basic concept of a logo marquee is a container element with horizontal overflow hidden, and a list of logos inside. The trick for the infinite looping effect is to duplicate the logos list (or double the logos within the list itself), so that the logos appear to loop infinitely.
+
+import LogoMarqueeIllustration from './_components/LogoMarqueeIllustration.astro'
+
+<ComponentPreview compact={true}>
+  <LogoMarqueeIllustration />
+</ComponentPreview>
+
+The effect uses a simple CSS keyframe animation to move the logos to the left by 100%, and repeat the animation infinitely.
+
+```css
+@keyframes marquee {
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.logos {
+  animation-name: marquee;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: var(--duration);
+}
+```
+
+The `animation-duration` must be calculated based on the initial scrollable width, in order to account for a variable number of logos.
+
+```ts
+const speed: number = 35 // pixels per second
+const width: number = track.scrollWidth
+const duration: number = width / speed
+logoList.style.setProperty('--duration', `${duration}s`)
+```
+
+When duplicating the logos list, the duplicate set of logos should be marked as hidden from screen readers, to prevent them from being read twice.
+
+```ts
+const clone = logoList.cloneNode(true) as Element
+clone.setAttribute('aria-hidden', 'true')
+animationTrack.appendChild(clone)
+```
+
+```html
+<div class="track">
+  <ul class="logos"></ul>
+  <ul class="logos" aria-hidden="true"></ul>
+</div>
+```
+
+The left and right sides have a subtle faded out using a CSS mask with a linear gradient.
+
+```css
+.track {
+  mask: linear-gradient(to right, #fff0, #fff 20%, #fff 80%, #fff0);
+}
+```
+
+Each logo has a keyframe animation applied which handles opacity, translate and a subtle scale increase, along with a strong cubic bezier easing function. A custom property of `--delay` for each image sets the `animation-delay` to acheive the staggered timing. This kind of intro effect is typically triggered via `IntersectionObserver`, when the logos are scrolled into view.
+
+```css
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(2rem) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+.logo {
+  opacity: 0;
+  animation-delay: var(--delay);
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-name: slideIn;
+  animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+```
+
+```jsx
+{
+  logos.map((logo, i) => (
+    <li>
+      ...
+      <img
+        ...
+        style={{
+          '--delay': `${(i * 0.05).toFixed(3)}s`,
+        }}
+      />
+    </li>
+  ))
+}
+```
+
+It's also important to take into account the potential for reduced motion preferences being enabled. For those instances, the animation could be left in a paused state, or it could simply play at half speed. After all, reduced motion doesn't mean no motion.
+
+```ts
+const reducedMotion = window.matchMedia(
+  '(prefers-reduced-motion: reduce)',
+).matches
+const duration: number = width / speed / (reducedMotion ? 2 : 1)
+logoList.style.setProperty('--duration', `${duration}s`)
+```
+
+WCAG 2.1 also has a [requirement](https://www.w3.org/TR/WCAG21/#pause-stop-hide) that users be able to pause, stop, or hide any moving, blinking or scrolling information. That's easy enough to do with a simple play/pause button.
+
+```html
+<button class="play-pause" aria-label="Play/Pause Animation">
+  <!-- svg play button -->
+  <!-- svg pause button -->
+</button>
+```
+
+```js
+const handlePlayPause = () => {
+  paused = !paused
+
+  logoLists.forEach((list) => {
+    list.style.animationPlayState = paused ? 'paused' : 'running'
+  })
+
+  playIcon.toggleAttribute('hidden', !paused)
+  pauseIcon.toggleAttribute('hidden', paused)
+}
+```

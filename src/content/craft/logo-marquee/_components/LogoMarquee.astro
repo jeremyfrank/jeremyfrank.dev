@@ -1,0 +1,301 @@
+---
+import type { ImageMetadata } from 'astro'
+import type { HTMLAttributes } from 'astro/types'
+import Play from 'astro-heroicons/solid/Play.astro'
+import Pause from 'astro-heroicons/solid/Pause.astro'
+
+type Logo = {
+  srcDark: string
+  srcLight: string
+  alt: string
+}
+
+type Props = HTMLAttributes<'div'> & {
+  logos: Logo[]
+}
+
+const { logos, ...attrs } = Astro.props
+
+const images = import.meta.glob<{ default: ImageMetadata }>('../_assets/*.svg')
+
+const resolveLogoImage = async (src: string) => {
+  if (!src) return
+
+  if (!(src in images))
+    throw new Error(`"${src}" does not exist in glob: "../_assets/*.svg"`)
+
+  const { default: image } = await images[src]()
+
+  return image
+}
+
+const getLogoShape = (logo: ImageMetadata) => {
+  const { width, height } = logo
+  const aspectRatio = width / height
+  if (aspectRatio <= 0.8) return 'vertical'
+  if (aspectRatio > 0.8 && aspectRatio < 1.25) return 'square'
+  if (aspectRatio >= 1.25 && aspectRatio < 5) return 'horizontal'
+  if (aspectRatio >= 5) return 'long'
+}
+---
+
+<logo-marquee {...attrs}>
+  <div class="track">
+    {
+      [logos, logos].map((logoGroup, i) => (
+        <ul class="logos" aria-hidden={i === 1 ? 'true' : false}>
+          {logoGroup.map(async (logo, i) => {
+            const logoDark = await resolveLogoImage(logo.srcDark)
+            const logoLight = await resolveLogoImage(logo.srcLight)
+
+            return (
+              logoLight &&
+              logoDark && (
+                <li>
+                  <picture>
+                    <source
+                      srcset={logoLight.src}
+                      media="(prefers-color-scheme: dark)"
+                    />
+                    <img
+                      src={logoDark.src}
+                      width={logoDark.width}
+                      height={logoDark.height}
+                      class:list={[
+                        'logo',
+                        {
+                          vertical: getLogoShape(logoDark) === 'vertical',
+                          square: getLogoShape(logoDark) === 'square',
+                          horizontal: getLogoShape(logoDark) === 'horizontal',
+                          long: getLogoShape(logoDark) === 'long',
+                        },
+                      ]}
+                      style={{
+                        '--delay': `${(i * 0.05).toFixed(3)}s`,
+                      }}
+                      alt={logo.alt}
+                    />
+                  </picture>
+                </li>
+              )
+            )
+          })}
+        </ul>
+      ))
+    }
+  </div>
+  <button aria-label="Play/Pause Animation">
+    <Play width={20} height={20} data-play />
+    <Pause width={20} height={20} data-pause />
+  </button>
+</logo-marquee>
+
+<style>
+  @keyframes marquee {
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateX(2rem) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+
+  logo-marquee {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    padding-block: 0.5em;
+  }
+
+  .track {
+    display: flex;
+    overflow: hidden;
+    mask: linear-gradient(to right, #fff0, #fff 20%, #fff 80%, #fff0);
+  }
+
+  .logos {
+    --gap: 6rem;
+    --start-delay: 0.5s;
+
+    display: flex;
+    gap: var(--gap);
+    align-items: center;
+    flex-shrink: 0;
+    padding-inline-start: var(--gap);
+    animation-name: marquee;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: var(--duration);
+    animation-delay: var(--start-delay);
+  }
+
+  li {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .logo {
+    --duration: 1.5s;
+
+    opacity: 0;
+    animation-delay: calc(var(--delay) + var(--start-delay));
+    animation-duration: var(--duration);
+    animation-fill-mode: forwards;
+    animation-name: slideIn;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+
+    &.square {
+      width: 3.75rem;
+    }
+
+    &.vertical {
+      width: 2.75rem;
+    }
+
+    &.horizontal {
+      width: auto;
+      height: 2.25rem;
+    }
+
+    &.long {
+      width: auto;
+      height: 1.5rem;
+    }
+  }
+
+  button {
+    --color-icon: #000;
+    --color-bg: #fff;
+    --tw-ring-offset-width: 2px;
+
+    @media (prefers-color-scheme: dark) {
+      --color-icon: #fff;
+      --color-bg: #000;
+    }
+
+    display: grid;
+    place-items: center;
+    background: var(--color-bg);
+    border: 2px solid var(--color-icon);
+    border-radius: var(--radius-sm);
+    color: var(--color-icon);
+    height: 2rem;
+    width: 2rem;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 8px;
+    z-index: 1;
+    opacity: 0;
+    transform: scale(0.9);
+    transition:
+      transform 0.2s ease-in-out,
+      opacity 0.1s ease-in-out 0.1s;
+
+    &:focus-visible,
+    .track:hover + & {
+      opacity: 1;
+      transform: scale(1);
+      transition:
+        transform 0.2s ease-in-out,
+        opacity 0.1s ease-in-out;
+    }
+
+    &:has([data-pause][hidden]) {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* aria-label to increase selector specificity */
+    &:hover[aria-label] {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  }
+</style>
+
+<script>
+  class LogoMarquee extends HTMLElement {
+    static paused = false
+    static readonly speed = 65 // pixels per second
+    static readonly reducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches
+
+    constructor() {
+      super()
+    }
+
+    connectedCallback() {
+      this.calculateDuration()
+      this.handlePlayPause()
+    }
+
+    private get animationTrack() {
+      return this.querySelector<HTMLDivElement>('.track')!
+    }
+
+    private get button() {
+      return this.querySelector<HTMLUListElement>('button')!
+    }
+
+    private get playIcon() {
+      return this.querySelector<SVGElement>('svg[data-play]')!
+    }
+
+    private get pauseIcon() {
+      return this.querySelector<SVGElement>('svg[data-pause]')!
+    }
+
+    private get logoLists() {
+      return Array.from(this.querySelectorAll<HTMLUListElement>('ul') || [])
+    }
+
+    private calculateDuration() {
+      // scrollWidth will cause reflow, but we're only calling it once
+      const duration: number = Number(
+        (
+          this.animationTrack.scrollWidth /
+          LogoMarquee.speed /
+          (LogoMarquee.reducedMotion ? 2 : 1)
+        ).toFixed(3),
+      )
+
+      this.logoLists.forEach((list) => {
+        list.style.setProperty('--duration', `${duration}s`)
+      })
+    }
+
+    private handlePlayPause() {
+      this.updateButtonIcon()
+      this.button.addEventListener('click', () => this.playPause())
+    }
+
+    private playPause() {
+      LogoMarquee.paused = !LogoMarquee.paused
+
+      this.logoLists.forEach((list) => {
+        list.style.animationPlayState = LogoMarquee.paused
+          ? 'paused'
+          : 'running'
+      })
+      this.updateButtonIcon()
+    }
+
+    private updateButtonIcon() {
+      this.playIcon.toggleAttribute('hidden', !LogoMarquee.paused)
+      this.pauseIcon.toggleAttribute('hidden', LogoMarquee.paused)
+    }
+  }
+
+  customElements.define('logo-marquee', LogoMarquee)
+</script>

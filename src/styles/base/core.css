@@ -31,6 +31,7 @@
     @apply dark:border-zinc-500;
   }
   a,
+  button,
   pre[tabindex] {
     @apply focus-visible:outline-none focus-visible:ring focus-visible:ring-blue-500;
     @apply focus-visible:ring-offset-zinc-100 dark:focus-visible:ring-offset-zinc-900;
