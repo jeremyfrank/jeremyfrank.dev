@@ -2,8 +2,8 @@
   "name": "jeremyfrank.dev",
   "version": "1.0.0",
   "scripts": {
-    "dev": "astro dev --open",
-    "start": "astro dev --open",
+    "dev": "astro dev",
+    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
   },
