@@ -17,8 +17,12 @@ type Pen = {
   title: string
   alternateImage?: string
 }
+type Craft = CollectionEntry<'craft'>
 type Work = CollectionEntry<'work'>
 
+const craftEntries = (await getCollection('craft')).sort(
+  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
+)
 const allWork = (await getCollection('work')).sort(
   (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
 )
@@ -31,6 +35,14 @@ const latestArticles = (await getCollection('articles'))
 
 <BaseLayout>
   <Intro />
+  <h2>Craft</h2>
+  <WorkScroller>
+    {
+      craftEntries.map((entry: Craft, index: number) => (
+        <CraftCard item={entry} index={index} />
+      ))
+    }
+  </WorkScroller>
   <h2>Work</h2>
   <WorkScroller>
     {
