@@ -1,0 +1,31 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+
+export async function getStaticPaths() {
+  const craftEntries = await getCollection('craft')
+  return craftEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }))
+}
+
+type Props = {
+  entry: CollectionEntry<'craft'>
+}
+
+const { entry } = Astro.props
+
+const { data, render } = entry
+const { Content } = await render()
+---
+
+<BaseLayout title={data.title}>
+  <h1 class="mt-8">
+    {data.title}
+  </h1>
+
+  <div class="flow prose subgrid gc-full mx-auto my-8">
+    <Content />
+  </div>
+</BaseLayout>
