@@ -1,0 +1,18 @@
+---
+title: Shimmer Border Button
+date: 2023-12-01
+preview:
+  src: https://jeremyfrank-dev-assets.s3.amazonaws.com/shimmer-border-button.mp4
+  poster: https://ucarecdn.com/ee8f6501-2ae8-4c6b-a073-60b8bcf6b051/-/preview/500x500/
+  width: 400
+  height: 225
+---
+
+import ComponentPreview from '@/components/ComponentPreview.astro'
+import ShimmerBorderButton from './_components/ShimmerBorderButton.astro'
+
+<ComponentPreview forceDark={true}>
+  <ShimmerBorderButton />
+</ComponentPreview>
+
+CSS only effect using a combination of several techniques to acheive an illumanated border animation, mainly the `@property` CSS at-rule for animating custom properties used in a `conic-gradient` function.
