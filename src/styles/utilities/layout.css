@@ -1,0 +1,50 @@
+:root {
+  --page-gutter: clamp(1rem, 6vw, 3rem);
+  --page-max-width: 85ch;
+}
+
+.layout {
+  --full: minmax(var(--page-gutter), 1fr);
+  --content: min(var(--page-max-width), 100% - var(--page-gutter) * 2);
+  --popout: minmax(0, 2rem);
+  --feature: minmax(0, 4rem);
+
+  display: grid;
+  grid-template-columns:
+    [full-start] var(--full)
+    [feature-start] var(--feature)
+    [popout-start] var(--popout)
+    [content-start] var(--content) [content-end]
+    var(--popout) [popout-end]
+    var(--feature) [feature-end]
+    var(--full) [full-end];
+
+  > * {
+    grid-column: content;
+  }
+
+  .gc-content {
+    grid-column: content;
+  }
+
+  .gc-popout {
+    grid-column: popout;
+  }
+
+  .gc-feature {
+    grid-column: feature;
+  }
+
+  .gc-full {
+    grid-column: full;
+  }
+}
+
+.subgrid {
+  display: grid;
+  grid-template-columns: subgrid;
+
+  > * {
+    grid-column: content;
+  }
+}
