@@ -1,0 +1,53 @@
+---
+interface Props {
+  compact: boolean
+  forceDark: boolean
+}
+
+const { compact = false, forceDark = false } = Astro.props
+const backgroundColor = forceDark
+  ? '#181818'
+  : 'color-mix(in srgb, var(--color-text), transparent 97%);'
+const borderColor = forceDark ? '#393939' : 'var(--color-bg-accent)'
+---
+
+<div
+  class:list={[
+    'preview',
+    {
+      compact: compact,
+      'gc-feature': !compact,
+      'gc-popout': compact,
+    },
+  ]}
+>
+  <slot />
+</div>
+
+<style define:vars={{ backgroundColor, borderColor }}>
+  .preview {
+    background: var(--backgroundColor);
+    border: 1px solid var(--borderColor);
+    border-radius: var(--radius);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    position: relative;
+
+    &.compact {
+      padding: 10% 0;
+    }
+
+    &:not(.compact) {
+      aspect-ratio: 1;
+
+      @media screen and (min-width: 30em) {
+        aspect-ratio: 3 / 2;
+      }
+
+      @media screen and (min-width: 40em) {
+        aspect-ratio: 2 / 1;
+      }
+    }
+  }
+</style>
