@@ -1,8 +1,8 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content'
-import { getDomainFromUrl } from '../../helpers/url'
-import PageLayout from '../../layouts/Page.astro'
-import FormattedDate from '../../components/FormattedDate.astro'
+import { getDomainFromUrl } from '@/helpers/url'
+import PageLayout from '@/layouts/Page.astro'
+import FormattedDate from '@/components/FormattedDate.astro'
 
 export async function getStaticPaths() {
   const articleEntries = await getCollection('articles')

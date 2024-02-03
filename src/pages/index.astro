@@ -2,14 +2,15 @@
 import { getCollection } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 
-import BaseLayout from '../layouts/BaseLayout.astro'
-import Intro from '../components/Intro.astro'
-import Articles from '../components/Articles.astro'
-import Clients from '../components/Clients.astro'
-import WorkScroller from '../components/WorkScroller.astro'
-import WorkCard from '../components/WorkCard.astro'
-import PenCard from '../components/PenCard.astro'
-import { pens } from '../data/codepen.js'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import Intro from '@/components/Intro.astro'
+import Articles from '@/components/Articles.astro'
+import Clients from '@/components/Clients.astro'
+import WorkScroller from '@/components/WorkScroller.astro'
+import CraftCard from '@/components/CraftCard.astro'
+import WorkCard from '@/components/WorkCard.astro'
+import PenCard from '@/components/PenCard.astro'
+import { pens } from '@/data/codepen.js'
 
 type Pen = {
   id: string

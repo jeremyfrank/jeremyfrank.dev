@@ -2,8 +2,8 @@
 import type { GetStaticPathsOptions, Page } from 'astro'
 import { type CollectionEntry, getCollection } from 'astro:content'
 
-import PageLayout from '../../layouts/Page.astro'
-import ArticlesList from '../../components/ArticlesList.astro'
+import PageLayout from '@/layouts/Page.astro'
+import ArticlesList from '@/components/ArticlesList.astro'
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const articles = (await getCollection('articles')).sort(
