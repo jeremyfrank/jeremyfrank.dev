@@ -38,7 +38,7 @@
 
 .prose li + li,
 .prose li pre {
-  margin-top: var(--space-s);
+  margin-top: var(--space-xs);
 }
 
 .prose ol li::marker {

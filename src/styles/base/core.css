@@ -18,7 +18,7 @@
     color: var(--color-headings);
   }
   h1 {
-    font-size: var(--step-3);
+    font-size: var(--step-2);
     line-height: 1;
   }
   h2 {
