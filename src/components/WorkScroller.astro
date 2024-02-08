@@ -22,7 +22,10 @@
     overflow-y: hidden;
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
-    scrollbar-width: none;
+
+    @supports not selector(::-webkit-scrollbar) {
+      scrollbar-none: thin;
+    }
 
     @media (prefers-reduced-motion: no-preference) {
       &:focus-within {
