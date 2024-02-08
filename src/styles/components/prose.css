@@ -57,11 +57,6 @@
   max-width: calc(100vw - calc(var(--page-gutter) * 2));
 }
 
-/* limit width for specific prose elements */
-.prose :is(p, li, blockquote, figcaption) {
-  max-width: 50rem;
-}
-
 /* extra width for code */
 .prose pre {
   grid-column: popout;
