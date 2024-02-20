@@ -17,7 +17,11 @@ const { articles, dates = true } = Astro.props
     articles.map((article) => (
       <li>
         <a href={`/articles/${article.slug}`}>{article.data.title}</a>
-        {dates && <FormattedDate date={article.data.date} display="block" />}
+        {dates && (
+          <span class="block">
+            <FormattedDate date={article.data.date} />
+          </span>
+        )}
       </li>
     ))
   }

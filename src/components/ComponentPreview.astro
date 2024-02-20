@@ -5,10 +5,10 @@ interface Props {
 }
 
 const { compact = false, forceDark = false } = Astro.props
-const backgroundColor = forceDark
-  ? '#181818'
-  : 'color-mix(in srgb, var(--color-text), transparent 97%);'
-const borderColor = forceDark ? '#393939' : 'var(--color-bg-accent)'
+const bgColorLightMode = forceDark
+  ? '#181818;'
+  : 'color-mix(in srgb, var(--text-color), transparent 97%);'
+const borderColorLightMode = forceDark ? '#181818' : 'var(--bg-color-accent)'
 ---
 
 <div
@@ -24,15 +24,25 @@ const borderColor = forceDark ? '#393939' : 'var(--color-bg-accent)'
   <slot />
 </div>
 
-<style define:vars={{ backgroundColor, borderColor }}>
+<style
+  define:vars={{
+    bgColorLightMode,
+    borderColorLightMode,
+  }}
+>
   .preview {
-    background: var(--backgroundColor);
-    border: 1px solid var(--borderColor);
+    background: var(--bgColorLightMode);
+    border: 1px solid var(--borderColorLightMode);
     border-radius: var(--radius);
     display: grid;
     place-items: center;
     overflow: hidden;
     position: relative;
+
+    @media (prefers-color-scheme: dark) {
+      background: color-mix(in srgb, var(--text-color), transparent 97%);
+      border-color: var(--bg-color-accent);
+    }
 
     &.compact {
       padding: 10% 0;

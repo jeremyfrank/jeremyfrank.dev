@@ -11,42 +11,33 @@ const featuredClients = allClients.filter((item) => item.image && item.featured)
 const remainingClients = allClients.filter((item) => !item.image)
 ---
 
-<div class="grid">
-  <p class="prose">
-    I’m proud to have worked with a wide variety of companies and organizations
-    over the years. Here’s just a few of them!
-  </p>
+<ul
+  class="grid grid-cols-2 gap-10 mt-10 mb-6 md:grid-cols-4 dark:invert dark:grayscale"
+>
+  {
+    featuredClients.map((client) => (
+      <li class="flex flex-col items-center justify-center p-2 text-center">
+        <img
+          src={`/images/${client.image}`}
+          loading="lazy"
+          alt={client.name}
+          class="max-w-[75%] max-h-[30px]"
+        />
+      </li>
+    ))
+  }
+</ul>
 
-  <ul
-    class="grid grid-cols-2 gap-10 mt-10 mb-6 md:grid-cols-4 dark:invert dark:grayscale"
-  >
+<details class="space-y-4">
+  <summary class="cursor-pointer select-none w-[10ch] text-center mx-auto p-2">
+    More
+  </summary>
+
+  <ul class="columns-3 sm:columns-4 gap-x-10 leading-4 text-sm text-zinc-500">
     {
-      featuredClients.map((client) => (
-        <li class="flex flex-col items-center justify-center p-2 text-center">
-          <img
-            src={`/images/${client.image}`}
-            loading="lazy"
-            alt={client.name}
-            class="max-w-[75%] max-h-[30px]"
-          />
-        </li>
+      remainingClients.map((client) => (
+        <li class="break-inside-avoid flex py-1">{client.name}</li>
       ))
     }
   </ul>
-
-  <details class="space-y-4">
-    <summary
-      class="cursor-pointer select-none w-[10ch] text-center mx-auto p-2"
-    >
-      More
-    </summary>
-
-    <ul class="columns-3 sm:columns-4 gap-x-10 leading-4 text-sm text-zinc-500">
-      {
-        remainingClients.map((client) => (
-          <li class="break-inside-avoid flex py-1">{client.name}</li>
-        ))
-      }
-    </ul>
-  </details>
-</div>
+</details>

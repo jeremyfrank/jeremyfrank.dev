@@ -1,14 +1,7 @@
 @layer base {
   @font-face {
-    font-family: 'Calluna';
-    src: url('/fonts/Calluna-Regular-webfont.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Calluna Sans';
-    src: url('/fonts/CallunaSansRegular-webfont.woff2') format('woff2');
+    font-family: 'Geist';
+    src: url('/fonts/GeistVariableVF.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;

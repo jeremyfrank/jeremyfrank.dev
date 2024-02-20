@@ -1,4 +1,20 @@
-<footer class="layout">
+---
+import { social } from '@/data/social.js'
+---
+
+<footer class="layout flow">
+  <ul class="flex gap-2 self-center justify-center">
+    {
+      social.map((link) => (
+        <li>
+          <a href={link.url} class="block" aria-label={link.name}>
+            {link.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
   <p>
     © {new Date().getFullYear()} Jeremy Frank — Built with
     <a href="https://astro.build/">Astro</a>
@@ -7,10 +23,17 @@
 
 <style>
   footer {
-    @apply px-5 py-10 text-center;
+    padding: var(--space-l) 0;
+    text-align: center;
+
+    ul {
+      @apply border-t dark:border-zinc-500;
+      padding-top: var(--space-l);
+      font-size: var(--step--1);
+    }
 
     p {
-      @apply border-t dark:border-zinc-500 dark:text-zinc-500 pt-5;
+      font-size: var(--step--1);
     }
   }
 </style>

@@ -1,12 +1,16 @@
+@import 'tokens/base';
+@import 'tokens/custom';
+@import 'tokens/spacing';
+@import 'tokens/type';
+
 @import 'base/fonts';
-@import 'base/variables';
 @import 'base/core';
 @import 'tailwindcss/base';
 
 @import 'tailwindcss/components';
 @import 'components/prose';
-@import 'components/fix';
 
 @import 'tailwindcss/utilities';
+@import 'utilities/fix';
 @import 'utilities/flow';
 @import 'utilities/layout';

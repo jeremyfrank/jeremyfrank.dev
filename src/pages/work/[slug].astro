@@ -52,22 +52,22 @@ const imageData = await imageResponse.json()
   </h1>
 
   <div
-    class="gc-feature border-y dark:border-zinc-500 mt-8 py-8 grid grid-cols-2 sm:flex sm:flex-row sm:justify-around gap-4 sm:gap-8"
+    class="gc-feature border-y dark:border-zinc-500 mt-8 py-8 grid grid-cols-2 sm:flex sm:flex-row sm:justify-around gap-4 sm:gap-8 text-pretty"
   >
     <dl>
-      <dt class="font-bold text-xs tracking-widest uppercase">Client</dt>
+      <dt class="text-xs tracking-wider uppercase">Client</dt>
       <dd class="leading-5 mt-1">
         {data.client}
       </dd>
     </dl>
     <dl>
-      <dt class="font-bold text-xs tracking-widest uppercase">Role</dt>
+      <dt class="text-xs tracking-wider uppercase">Role</dt>
       <dd class="leading-5 mt-1">
         {Array.isArray(data.role) ? data.role.join(', ') : data.role}
       </dd>
     </dl>
     <dl class="col-span-2">
-      <dt class="font-bold text-xs tracking-widest uppercase">Tech</dt>
+      <dt class="text-xs tracking-wider uppercase">Tech</dt>
       <dd class="leading-5 mt-1">
         {Array.isArray(data.tech) ? data.tech.join(', ') : data.tech}
       </dd>
@@ -80,10 +80,16 @@ const imageData = await imageResponse.json()
 
   {
     (data.websiteUrl || data.caseStudyUrl) && (
-      <div class:list={['flex justify-center gap-8', 'py-8 text-xl']}>
+      <div class:list={['flex justify-center gap-8', 'py-8']}>
         {data.websiteUrl && <a href={data.websiteUrl}>View Site →</a>}
         {data.caseStudyUrl && <a href={data.caseStudyUrl}>Read Case Study →</a>}
       </div>
     )
   }
 </BaseLayout>
+
+<style>
+  dt {
+    color: var(--text-color-bright);
+  }
+</style>

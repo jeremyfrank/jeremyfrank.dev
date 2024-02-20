@@ -21,8 +21,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      sans: ['"Calluna Sans"', 'system-ui', 'ui-sans-serif', 'sans-serif'],
-      serif: ['Calluna', 'ui-serif', 'serif'],
+      sans: ['Geist', 'system-ui', 'ui-sans-serif', 'sans-serif'],
+      serif: ['Newsreader Variable', 'ui-serif', 'serif'],
     },
     screens: {
       '<sm': { max: em(639) },

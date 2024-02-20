@@ -5,52 +5,42 @@
   line-height: 1.8;
 }
 
-.prose img,
-.prose video {
+.prose :is(img, video) {
   border-radius: var(--radius);
   margin-inline: auto;
 }
 
 .prose figcaption {
-  color: color-mix(in srgb, var(--color-text), transparent 35%);
+  color: color-mix(in srgb, var(--text-color), transparent 35%);
   font-size: 0.9em;
   font-style: italic;
   margin-block-start: var(--space-2xs-xs);
   text-align: center;
 }
 
-.prose :is(ol, ul) {
+.prose > :is(ol, ul) {
   padding-inline-start: 1.5em;
 }
 
-.prose ol {
-  list-style: decimal;
-}
-
-.prose ul {
-  list-style: disc;
-}
-
-.prose li {
+.prose > :is(ol, ul) li {
   line-height: 1.5;
   padding-inline-start: 0.5em;
 }
 
-.prose li + li,
-.prose li pre {
-  margin-top: var(--space-xs);
+.prose > ol {
+  list-style: decimal;
 }
 
-.prose ol li::marker {
-  color: color-mix(in srgb, var(--color-text), transparent 30%);
+.prose > ul {
+  list-style: disc;
 }
 
-.prose ul li::marker {
-  color: color-mix(in srgb, var(--color-text), transparent 70%);
-  font-weight: bold;
+.prose > :is(ol, ul) li + li,
+.prose > :is(ol, ul) li pre {
+  margin-block-start: var(--space-xs);
 }
 
-.prose pre {
+.prose > pre {
   border-radius: var(--radius);
   font-size: var(--step--1);
   padding: 2ch;
@@ -58,21 +48,26 @@
 }
 
 /* extra width for code */
-.prose pre {
+.prose > pre {
   grid-column: popout;
 }
 
 /* extra width for media */
-.prose :is(figure, video, iframe, p:has(img)) {
+.prose > :is(figure, video, iframe, p:has(img)) {
   grid-column: feature;
 }
 
 /* extra space around some elements */
-.prose :is(pre, pre + *, figure, figure + *, p:has(img), hr, hr + *) {
+.prose > :is(pre, pre + *, figure, figure + *, p:has(img), hr, hr + *) {
   --flow-space: var(--space-m-l);
 }
-.prose :is(h2, h3, h4) {
-  --flow-space: var(--space-s-m);
+
+.prose :is(h1) {
+  text-wrap: pretty;
+}
+
+.prose > :is(h2, h3, h4) {
+  --flow-space: var(--space-m-l);
 }
 
 /* less space for elements following headings */
@@ -81,7 +76,7 @@
 }
 
 .prose :is(h2 + *, h3 + *, h4 + *) {
-  --flow-space: var(--space-2xs);
+  --flow-space: var(--space-xs-s);
 }
 
 /* 16:9 aspect ratio on some iframe elements */

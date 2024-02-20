@@ -4,85 +4,41 @@ const isHome = url.pathname === '/' || url.pathname === '/index.html'
 const LogomarkTagName = isHome ? 'div' : 'a'
 const logomarkHref = !isHome ? '/' : null
 const logomarkLabel = !isHome ? 'Home' : null
-
-import { social } from '@/data/social.js'
 ---
 
-<header
-  class:list={[
-    'mb-7 xl:mb-0 pointer-events-none',
-    {
-      'sticky top-0': !isHome,
-    },
-  ]}
->
-  <div class="flex justify-between w-full">
-    <LogomarkTagName
-      href={logomarkHref}
-      class:list={[
-        '-mt-2 p-1 pt-6 rounded-b-full drop-shadow-md',
-        'ring ring-white dark:ring-zinc-900',
-        'focus-visible:ring-blue-500 focus-visible:ring-offset-2',
-        'bg-zinc-900 dark:bg-zinc-50',
-        'pointer-events-auto',
-        {
-          'hover:duration-150 hover:ease-in hover:translate-y-2': !isHome,
-        },
-      ]}
-      aria-label={logomarkLabel}
-    >
-      <img
-        src="/images/jf-logomark.svg"
-        width="64"
-        height="64"
-        class="h-12 w-12 md:h-16 md:w-16 invert dark:invert-0"
-        alt=""
-      />
-    </LogomarkTagName>
-
-    <ul
-      class:list={[
-        'bg-white dark:bg-zinc-900',
-        'drop-shadow-sm rounded-md',
-        'inline-flex self-center',
-        'pointer-events-auto',
-      ]}
-    >
-      {
-        social.map((link) => (
-          <li>
-            <a
-              href={link.url}
-              class="block no-underline p-3"
-              aria-label={link.name}
-            >
-              <img
-                src={`/images/icons/${link.image}`}
-                class="h-4 w-4 dark:invert"
-                alt=""
-              />
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+<header class="layout">
+  <LogomarkTagName
+    href={logomarkHref}
+    class="logo-wrapper"
+    aria-label={logomarkLabel}
+  >
+    <img
+      src="/images/jf-logomark.svg"
+      width="64"
+      height="64"
+      class="h-14 w-14 md:h-16 md:w-16 dark:invert"
+      alt=""
+    />
+  </LogomarkTagName>
 </header>
 
 <style>
   header {
-    --gap: clamp(1rem, 6vw, 3rem);
-    --full: minmax(var(--gap), 1fr);
-    --middle: min(100vw, 100% - var(--gap) * 2);
+    padding-top: clamp(60px, 12dvh, 100px);
+    padding-bottom: clamp(30px, 6dvh, 50px);
 
-    display: grid;
-    grid-template-columns:
-      var(--full)
-      var(--middle)
-      var(--full);
-
-    > div {
-      grid-column: 2;
+    @media (orientation: portrait) and (max-width: 600px) {
+      padding-top: clamp(50px, 8dvh, 70px);
+      padding-bottom: clamp(25px, 4dvh, 35px);
     }
+  }
+
+  .logo-wrapper {
+    @apply ring ring-white dark:ring-zinc-900;
+    @apply focus-visible:ring-blue-500 focus-visible:ring-offset-2;
+    @apply pointer-events-auto;
+
+    border-radius: 999px;
+    margin-right: auto;
   }
 </style>

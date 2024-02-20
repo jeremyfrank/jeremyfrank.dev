@@ -11,7 +11,7 @@
 
 <style>
   .scroller {
-    --scrollbar-color: var(--color-text);
+    --scrollbar-color: var(--text-color-bright);
     --scrollbar-offset: 4px;
 
     display: grid;
@@ -54,15 +54,15 @@
     &::-webkit-scrollbar:active,
     &:hover::-webkit-scrollbar {
       background-color: var(--scrollbar-color);
-      box-shadow: inset var(--color-bg) 0 0 0 var(--scrollbar-offset);
+      box-shadow: inset var(--bg-color) 0 0 0 var(--scrollbar-offset);
     }
 
     &::-webkit-scrollbar-thumb:active,
     &:hover::-webkit-scrollbar-thumb {
       background-color: var(--scrollbar-color);
       box-shadow:
-        var(--color-bg) var(--scrollbar-offset) 0,
-        var(--color-bg) calc(var(--scrollbar-offset) * -1) 0;
+        var(--bg-color) var(--scrollbar-offset) 0,
+        var(--bg-color) calc(var(--scrollbar-offset) * -1) 0;
       border-radius: 99px;
     }
   }
@@ -91,7 +91,7 @@
   kbd {
     border-radius: 2px;
     display: inline-block;
-    background: var(--color-bg-accent);
+    background: var(--bg-color-accent);
     line-height: 1em;
     padding: 0 3px 1px;
   }

@@ -11,27 +11,12 @@ const byline = [Astro.props.byline, Astro.props.content?.byline]
 ---
 
 <BaseLayout title={title}>
-  <div class="space-y-8 pb-6">
-    <h1 class="text-center [text-wrap:pretty]">
+  <div class="flow prose subgrid gc-full pb-[10vh]">
+    <h1>
       {title}
     </h1>
 
-    <p
-      class="max-w-[29rem] mx-auto italic text-center text-lg [text-wrap:pretty]"
-    >
-      {byline}
-    </p>
-  </div>
-
-  <hr />
-
-  <div class="flow prose subgrid gc-full mt-6 pb-[10vh]">
+    {byline && <p class="italic leading-tight text-md text-pretty">{byline}</p>}
     <slot />
   </div>
 </BaseLayout>
-
-<style>
-  .outer {
-    border: 1px solid red;
-  }
-</style>

@@ -22,20 +22,34 @@ const { data, render } = entry
 const { Content } = await render()
 ---
 
-<PageLayout title={data.title} byline={data.description}>
-  <p class="italic text-lg">
-    {!data.url && <span>Published on</span>}
-    <FormattedDate date={data.date} />
+<PageLayout title={data.title}>
+  <Content />
+
+  <p class="italic">
     {
       data.url && (
-        <span>
-          – Originally published on
+        <>
+          Originally published on
+          <FormattedDate date={data.date} />, on
           <a href={data.url} rel="noopener noreferrer">
             {getDomainFromUrl(data.url)}
           </a>
-        </span>
+        </>
+      )
+    }
+    {
+      !data.url && (
+        <>
+          <span>Published on</span>
+          <FormattedDate date={data.date} />
+        </>
       )
     }
   </p>
-  <Content />
 </PageLayout>
+
+<style>
+  :global(h1) {
+    font-size: var(--step-5);
+  }
+</style>

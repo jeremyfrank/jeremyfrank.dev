@@ -1,0 +1,17 @@
+:root {
+  --radius-sm: 0.125rem;
+  --radius: 0.25rem;
+  --bg-color: #fff;
+  --bg-color-accent: #dfdfdf;
+  --text-color: rgb(0 0 0 / 66%);
+  --text-color-bright: rgb(0 0 0 / 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #181818;
+    --bg-color-accent: #393939;
+    --text-color: rgb(255 255 255 / 66%);
+    --text-color-bright: rgb(255 255 255 / 100%);
+  }
+}

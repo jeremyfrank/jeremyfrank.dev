@@ -173,17 +173,17 @@ const getLogoShape = (logo: ImageMetadata) => {
 
   button {
     --color-icon: #000;
-    --color-bg: #fff;
+    --bg-color: #fff;
     --tw-ring-offset-width: 2px;
 
     @media (prefers-color-scheme: dark) {
       --color-icon: #fff;
-      --color-bg: #000;
+      --bg-color: #000;
     }
 
     display: grid;
     place-items: center;
-    background: var(--color-bg);
+    background: var(--bg-color);
     border: 2px solid var(--color-icon);
     border-radius: var(--radius-sm);
     color: var(--color-icon);

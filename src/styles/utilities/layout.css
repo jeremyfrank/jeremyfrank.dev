@@ -1,6 +1,6 @@
 :root {
   --page-gutter: clamp(1rem, 6vw, 3rem);
-  --page-max-width: 85ch;
+  --page-max-width: 60ch;
 }
 
 .layout {
