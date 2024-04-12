@@ -74,6 +74,9 @@ export const clients = [
     name: 'MW Industries',
   },
   {
+    name: 'National Park Foundation',
+  },
+  {
     name: 'National Trust for Historic Preservation',
     image: 'nthp.svg',
     featured: true,
