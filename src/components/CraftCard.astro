@@ -9,12 +9,12 @@ type Props = {
 }
 
 const { item, index }: Props = Astro.props
-
 const isVideo = (src: string) => src.includes('mp4')
 ---
 
 <li class="item">
   <a href={`craft/${item.slug}/`} data-astro-prefetch>
+    <span class="sr-only">{item.data.title}</span>
     {
       isVideo(item.data.preview.src) && (
         <video
@@ -45,7 +45,7 @@ const isVideo = (src: string) => src.includes('mp4')
       )
     }
   </a>
-  <span>{item.data.title}</span>
+  <span aria-hidden="true">{item.data.title}</span>
 </li>
 
 <style>
@@ -69,7 +69,7 @@ const isVideo = (src: string) => src.includes('mp4')
     }
 
     &:focus-visible {
-      @apply ring-offset-4;
+      @apply ring-offset-4 ring-offset-inherit;
     }
   }
 
@@ -84,29 +84,5 @@ const isVideo = (src: string) => src.includes('mp4')
     padding: 1em 0;
     display: block;
     text-align: center;
-
-    /* display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1ch; */
-
-    /* &:before,
-      &:after {
-        --arrow-size: 3px;
-
-        content: '';
-        border: var(--arrow-size) solid transparent;
-        background: linear-gradient(var(--text-color), var(--text-color))
-          no-repeat;
-        height: calc(var(--arrow-size) * 2 + 1px);
-        flex-grow: 1;
-        vertical-align: middle;
-      }
-      &:before {
-        border-right-color: var(--text-color);
-      }
-      &:after {
-        border-left-color: var(--text-color);
-      } */
   }
 </style>

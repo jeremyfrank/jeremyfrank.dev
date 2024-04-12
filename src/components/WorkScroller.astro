@@ -79,11 +79,11 @@
   }
 
   p {
-    padding-block: 0.75em 0.25em;
+    margin-block-end: 1em;
     text-align: center;
     visibility: hidden;
 
-    .list:not(.active) :global(:focus-visible) + & {
+    .list:not(.active) :global(:focus-visible) ~ & {
       visibility: visible;
     }
   }

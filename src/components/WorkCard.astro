@@ -22,6 +22,7 @@ const { item, index }: Props = Astro.props
       alt=""
     />
   </a>
+  <span aria-hidden="true">{item.data.title}</span>
 </li>
 
 <style>
@@ -45,11 +46,19 @@ const { item, index }: Props = Astro.props
     }
 
     &:focus-visible {
-      @apply ring-offset-4;
+      @apply ring-offset-4 ring-offset-inherit;
     }
   }
 
   img {
     border-radius: inherit;
+  }
+
+  span {
+    text-transform: uppercase;
+    font-family: monospace;
+    padding: 1em 0;
+    display: block;
+    text-align: center;
   }
 </style>
