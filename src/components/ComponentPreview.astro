@@ -9,6 +9,7 @@ const bgColorLightMode = forceDark
   ? '#181818;'
   : 'color-mix(in srgb, var(--text-color), transparent 97%);'
 const borderColorLightMode = forceDark ? '#181818' : 'var(--bg-color-accent)'
+const textColorLightMode = forceDark ? '#fff' : 'var(--text-color)'
 ---
 
 <div
@@ -28,12 +29,15 @@ const borderColorLightMode = forceDark ? '#181818' : 'var(--bg-color-accent)'
   define:vars={{
     bgColorLightMode,
     borderColorLightMode,
+    textColorLightMode,
   }}
 >
   .preview {
+    align-content: space-evenly;
     background: var(--bgColorLightMode);
     border: 1px solid var(--borderColorLightMode);
     border-radius: var(--radius);
+    color: var(--textColorLightMode);
     display: grid;
     place-items: center;
     overflow: hidden;
