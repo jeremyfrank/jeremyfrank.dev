@@ -14,6 +14,7 @@ const craftCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.date(),
+    componentUrl: z.string().optional(),
     preview: z.object({
       src: z.string(),
       poster: z.string().optional(),
