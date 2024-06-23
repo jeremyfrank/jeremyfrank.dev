@@ -64,7 +64,7 @@ animationTrack.appendChild(clone)
 </div>
 ```
 
-The left and right sides have a subtle faded out using a CSS mask with a linear gradient.
+The left and right sides have a subtle faded out effect using a CSS mask with a linear gradient.
 
 ```css
 .track {
@@ -72,7 +72,7 @@ The left and right sides have a subtle faded out using a CSS mask with a linear 
 }
 ```
 
-Each logo has a keyframe animation applied which handles opacity, translate and a subtle scale increase, along with a strong cubic bezier easing function. A custom property of `--delay` for each image sets the `animation-delay` to acheive the staggered timing. This kind of intro effect is typically triggered via `IntersectionObserver`, when the logos are scrolled into view.
+Each logo has a keyframe animation applied which handles opacity, translate, and scale, along with a strong cubic bezier easing function. A custom property of `--delay` for each image sets the `animation-delay` to acheive the staggered timing. This kind of intro effect is typically triggered via `IntersectionObserver`, when the logos are scrolled into view.
 
 ```css
 @keyframes slideIn {
