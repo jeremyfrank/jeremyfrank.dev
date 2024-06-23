@@ -80,7 +80,7 @@ const imageData = await imageResponse.json()
 
   {
     (data.websiteUrl || data.caseStudyUrl) && (
-      <div class:list={['flex justify-center gap-8', 'py-8']}>
+      <div class="flex justify-center gap-8 py-8">
         {data.websiteUrl && <a href={data.websiteUrl}>View Site →</a>}
         {data.caseStudyUrl && <a href={data.caseStudyUrl}>Read Case Study →</a>}
       </div>
