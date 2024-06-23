@@ -142,3 +142,7 @@ const handlePlayPause = () => {
   pauseIcon.toggleAttribute('hidden', paused)
 }
 ```
+
+Finally, this can be hard to spot but if there is any image loading delay due to a slow connection or interrupted data transfer, the logos will appear to pop into place once they load, producting a disjointed effect. To avoid this, the in-view logo images should be preloaded, then once loaded, the animation should be applied.
+
+[View Astro Component →](https://github.com/jeremyfrank/jeremyfrank.dev/blob/main/src/content/craft/logo-marquee/_components/LogoMarquee.astro)

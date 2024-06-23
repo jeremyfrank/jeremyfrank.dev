@@ -17,6 +17,7 @@ type Props = HTMLAttributes<'div'> & {
 const { logos, ...attrs } = Astro.props
 
 const images = import.meta.glob<{ default: ImageMetadata }>('../_assets/*.svg')
+const imagesToLoadBeforePlay = 3
 
 const resolveLogoImage = async (src: string) => {
   if (!src) return
@@ -74,6 +75,9 @@ const getLogoShape = (logo: ImageMetadata) => {
                         '--delay': `${(i * 0.05).toFixed(3)}s`,
                       }}
                       alt={logo.alt}
+                      data-preload={
+                        i < imagesToLoadBeforePlay ? 'true' : 'false'
+                      }
                     />
                   </picture>
                 </li>
@@ -123,18 +127,19 @@ const getLogoShape = (logo: ImageMetadata) => {
 
   .logos {
     --gap: 6rem;
-    --start-delay: 0.5s;
 
     display: flex;
     gap: var(--gap);
     align-items: center;
     flex-shrink: 0;
     padding-inline-start: var(--gap);
-    animation-name: marquee;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-duration: var(--duration);
-    animation-delay: var(--start-delay);
+
+    .init & {
+      animation-name: marquee;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-duration: var(--duration);
+    }
   }
 
   li {
@@ -146,11 +151,14 @@ const getLogoShape = (logo: ImageMetadata) => {
     --duration: 1.5s;
 
     opacity: 0;
-    animation-delay: calc(var(--delay) + var(--start-delay));
-    animation-duration: var(--duration);
-    animation-fill-mode: forwards;
-    animation-name: slideIn;
-    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+
+    .init & {
+      animation-delay: calc(var(--delay) + var(--start-delay));
+      animation-duration: var(--duration);
+      animation-fill-mode: forwards;
+      animation-name: slideIn;
+      animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    }
 
     &.square {
       width: 3.75rem;
@@ -226,6 +234,7 @@ const getLogoShape = (logo: ImageMetadata) => {
 <script>
   class LogoMarquee extends HTMLElement {
     static paused = false
+    static imagesLoaded = 0
     static readonly speed = 65 // pixels per second
     static readonly reducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
@@ -238,6 +247,7 @@ const getLogoShape = (logo: ImageMetadata) => {
     connectedCallback() {
       this.calculateDuration()
       this.handlePlayPause()
+      this.loadThenPlay()
     }
 
     private get animationTrack() {
@@ -258,6 +268,10 @@ const getLogoShape = (logo: ImageMetadata) => {
 
     private get logoLists() {
       return Array.from(this.querySelectorAll<HTMLUListElement>('ul') || [])
+    }
+
+    private activateMarquee() {
+      this.animationTrack.classList.add('init')
     }
 
     private calculateDuration() {
@@ -289,6 +303,23 @@ const getLogoShape = (logo: ImageMetadata) => {
           : 'running'
       })
       this.updateButtonIcon()
+    }
+
+    private loadThenPlay() {
+      const imagesToLoad = Array.from(
+        this.querySelectorAll<HTMLImageElement>('[data-preload="true"]') || []
+      )
+      imagesToLoad.forEach((img) => {
+        const src = img.getAttribute('src')!
+        const image = new Image()
+        image.onload = () => {
+          LogoMarquee.imagesLoaded++
+          if (LogoMarquee.imagesLoaded === imagesToLoad.length) {
+            this.activateMarquee()
+          }
+        }
+        image.src = src
+      })
     }
 
     private updateButtonIcon() {
