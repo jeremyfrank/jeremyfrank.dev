@@ -1,0 +1,100 @@
+---
+title: Glassmorphic Nav Bar
+date: 2024-06-30
+componentUrl: https://github.com/jeremyfrank/jeremyfrank.dev/blob/main/src/content/craft/glassmorphic-nav-bar/_components/NavBar.astro
+preview:
+  src: https://jeremyfrank-dev-assets.s3.amazonaws.com/glassmorphic-nav-bar.mp4
+  poster: https://ucarecdn.com/95498013-7b76-4525-afc0-206b602b58f8/-/preview/800x450/-/quality/smart_retina/-/format/auto/
+  width: 400
+  height: 225
+---
+
+import ComponentPreview from '@/components/ComponentPreview.astro'
+import Background from './_components/Background.astro'
+import NavBar from './_components/NavBar.astro'
+
+<ComponentPreview forceDark={true}>
+  <Background />
+  <NavBar />
+</ComponentPreview>
+
+This navigation bar uses a combination of advanced CSS properties to achieve a glassmorphic style, similar to that of visionOS UI components. Functionally it’s most like a segmented control, but visually it is more like the visionOS [Tab bar component](https://developer.apple.com/design/human-interface-guidelines/tab-bars#visionOS) (except in a horizontal layout) and [Toolbar component](https://developer.apple.com/design/human-interface-guidelines/toolbars#visionOS) (but with icons).
+
+The effect is achieved with a combination of a semi-transparent background and `box-shadow`, and a `backdrop-filter` for the bar itself.
+
+```css
+.bar {
+  --padding: 0.75em;
+  background: rgb(128 128 128 / 0.3);
+  box-shadow: 0 1px 20px -1px rgb(0 0 0 / 0.18);
+  backdrop-filter: blur(10px);
+  ...
+}
+```
+
+The self-fading border on the upper-left and lower-right is a `linear-gradient` background with a mask set to exclude the `content-box`, applied to a pseudo element.
+
+```css
+.bar::after {
+  ...
+  background: linear-gradient(
+    165deg,
+    rgb(255 255 255 / 0.4) 0%,
+    rgb(255 255 255 / 0) 41%,
+    rgb(255 255 255 / 0) 57%,
+    rgb(255 255 255 / 0.1) 100%
+  );
+  mask:
+    linear-gradient(black, black) content-box exclude,
+    linear-gradient(black, black);
+  padding: 2px;
+}
+```
+
+The spotlight effect is an extra element extending the width of the tabs area, with a semi-transparent background and a `clip-path` applied using two css custom property values (`--left` and `--width`) which are set by JavaScript. The `inset` function with the `round` keyword creates the pill shape.
+
+```css
+.spotlight {
+  ...
+  background: rgb(255 255 255 / 0.2);
+  clip-path: inset(
+    0 calc(100% - ((var(--left) + var(--width)) * 1px))
+    0 calc(var(--left) * 1px) round 99em
+  );
+}
+```
+
+Finally, the spotlight movement is prepped by applying a transition to the `clip-path` property, via a `data-init` attribute set by JavaScript. Then the click handlers are added to each button, which apply new left and width values.
+
+```css
+.spotlight {
+  ...
+  opacity: 0;
+
+  &[data-init] {
+    opacity: 1;
+    transition-property: clip-path;
+    transition-duration: 0.2s;
+  }
+}
+```
+
+```ts
+const tabs = document.querySelectorAll<HTMLButtonElement>('.button')
+const spotlight = document.querySelector<HTMLSpanElement>('.spotlight')!
+const { offsetLeft, offsetWidth } = tabs[0]
+const setTabPosition = (left: number, width: number) => {
+  spotlight.style.setProperty('--left', `${left}`)
+  spotlight.style.setProperty('--width', `${width}`)
+}
+
+setTabPosition(offsetLeft, offsetWidth)
+spotlight.dataset.init = ''
+
+tabs.forEach((element) => {
+  element.addEventListener('click', () => {
+    const { offsetLeft, offsetWidth } = element
+    setTabPosition(offsetLeft, offsetWidth)
+  })
+})
+```
