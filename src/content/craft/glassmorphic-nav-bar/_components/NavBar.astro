@@ -1,0 +1,144 @@
+---
+import BookOpen from 'astro-heroicons/solid/BookOpen.astro'
+import Document from 'astro-heroicons/solid/Document.astro'
+import Swatch from 'astro-heroicons/solid/Swatch.astro'
+import Square3Stack3D from 'astro-heroicons/solid/Square3Stack3D.astro'
+
+const tabs = [
+  {
+    id: 'docs',
+    name: 'Docs',
+    Icon: Document,
+  },
+  {
+    id: 'themes',
+    name: 'Themes',
+    Icon: Swatch,
+  },
+  {
+    id: 'integrations',
+    name: 'Integrations',
+    Icon: Square3Stack3D,
+  },
+  {
+    id: 'tutorials',
+    name: 'Tutorials',
+    Icon: BookOpen,
+  },
+]
+---
+
+<div class="bar">
+  <nav role="tablist" class="nav">
+    {
+      tabs.map((tab) => (
+        <button role="tab" class="button">
+          <span class="icon">
+            <tab.Icon />
+          </span>
+          <span class="label">{tab.name}</span>
+        </button>
+      ))
+    }
+  </nav>
+  <span class="spotlight"></span>
+</div>
+
+<style>
+  .bar {
+    --padding: 0.75em;
+
+    padding: var(--padding);
+    position: relative;
+    background: rgb(128 128 128 / 0.3);
+    border-radius: 2.125em;
+    box-shadow: 0 1px 20px -1px rgb(0 0 0 / 0.18);
+    backdrop-filter: blur(10px);
+    z-index: 1;
+
+    &::after {
+      content: '';
+      background: linear-gradient(
+        165deg,
+        rgb(255 255 255 / 0.4) 0%,
+        rgb(255 255 255 / 0) 41%,
+        rgb(255 255 255 / 0) 57%,
+        rgb(255 255 255 / 0.1) 100%
+      );
+      border-radius: 2.125em;
+      inset: 0;
+      mask:
+        linear-gradient(black, black) content-box exclude,
+        linear-gradient(black, black);
+      padding: 2px;
+      position: absolute;
+      z-index: -2;
+    }
+  }
+
+  .nav {
+    display: flex;
+    gap: 0.5em;
+  }
+
+  .spotlight {
+    background: rgb(255 255 255 / 0.2);
+    position: absolute;
+    inset: var(--padding) 0;
+    z-index: -1;
+    opacity: 0;
+    clip-path: inset(
+      0 calc(100% - ((var(--left) + var(--width)) * 1px)) 0
+        calc(var(--left) * 1px) round 99em
+    );
+
+    &[data-init] {
+      opacity: 1;
+      transition-property: clip-path;
+      transition-duration: 0.2s;
+    }
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    border-radius: 99em;
+    font-family: system-ui, sans-serif;
+    line-height: 1;
+    transition: background 0.2s;
+
+    :global(svg) {
+      height: 1em;
+      width: 1em;
+    }
+  }
+
+  .icon {
+    padding: var(--padding);
+  }
+
+  .label {
+    font-weight: 600;
+    padding-right: calc(var(--padding) * 1.5);
+  }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.button')
+  const spotlight = document.querySelector<HTMLSpanElement>('.spotlight')!
+  const { offsetLeft, offsetWidth } = tabs[0]
+  const setTabPosition = (left: number, width: number) => {
+    spotlight.style.setProperty('--left', `${left}`)
+    spotlight.style.setProperty('--width', `${width}`)
+  }
+
+  setTabPosition(offsetLeft, offsetWidth)
+  spotlight.dataset.init = ''
+
+  tabs.forEach((element) => {
+    element.addEventListener('click', () => {
+      const { offsetLeft, offsetWidth } = element
+      setTabPosition(offsetLeft, offsetWidth)
+    })
+  })
+</script>
