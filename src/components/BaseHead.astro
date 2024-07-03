@@ -1,0 +1,49 @@
+---
+interface Props {
+  title?: string
+  rawTitle?: string
+  description?: string
+  image?: string
+  pageType?: 'website' | 'article'
+  url?: URL | null
+}
+
+const {
+  rawTitle,
+  description,
+  image,
+  pageType = 'website',
+  url = new URL(Astro.request.url, Astro.site),
+} = Astro.props
+
+const defaultTitle = 'Jeremy Frank'
+const title =
+  rawTitle ?? [Astro.props.title, defaultTitle].filter(Boolean).join(' – ')
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<title>{title}</title>
+<meta name="generator" content={Astro.generator} />
+<meta name="viewport" content="width=device-width" />
+
+<!-- Asset Preloads -->
+<link
+  rel="preload"
+  href="/fonts/GeistVariableVF.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+
+<!-- Page Metadata -->
+<link rel="canonical" href={url} />
+{description && <meta name="description" content={description} />}
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content={title} />
+<meta property="og:type" content={pageType} />
+<meta property="og:url" content={url} />
+{description && <meta property="og:description" content={description} />}
+<meta property="og:site_name" content="https://jeremyfrank.dev/" />
+{image && <meta property="og:image" content={image} />}

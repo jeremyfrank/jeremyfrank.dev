@@ -1,28 +1,16 @@
 ---
 import '@fontsource-variable/newsreader'
 import '@/styles/global.css'
+import BaseHead from '@/components/BaseHead.astro'
 import Header from '@/components/Header.astro'
 import Footer from '@/components/Footer.astro'
 
-const defaultTitle = 'Jeremy Frank'
-const title = [Astro.props.title, defaultTitle].filter(Boolean).join(' – ')
+const { ...head } = Astro.props
 ---
 
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>{title}</title>
-    <meta name="generator" content={Astro.generator} />
-    <meta name="viewport" content="width=device-width" />
-    <meta itemprop="name" content={title} />
-    <meta property="og:title" content={title} />
-    <link
-      rel="preload"
-      href="/fonts/GeistVariableVF.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+    <BaseHead {...head} />
   </head>
   <body>
     <Header />

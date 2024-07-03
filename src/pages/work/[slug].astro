@@ -24,7 +24,7 @@ const imageResponse = await fetch(`${data.heroImage}-/json/`)
 const imageData = await imageResponse.json()
 ---
 
-<BaseLayout title={data.title}>
+<BaseLayout title={data.title} image={data.heroImage}>
   <div
     class:list={[
       'gc-feature',

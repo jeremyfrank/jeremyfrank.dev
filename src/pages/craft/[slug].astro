@@ -15,12 +15,12 @@ type Props = {
 }
 
 const { entry } = Astro.props
-
 const { data, render } = entry
 const { Content } = await render()
+const ogImage = data.preview.poster || data.preview.src
 ---
 
-<BaseLayout title={data.title}>
+<BaseLayout title={data.title} image={ogImage}>
   <h1 class="mt-8">
     {data.title}
   </h1>
