@@ -21,6 +21,7 @@ const craftCollection = defineCollection({
       width: z.number(),
       height: z.number(),
     }),
+    socialImage: z.string().optional(),
   }),
 })
 
@@ -33,6 +34,7 @@ const workCollection = defineCollection({
     caseStudyUrl: z.string().optional(),
     cardImage: z.string(),
     heroImage: z.string(),
+    socialImage: z.string().optional(),
     singleDeviceHero: z.boolean().default(false),
     color: z.string(),
     role: z.union([z.string(), z.array(z.string())]),

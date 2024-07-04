@@ -5,6 +5,7 @@ date: 2023-04-01
 websiteUrl: https://welcome.us/
 cardImage: https://ucarecdn.com/9d0587c1-9575-4e16-ade4-2018f28a6c13/
 heroImage: https://ucarecdn.com/778022ca-9f99-4a34-b85a-2801b7caf6ce/
+socialImage: https://ucarecdn.com/778022ca-9f99-4a34-b85a-2801b7caf6ce/-/preview/1200x630/-/setfill/ffffff00/-/crop/1200x630/center/
 color: '#020049'
 role: Lead UI Developer
 tech:

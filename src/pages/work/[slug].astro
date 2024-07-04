@@ -22,9 +22,10 @@ const { Content } = await render()
 
 const imageResponse = await fetch(`${data.heroImage}-/json/`)
 const imageData = await imageResponse.json()
+const ogImage = data.socialImage || data.heroImage
 ---
 
-<BaseLayout title={data.title} image={data.heroImage}>
+<BaseLayout title={data.title} image={ogImage}>
   <div
     class:list={[
       'gc-feature',
