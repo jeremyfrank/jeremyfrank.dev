@@ -6,3 +6,13 @@
 from = "/work/standard-cognition"
 to = "/work/standard-ai"
 status = 301
+
+[[redirects]]
+from = "/craft"
+to = "/"
+status = 301
+
+[[redirects]]
+from = "/work"
+to = "/"
+status = 301
