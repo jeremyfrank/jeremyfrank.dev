@@ -33,7 +33,9 @@ const remainingClients = allClients.filter((item) => !item.image)
     More
   </summary>
 
-  <ul class="columns-3 sm:columns-4 gap-x-10 leading-4 text-sm text-zinc-500">
+  <ul
+    class="columns-2 sm:columns-3 md:columns-4 gap-x-10 leading-4 text-sm text-zinc-500"
+  >
     {
       remainingClients.map((client) => (
         <li class="break-inside-avoid flex py-1">{client.name}</li>
