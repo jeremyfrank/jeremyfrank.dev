@@ -79,6 +79,10 @@ const tabs = [
   .nav {
     display: flex;
     gap: 0.5em;
+
+    @media screen and (max-width: 40em) {
+      gap: 0;
+    }
   }
 
   .spotlight {
@@ -107,6 +111,12 @@ const tabs = [
     line-height: 1;
     transition: background 0.2s;
 
+    &:nth-child(3) {
+      @media screen and (max-width: 40em) {
+        display: none;
+      }
+    }
+
     :global(svg) {
       height: 1em;
       width: 1em;
@@ -115,11 +125,19 @@ const tabs = [
 
   .icon {
     padding: var(--padding);
+
+    @media screen and (max-width: 40em) {
+      display: none;
+    }
   }
 
   .label {
     font-weight: 600;
     padding-right: calc(var(--padding) * 1.5);
+
+    @media screen and (max-width: 40em) {
+      padding: var(--padding) calc(var(--padding) * 1.5);
+    }
   }
 </style>
 
