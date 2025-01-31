@@ -28,6 +28,7 @@ const isVideo = (src: string) => src.includes('mp4')
           preload="metadata"
           loop
           muted
+          playsinline
         >
           <source src={item.data.preview.src} type="video/mp4" />
         </video>
