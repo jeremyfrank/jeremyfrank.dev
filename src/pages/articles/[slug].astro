@@ -22,7 +22,7 @@ const { data, render } = entry
 const { Content } = await render()
 ---
 
-<PageLayout title={data.title} type="article">
+<PageLayout title={data.title} type="article" canonicalURL={data.url}>
   <Content />
 
   <p class="italic">

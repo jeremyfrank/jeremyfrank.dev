@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro'
 
+const { canonicalURL } = Astro.props
+
 const title = [Astro.props.title, Astro.props.content?.title]
   .filter(Boolean)
   .join()
@@ -10,7 +12,7 @@ const byline = [Astro.props.byline, Astro.props.content?.byline]
   .join()
 ---
 
-<BaseLayout title={title}>
+<BaseLayout title={title} canonicalURL={canonicalURL}>
   <div class="flow prose subgrid gc-full pb-[10vh]">
     <h1>
       {title}

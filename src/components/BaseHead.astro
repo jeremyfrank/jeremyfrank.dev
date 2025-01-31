@@ -1,11 +1,11 @@
 ---
-interface Props {
+export type Props = {
   title?: string
   rawTitle?: string
   description?: string
   image?: string
   pageType?: 'website' | 'article'
-  url?: URL | null
+  canonicalURL?: URL | null
 }
 
 const {
@@ -13,7 +13,7 @@ const {
   description,
   image,
   pageType = 'website',
-  url = new URL(Astro.request.url, Astro.site),
+  canonicalURL = new URL(Astro.request.url, Astro.site),
 } = Astro.props
 
 const defaultTitle = 'Jeremy Frank'
@@ -37,13 +37,13 @@ const title =
 />
 
 <!-- Page Metadata -->
-<link rel="canonical" href={url} />
+{canonicalURL && <link rel="canonical" href={canonicalURL} />}
 {description && <meta name="description" content={description} />}
 
 <!-- OpenGraph Tags -->
 <meta property="og:title" content={title} />
 <meta property="og:type" content={pageType} />
-<meta property="og:url" content={url} />
+{canonicalURL && <meta property="og:url" content={canonicalURL} />}
 {description && <meta property="og:description" content={description} />}
 <meta property="og:site_name" content="https://jeremyfrank.dev/" />
 {image && <meta property="og:image" content={image} />}
