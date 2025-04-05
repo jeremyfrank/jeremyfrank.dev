@@ -16,7 +16,9 @@ const {
   canonicalURL = new URL(Astro.request.url, Astro.site),
 } = Astro.props
 
+const defaultImage = new URL('/images/og-image.png', Astro.site)
 const defaultTitle = 'Jeremy Frank'
+
 const title =
   rawTitle ?? [Astro.props.title, defaultTitle].filter(Boolean).join(' – ')
 ---
@@ -46,4 +48,4 @@ const title =
 {canonicalURL && <meta property="og:url" content={canonicalURL} />}
 {description && <meta property="og:description" content={description} />}
 <meta property="og:site_name" content="https://jeremyfrank.dev/" />
-{image && <meta property="og:image" content={image} />}
+<meta property="og:image" content={image ?? defaultImage} />
