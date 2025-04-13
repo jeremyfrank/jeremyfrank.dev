@@ -12,9 +12,9 @@
     "url": "git+https://github.com/jeremyfrank/jeremyfrank.dev.git"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^2.0.0",
-    "@astrojs/tailwind": "^5.0.3",
-    "astro": "^4.0.1",
+    "@astrojs/mdx": "^4.2.3",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.6.1",
     "postcss-import-ext-glob": "^2.1.1",
     "prettier": "^3.0.0",
     "prettier-plugin-astro": "^0.13.0",

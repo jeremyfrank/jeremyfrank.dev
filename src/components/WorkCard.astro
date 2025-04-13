@@ -12,7 +12,7 @@ const { item, index }: Props = Astro.props
 ---
 
 <li class="item">
-  <a href={`work/${item.slug}/`} data-astro-prefetch>
+  <a href={`work/${item.id}/`} data-astro-prefetch>
     <span class="sr-only">{item.data.title}</span>
     <img
       src={`${item.data.cardImage}-/resize/800x/`}

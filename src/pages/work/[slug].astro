@@ -1,12 +1,12 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content'
+import { type CollectionEntry, getCollection, render } from 'astro:content'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import { Picture } from 'astro:assets'
 
 export async function getStaticPaths() {
   const workEntries = await getCollection('work')
   return workEntries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }))
 }
@@ -16,10 +16,8 @@ type Props = {
 }
 
 const { entry } = Astro.props
-
-const { data, render } = entry
-const { Content } = await render()
-
+const { data } = entry
+const { Content } = await render(entry)
 const imageResponse = await fetch(`${data.heroImage}-/json/`)
 const imageData = await imageResponse.json()
 const ogImage = data.socialImage || data.heroImage

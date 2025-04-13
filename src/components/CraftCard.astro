@@ -13,7 +13,7 @@ const isVideo = (src: string) => src.includes('mp4')
 ---
 
 <li class="item">
-  <a href={`craft/${item.slug}/`} data-astro-prefetch>
+  <a href={`craft/${item.id}/`} data-astro-prefetch>
     <span class="sr-only">{item.data.title}</span>
     {
       isVideo(item.data.preview.src) && (

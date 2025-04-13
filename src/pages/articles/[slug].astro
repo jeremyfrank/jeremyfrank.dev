@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content'
+import { type CollectionEntry, getCollection, render } from 'astro:content'
 import { getDomainFromUrl } from '@/helpers/url'
 import PageLayout from '@/layouts/Page.astro'
 import FormattedDate from '@/components/FormattedDate.astro'
@@ -7,7 +7,7 @@ import FormattedDate from '@/components/FormattedDate.astro'
 export async function getStaticPaths() {
   const articleEntries = await getCollection('articles')
   return articleEntries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }))
 }
@@ -17,9 +17,8 @@ type Props = {
 }
 
 const { entry } = Astro.props
-
-const { data, render } = entry
-const { Content } = await render()
+const { data } = entry
+const { Content } = await render(entry)
 ---
 
 <PageLayout title={data.title} type="article" canonicalURL={data.url}>
