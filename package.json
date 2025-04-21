@@ -12,16 +12,16 @@
     "url": "git+https://github.com/jeremyfrank/jeremyfrank.dev.git"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^4.2.3",
+    "@astrojs/mdx": "^4.2.4",
     "@astrojs/tailwind": "^6.0.2",
-    "astro": "^5.6.1",
+    "astro": "^5.7.4",
     "postcss-import-ext-glob": "^2.1.1",
     "prettier": "^3.0.0",
-    "prettier-plugin-astro": "^0.13.0",
+    "prettier-plugin-astro": "^0.14.0",
     "tailwindcss": "^3.1.8"
   },
   "dependencies": {
     "@fontsource-variable/newsreader": "^5.0.17",
-    "astro-heroicons": "^2.1.1"
+    "astro-heroicons": "^2.1.5"
   }
 }
