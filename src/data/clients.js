@@ -61,6 +61,7 @@ export const clients = [
   {
     name: 'IBM',
     image: 'ibm.svg',
+    featured: true,
   },
   {
     name: 'Johns Hopkins University',
@@ -86,7 +87,6 @@ export const clients = [
   {
     name: 'National Trust for Historic Preservation',
     image: 'nthp.svg',
-    featured: true,
   },
   {
     name: 'Nest Realty',
