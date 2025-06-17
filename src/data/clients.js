@@ -24,6 +24,9 @@ export const clients = [
     name: 'Brady',
   },
   {
+    name: 'Business Roundtable',
+  },
+  {
     name: 'Center for a New American Security',
   },
   {
@@ -121,6 +124,9 @@ export const clients = [
   },
   {
     name: 'Urū Sports',
+  },
+  {
+    name: 'Viget',
   },
   {
     name: 'White House Historical Association',
