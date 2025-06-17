@@ -59,6 +59,10 @@ export const clients = [
     name: 'Human Rights Campaign',
   },
   {
+    name: 'IBM',
+    image: 'ibm.svg',
+  },
+  {
     name: 'Johns Hopkins University',
   },
   {
