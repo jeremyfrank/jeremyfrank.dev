@@ -79,12 +79,29 @@
   }
 
   p {
-    margin-block-end: 1em;
-    text-align: center;
     visibility: hidden;
+    opacity: 0;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+
+    position: absolute;
+    inset-block-end: 0.75rem;
+    inset-inline: 0;
+    margin-inline: auto;
+    width: max-content;
+    background: #fff;
+    border-radius: 0.125em;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: monospace;
+    line-height: 1;
+    padding: 0.25rem 0.5rem;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
 
     .list:not(.active) :global(:focus-visible) ~ & {
       visibility: visible;
+      opacity: 1;
     }
   }
 
@@ -92,8 +109,8 @@
     border-radius: 2px;
     display: inline-block;
     background: var(--bg-color-accent);
-    line-height: 1em;
-    padding: 0 3px 1px;
+    padding: 0 3px;
+    font-family: monospace;
   }
 </style>
 

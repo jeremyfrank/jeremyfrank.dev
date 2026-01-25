@@ -31,6 +31,10 @@ const { item, index }: Props = Astro.props
     inline-size: min(300px + 2.25vw, 100%);
     position: relative;
     scroll-snap-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding-bottom: 1rem;
   }
 
   a {
@@ -57,7 +61,7 @@ const { item, index }: Props = Astro.props
   span {
     text-transform: uppercase;
     font-family: monospace;
-    padding: 1em 0;
+    line-height: 1;
     display: block;
     text-align: center;
   }
