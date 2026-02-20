@@ -10,7 +10,7 @@ import Embed from '@/components/Embed.astro'
 
 A recent project called [Voices of Alabama](https://voicesofalabama.org/) used a state outline and text overlay which knocked out the outline around the edges of the text characters (shown below). The solid shape of this graphic combined with text make it a prime candidate for SVG! Here’s how it works.
 
-![](https://viget.imgix.net/wmf-voa-hero.jpg?auto=format%2Ccompress&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&ixlib=php-3.3.1&q=90&w=1280&s=cb1a6e53eaf1de5f2cb4ec171de0c130)
+![](https://jeremyfrank-dev-assets.s3.amazonaws.com/viget-article-images/wmf-voa-hero.webp)
 
 ## First, the basic shapes
 
@@ -41,7 +41,7 @@ Fortunately, this graphic only requires a text element and two path elements for
 </svg>
 ```
 
-![](https://viget.imgix.net/wmf-voa-1.png?auto=format%2Ccompress&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&ixlib=php-3.3.1&q=90&w=1280&s=8152156cb6bbe11463b349fb40f644bc)
+![](https://jeremyfrank-dev-assets.s3.amazonaws.com/viget-article-images/wmf-voa-1.webp)
 
 ## Second, the Mask
 
@@ -89,7 +89,7 @@ When SVG `<mask>` elements are applied to another shape, they hide by default, t
 
 In the image below, but you can see along the left and right sides, where the black text has hidden parts of the shape (with the original text element above hidden):
 
-![](https://viget.imgix.net/wmf-voa-2.png?auto=format%2Ccompress&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&ixlib=php-3.3.1&q=90&w=1280&s=12788f6baa74115d8066cea4256f9a50)
+![](https://jeremyfrank-dev-assets.s3.amazonaws.com/viget-article-images/wmf-voa-2.webp)
 
 ## Finally, the Knockout
 
@@ -144,11 +144,11 @@ Text mask with stroke applied:
 </svg>
 ```
 
-![](https://viget.imgix.net/wmf-voa-3.png?auto=format%2Ccompress&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&ixlib=php-3.3.1&q=90&w=1280&s=3017a82199a38dc134b975472f1f90d5)
+![](https://jeremyfrank-dev-assets.s3.amazonaws.com/viget-article-images/wmf-voa-3.webp)
 
 With the visible text element back in:
 
-![](https://viget.imgix.net/wmf-voa-4.png?auto=format%2Ccompress&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&ixlib=php-3.3.1&q=90&w=1280&s=948d4b69195e6c04213b201d2d96b9e9)
+![](https://jeremyfrank-dev-assets.s3.amazonaws.com/viget-article-images/wmf-voa-4.webp)
 
 ### feMorphology Filter
 
@@ -203,7 +203,7 @@ Another option is to use the `feMorphology` filter primitive instead of a stroke
 </svg>
 ```
 
-![](https://viget.imgix.net/wmf-voa-5.png?auto=format%2Ccompress&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&ixlib=php-3.3.1&q=90&w=1280&s=c9d567cab05fe9efe3e7cbf34c004977)
+![](https://jeremyfrank-dev-assets.s3.amazonaws.com/viget-article-images/wmf-voa-5.webp)
 
 It’s important to note that while this approach looks nearly identical, it does not work in Firefox at the time of this writing.
 

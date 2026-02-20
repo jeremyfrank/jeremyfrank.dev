@@ -16,13 +16,13 @@ Here are some of the ways our teams have benefited from component driven develop
 
 Because components are built and presented in isolation, they are much easier to test than pages or screens. Testing in isolation simplifies the QA process by enabling focus on specific parts of the UI. It also ensures that any problems found are truly related to a specific component and not some other part of an application.
 
-![Article Card component for Bezos Earth Fund](https://viget.imgix.net/bef-article-card.png?auto=format%2Ccompress&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&ixlib=php-3.3.1&q=90&w=1520&s=46468e3749fd2a75c5e3c773236c27f0)
+![Article Card component for Bezos Earth Fund](https://jeremyfrank-dev-assets.s3.amazonaws.com/viget-article-images/bef-article-card.webp)
 
 ## More Easily Accessible Variations
 
 When components with different display states and variations are presented in isolation, it is much easier to verify that they appear and function as intended across those display states and variations. In many cases, we have found opportunities for improvement or additional use cases through testing component states and variations.
 
-![Button component for Welcome.US](https://viget.imgix.net/welcome-button.png?auto=format%2Ccompress&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&ixlib=php-3.3.1&q=90&w=1520&s=0af71141345f2e71cf2c8d2d6795eb9a)
+![Button component for Welcome.US](https://jeremyfrank-dev-assets.s3.amazonaws.com/viget-article-images/welcome-button.webp)
 
 ## Documentation Verification
 
