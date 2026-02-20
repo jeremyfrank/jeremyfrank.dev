@@ -47,13 +47,6 @@ img {
 }
 ```
 
-<img
-  src="https://jeremyfrank-dev-assets.s3.amazonaws.com/viget-article-images/circle-gradient-border-2.webp"
-  width="460"
-  height="460"
-  alt=""
-/>
-
 ## Apply a conic-gradient background to a pseudo element
 
 The [conic-gradient](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/conic-gradient) CSS function creates an image consisting of a gradient with color transitions rotated around a center point. This is exactly what we need for starting the border at one color and transitioning it to another. Applying the background directly to the wrapper element could work, but to achieve the gap between the image and the border, we need to apply a mask. Since the mask would also conceal the image, we need to make sure the conic gradient background is applied to a pseudo element instead.
@@ -73,6 +66,13 @@ The [conic-gradient](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/c
 ```
 
 This conic-gradient function is simply setting the gradient’s start position (30deg), starting color (#6be89b), ending color (#0076a5) and position (46%), and finally the color of the remaining portion of the gradient (transparent).
+
+<img
+  src="https://jeremyfrank-dev-assets.s3.amazonaws.com/viget-article-images/circle-gradient-border-2.webp"
+  width="460"
+  height="460"
+  alt=""
+/>
 
 ## Apply a radial-gradient mask to the pseudo element
 
@@ -100,7 +100,7 @@ This radial-gradient function simply draws a thin stroke as the image mask aroun
   src="https://jeremyfrank-dev-assets.s3.amazonaws.com/viget-article-images/circle-gradient-border-3.webp"
   width="460"
   height="460"
-  alt=""
+  alt="Circle image with a conic gradient partially covering the image"
 />
 
 And there you have it – an incredibly unique stylized border achieved with a combination
