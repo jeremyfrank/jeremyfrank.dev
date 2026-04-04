@@ -14,4 +14,4 @@ tech:
   - Rails
 ---
 
-A redesigned site and modernized content management platform to support a brand realignment, for a nonprofit organization working in the historic preservation space.
+A redesigned site and modernized content management platform to support a brand realignment, for the National Trust for Historic Preservation.
