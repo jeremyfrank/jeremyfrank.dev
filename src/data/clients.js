@@ -18,6 +18,9 @@ export const clients = [
     name: 'Avizia',
   },
   {
+    name: 'BDI Furniture',
+  },
+  {
     name: 'Bezos Earth Fund',
   },
   {
