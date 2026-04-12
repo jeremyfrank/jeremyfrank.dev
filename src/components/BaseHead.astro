@@ -23,13 +23,13 @@ const title =
   rawTitle ?? [Astro.props.title, defaultTitle].filter(Boolean).join(' – ')
 ---
 
-<!-- Global Metadata -->
+{/* Global Metadata */}
 <meta charset="utf-8" />
 <title>{title}</title>
 <meta name="generator" content={Astro.generator} />
 <meta name="viewport" content="width=device-width" />
 
-<!-- Asset Preloads -->
+{/* Asset Preloads */}
 <link
   rel="preload"
   href="/fonts/GeistVariableVF.woff2"
@@ -38,11 +38,11 @@ const title =
   crossorigin
 />
 
-<!-- Page Metadata -->
+{/* Page Metadata */}
 {canonicalURL && <link rel="canonical" href={canonicalURL} />}
 {description && <meta name="description" content={description} />}
 
-<!-- OpenGraph Tags -->
+{/* OpenGraph Tags */}
 <meta property="og:title" content={title} />
 <meta property="og:type" content={pageType} />
 {canonicalURL && <meta property="og:url" content={canonicalURL} />}
