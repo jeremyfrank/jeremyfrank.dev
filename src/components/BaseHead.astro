@@ -38,6 +38,18 @@ const title =
   crossorigin
 />
 
+{/* Favicon */}
+<link
+  rel="icon"
+  href="/favicon-light.svg"
+  media="(prefers-color-scheme: light)"
+/>
+<link
+  rel="icon"
+  href="/favicon-dark.svg"
+  media="(prefers-color-scheme: dark)"
+/>
+
 {/* Page Metadata */}
 {canonicalURL && <link rel="canonical" href={canonicalURL} />}
 {description && <meta name="description" content={description} />}
