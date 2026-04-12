@@ -8,7 +8,7 @@ const allClients = clients.sort((a, b) => {
 })
 
 const featuredClients = allClients.filter((item) => item.image && item.featured)
-const remainingClients = allClients.filter((item) => !item.image)
+const remainingClients = allClients.filter((item) => !item.featured)
 ---
 
 <ul
