@@ -15,5 +15,12 @@ const { url, title, classes, width = 800, height = 400 } = Astro.props
   title={title}
   width={width}
   height={height}
-  class:list={['rounded-md w-full', classes]}
+  class={classes}
   loading="lazy"></iframe>
+
+<style>
+  iframe {
+    border-radius: 0.375rem;
+    width: 100%;
+  }
+</style>

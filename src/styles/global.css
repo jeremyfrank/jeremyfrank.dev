@@ -1,16 +1,17 @@
+@layer base, components, utilities;
+
 @import 'tokens/base';
 @import 'tokens/custom';
 @import 'tokens/spacing';
 @import 'tokens/type';
 
 @import 'base/fonts';
+@import 'base/preflight' layer(base);
 @import 'base/core';
-@import 'tailwindcss/base';
 
-@import 'tailwindcss/components';
 @import 'components/prose';
 
-@import 'tailwindcss/utilities';
 @import 'utilities/fix';
 @import 'utilities/flow';
 @import 'utilities/layout';
+@import 'utilities/sr-only';

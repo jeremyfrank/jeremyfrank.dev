@@ -13,12 +13,24 @@ const byline = [Astro.props.byline, Astro.props.content?.byline]
 ---
 
 <BaseLayout title={title} canonicalURL={canonicalURL}>
-  <div class="flow prose subgrid gc-full pb-[10vh]">
+  <div class="wrapper flow prose subgrid gc-full">
     <h1>
       {title}
     </h1>
 
-    {byline && <p class="italic leading-tight text-md text-pretty">{byline}</p>}
+    {byline && <p class="byline">{byline}</p>}
     <slot />
   </div>
 </BaseLayout>
+
+<style>
+  .wrapper {
+    padding-bottom: 10vh;
+  }
+
+  .byline {
+    font-style: italic;
+    line-height: 1.25;
+    text-wrap: pretty;
+  }
+</style>

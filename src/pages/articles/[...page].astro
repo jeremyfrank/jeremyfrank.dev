@@ -23,8 +23,18 @@ const articles = page.data
 <PageLayout title="Articles">
   <ArticlesList articles={articles} />
 
-  <nav class="border-t flex justify-center gap-6 pt-6">
+  <nav>
     {page.url.prev ? <a href={page.url.prev}>← Previous</a> : null}
     {page.url.next ? <a href={page.url.next}>Next →</a> : null}
   </nav>
 </PageLayout>
+
+<style>
+  nav {
+    border-top: 1px solid rgb(212 212 216);
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    padding-top: 1.5rem;
+  }
+</style>

@@ -18,7 +18,7 @@ const { articles, dates = true } = Astro.props
       <li>
         <a href={`/articles/${article.id}`}>{article.data.title}</a>
         {dates && (
-          <span class="block">
+          <span class="date">
             <FormattedDate date={article.data.date} />
           </span>
         )}
@@ -26,3 +26,9 @@ const { articles, dates = true } = Astro.props
     ))
   }
 </ul>
+
+<style>
+  .date {
+    display: block;
+  }
+</style>

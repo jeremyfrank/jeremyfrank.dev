@@ -12,13 +12,7 @@ const logomarkLabel = !isHome ? 'Home' : null
     class="logo-wrapper"
     aria-label={logomarkLabel}
   >
-    <img
-      src="/images/jf-logomark.svg"
-      width="64"
-      height="64"
-      class="h-14 w-14 md:h-16 md:w-16 dark:invert"
-      alt=""
-    />
+    <img src="/images/jf-logomark.svg" width="64" height="64" alt="" />
   </LogomarkTagName>
 </header>
 
@@ -34,11 +28,40 @@ const logomarkLabel = !isHome ? 'Home' : null
   }
 
   .logo-wrapper {
-    @apply ring ring-white dark:ring-zinc-900;
-    @apply focus-visible:ring-blue-500 focus-visible:ring-offset-2;
-    @apply pointer-events-auto;
-
     border-radius: 999px;
+    box-shadow: 0 0 0 3px white;
     margin-right: auto;
+    pointer-events: auto;
+
+    @media (prefers-color-scheme: dark) {
+      box-shadow: 0 0 0 3px rgb(24 24 27);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow:
+        0 0 0 2px white,
+        0 0 0 5px rgb(59 130 246);
+
+      @media (prefers-color-scheme: dark) {
+        box-shadow:
+          0 0 0 2px rgb(24 24 27),
+          0 0 0 5px rgb(59 130 246);
+      }
+    }
+
+    img {
+      height: 3.5rem;
+      width: 3.5rem;
+
+      @media (prefers-color-scheme: dark) {
+        filter: invert(1);
+      }
+
+      @media (min-width: 48em) {
+        height: 4rem;
+        width: 4rem;
+      }
+    }
   }
 </style>

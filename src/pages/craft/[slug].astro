@@ -21,17 +21,17 @@ const ogImage = data.socialImage || data.preview.poster || data.preview.src
 ---
 
 <BaseLayout title={data.title} image={ogImage}>
-  <h1 class="mt-8">
+  <h1>
     {data.title}
   </h1>
 
-  <div class="flow prose subgrid gc-full my-8">
+  <div class="flow prose subgrid gc-full">
     <Content />
   </div>
 
   {
     data.componentUrl && (
-      <div class="flex justify-center gap-8 py-8">
+      <div class="links">
         {data.componentUrl && (
           <a href={data.componentUrl}>View Astro Component →</a>
         )}
@@ -39,3 +39,20 @@ const ogImage = data.socialImage || data.preview.poster || data.preview.src
     )
   }
 </BaseLayout>
+
+<style>
+  h1 {
+    margin-block-start: 2rem;
+  }
+
+  .prose {
+    margin-block: 2rem;
+  }
+
+  .links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-block: 2rem;
+  }
+</style>

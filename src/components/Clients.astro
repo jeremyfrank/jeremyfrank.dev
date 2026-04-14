@@ -11,33 +11,75 @@ const featuredClients = allClients.filter((item) => item.image && item.featured)
 const remainingClients = allClients.filter((item) => !item.featured)
 ---
 
-<ul
-  class="grid grid-cols-2 gap-10 mt-10 mb-6 md:grid-cols-4 dark:invert dark:grayscale"
->
+<ul class="logo-grid">
   {
     featuredClients.map((client) => (
-      <li class="flex flex-col items-center justify-center p-2 text-center">
-        <img
-          src={`/images/${client.image}`}
-          loading="lazy"
-          alt={client.name}
-          class="max-w-[75%] max-h-[30px]"
-        />
+      <li>
+        <img src={`/images/${client.image}`} loading="lazy" alt={client.name} />
       </li>
     ))
   }
 </ul>
 
-<details class="space-y-4">
-  <summary class="cursor-pointer select-none w-[10ch] text-center mx-auto p-2">
-    More
-  </summary>
+<details>
+  <summary>More</summary>
 
-  <ul class="columns-2 sm:columns-3 gap-x-10 leading-4 text-sm text-zinc-500">
-    {
-      remainingClients.map((client) => (
-        <li class="break-inside-avoid flex py-1">{client.name}</li>
-      ))
-    }
+  <ul class="client-list">
+    {remainingClients.map((client) => <li>{client.name}</li>)}
   </ul>
 </details>
+
+<style>
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+
+    @media (min-width: 48em) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    @media (prefers-color-scheme: dark) {
+      filter: invert(1) grayscale(100%);
+    }
+
+    li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+      text-align: center;
+    }
+
+    img {
+      max-width: 75%;
+      max-height: 30px;
+    }
+  }
+
+  summary {
+    cursor: pointer;
+    user-select: none;
+    margin-inline: auto;
+    padding: 0.5rem;
+    width: 10ch;
+    text-align: center;
+  }
+
+  .client-list {
+    columns: auto;
+    column-width: 15ch;
+    column-gap: 2rem;
+    font-size: 0.875rem;
+    line-height: 1.2;
+    margin-top: 1rem;
+
+    li {
+      display: flex;
+      padding-block: 0.25rem;
+    }
+  }
+</style>

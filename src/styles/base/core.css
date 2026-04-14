@@ -1,9 +1,10 @@
 @layer base {
   html {
-    @apply antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   body {
-    @apply min-h-dvh;
+    min-height: 100dvh;
     background: var(--bg-color);
     color: var(--text-color);
   }
@@ -11,7 +12,7 @@
     position: sticky;
   }
   :is(h1, h2, h3, h4, h5, h6) {
-    @apply font-serif;
+    font-family: 'Newsreader Variable', ui-serif, serif;
     color: var(--text-color-bright);
   }
   h1 {
@@ -27,13 +28,17 @@
     line-height: 1.2;
   }
   hr {
-    @apply dark:border-zinc-500;
+    @media (prefers-color-scheme: dark) {
+      border-color: rgb(113 113 122);
+    }
   }
   a,
   button,
   pre[tabindex] {
-    @apply focus-visible:outline-none focus-visible:ring focus-visible:ring-blue-500;
-    @apply focus-visible:ring-offset-zinc-100 dark:focus-visible:ring-offset-zinc-900;
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgb(59 130 246);
+    }
   }
   a {
     text-decoration: underline;
@@ -44,7 +49,17 @@
     }
   }
   pre[tabindex] {
-    @apply focus-visible:ring-offset-4;
+    &:focus-visible {
+      box-shadow:
+        0 0 0 4px rgb(244 244 245),
+        0 0 0 7px rgb(59 130 246);
+
+      @media (prefers-color-scheme: dark) {
+        box-shadow:
+          0 0 0 4px rgb(24 24 27),
+          0 0 0 7px rgb(59 130 246);
+      }
+    }
   }
   code:not(pre *) {
     background-color: var(--bg-color-accent);

@@ -10,7 +10,13 @@ const { src, bordered = false, width, caption } = Astro.props
 ---
 
 <figure>
-  <video width={width} class:list={{ border: bordered }} controls autoplay loop>
+  <video
+    width={width}
+    class:list={{ bordered: bordered }}
+    controls
+    autoplay
+    loop
+  >
     <source src={src} type="video/mp4" />
   </video>
   {caption && <figcaption>{caption}</figcaption>}
@@ -18,8 +24,8 @@ const { src, bordered = false, width, caption } = Astro.props
 
 <style>
   video {
-    {if bordered {
-      border-color: var(--text-color);
-    }}
+    &.bordered {
+      border: 1px solid var(--text-color);
+    }
   }
 </style>

@@ -3,11 +3,11 @@ import { social } from '@/data/social.js'
 ---
 
 <footer class="layout flow">
-  <ul class="flex gap-2 self-center justify-center">
+  <ul>
     {
       social.map((link) => (
         <li>
-          <a href={link.url} class="block" aria-label={link.name}>
+          <a href={link.url} aria-label={link.name}>
             {link.name}
           </a>
         </li>
@@ -27,9 +27,21 @@ import { social } from '@/data/social.js'
     text-align: center;
 
     ul {
-      @apply border-t dark:border-zinc-500;
+      align-self: center;
+      border-top: 1px solid rgb(212 212 216);
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
       padding-top: var(--space-l);
       font-size: var(--step--1);
+
+      @media (prefers-color-scheme: dark) {
+        border-color: rgb(113 113 122);
+      }
+
+      a {
+        display: block;
+      }
     }
 
     p {

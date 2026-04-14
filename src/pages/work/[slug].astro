@@ -26,9 +26,10 @@ const ogImage = data.socialImage || data.heroImage
 <BaseLayout title={data.title} image={ogImage}>
   <div
     class:list={[
+      'hero',
       'gc-feature',
       {
-        'mx-auto max-w-[44rem]': data.singleDeviceHero,
+        '-single': data.singleDeviceHero,
       },
     ]}
   >
@@ -41,46 +42,41 @@ const ogImage = data.socialImage || data.heroImage
       sizes="(min-width: 58.875em) 896px, calc(100vw - 2.5rem)"
       formats={['avif', 'webp']}
       fallbackFormat="webp"
-      class="w-full"
       loading="eager"
       fetchpriority="high"
     />
   </div>
 
-  <h1 class="mt-8 text-center">
-    {data.title}
-  </h1>
+  <h1>{data.title}</h1>
 
-  <div
-    class="gc-feature border-y dark:border-zinc-500 mt-8 py-8 grid grid-cols-2 sm:flex sm:flex-row sm:justify-around gap-4 sm:gap-8 text-pretty"
-  >
+  <div class="project-info gc-feature">
     <dl>
-      <dt class="text-xs tracking-wider uppercase">Client</dt>
-      <dd class="leading-5 mt-1">
+      <dt>Client</dt>
+      <dd>
         {data.client}
       </dd>
     </dl>
     <dl>
-      <dt class="text-xs tracking-wider uppercase">Role</dt>
-      <dd class="leading-5 mt-1">
+      <dt>Role</dt>
+      <dd>
         {Array.isArray(data.role) ? data.role.join(', ') : data.role}
       </dd>
     </dl>
-    <dl class="col-span-2">
-      <dt class="text-xs tracking-wider uppercase">Tech</dt>
-      <dd class="leading-5 mt-1">
+    <dl class="tech">
+      <dt>Tech</dt>
+      <dd>
         {Array.isArray(data.tech) ? data.tech.join(', ') : data.tech}
       </dd>
     </dl>
   </div>
 
-  <div class="flow prose subgrid gc-full my-8">
+  <div class="flow prose subgrid gc-full">
     <Content />
   </div>
 
   {
     (data.websiteUrl || data.caseStudyUrl) && (
-      <div class="flex justify-center gap-8 py-8">
+      <div class="links">
         {data.websiteUrl && <a href={data.websiteUrl}>View Site →</a>}
         {data.caseStudyUrl && <a href={data.caseStudyUrl}>Read Case Study →</a>}
       </div>
@@ -89,7 +85,70 @@ const ogImage = data.socialImage || data.heroImage
 </BaseLayout>
 
 <style>
-  dt {
-    color: var(--text-color-bright);
+  .hero {
+    &.-single {
+      margin: 0 auto;
+      max-width: 44rem;
+    }
+
+    :global(img) {
+      width: 100%;
+    }
+  }
+
+  h1 {
+    margin-block-start: 2rem;
+    text-align: center;
+  }
+
+  .project-info {
+    border-block: 1px solid rgb(212 212 216);
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-block-start: 2rem;
+    padding-block: 2rem;
+    text-wrap: pretty;
+
+    @media (prefers-color-scheme: dark) {
+      border-block-color: rgb(113 113 122);
+    }
+
+    @media (width >= 40em) {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      justify-content: space-around;
+    }
+
+    dl.tech {
+      @media (width < 40em) {
+        grid-column: span 2;
+      }
+    }
+
+    dt {
+      color: var(--text-color-bright);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      line-height: 1rem;
+      text-transform: uppercase;
+    }
+
+    dd {
+      line-height: 1.25;
+      margin-block-start: 0.25rem;
+    }
+  }
+
+  .prose {
+    margin-block: 2rem;
+  }
+
+  .links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-block: 2rem;
   }
 </style>

@@ -24,7 +24,7 @@ const { Content } = await render(entry)
 <PageLayout title={data.title} type="article" canonicalURL={data.url}>
   <Content />
 
-  <p class="italic">
+  <p class="source">
     {
       data.url && (
         <>
@@ -50,5 +50,9 @@ const { Content } = await render(entry)
 <style>
   :global(h1) {
     font-size: var(--step-4);
+  }
+
+  .source {
+    font-style: italic;
   }
 </style>
