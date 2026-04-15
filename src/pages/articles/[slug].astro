@@ -29,7 +29,7 @@ const { Content } = await render(entry)
       data.url && (
         <>
           Originally published on
-          <FormattedDate date={data.date} />, on
+          {/* <FormattedDate date={data.date} />, on */}
           <a href={data.url} rel="noopener noreferrer">
             {getDomainFromUrl(data.url)}
           </a>
