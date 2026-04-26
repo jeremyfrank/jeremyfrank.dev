@@ -12,7 +12,7 @@ const { item, index }: Props = Astro.props
 const isVideo = (src: string) => src.includes('mp4')
 ---
 
-<li class="item">
+<li class="card">
   <a href={`craft/${item.id}/`} data-astro-prefetch>
     <span class="sr-only">{item.data.title}</span>
     {
@@ -50,7 +50,7 @@ const isVideo = (src: string) => src.includes('mp4')
 </li>
 
 <style>
-  .item {
+  .card {
     flex-shrink: 0;
     inline-size: min(300px + 2.25vw, 100%);
     position: relative;

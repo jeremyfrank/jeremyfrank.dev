@@ -11,7 +11,7 @@ type Props = {
 const { item, index }: Props = Astro.props
 ---
 
-<li class="item">
+<li class="card">
   <a href={`work/${item.id}/`} data-astro-prefetch>
     <span class="sr-only">{item.data.title}</span>
     <img
@@ -26,7 +26,7 @@ const { item, index }: Props = Astro.props
 </li>
 
 <style>
-  .item {
+  .card {
     flex-shrink: 0;
     inline-size: min(300px + 2.25vw, 100%);
     position: relative;
