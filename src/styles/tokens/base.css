@@ -1,6 +1,9 @@
 :root {
   --radius-sm: 0.125rem;
   --radius: 0.25rem;
+  --font-serif: Newsreader Variable, ui-serif, serif;
+  --font-sans: Geist, system-ui, ui-sans-serif, sans-serif;
+  --font-mono: monospace;
   --bg-color: #fff;
   --bg-color-accent: #dfdfdf;
   --text-color: rgb(0 0 0 / 66%);
