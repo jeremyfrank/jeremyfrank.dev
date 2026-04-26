@@ -237,7 +237,7 @@ const getLogoShape = (logo: ImageMetadata) => {
     static imagesLoaded = 0
     static readonly speed = 65 // pixels per second
     static readonly reducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
+      '(prefers-reduced-motion: reduce)',
     ).matches
 
     constructor() {
@@ -281,7 +281,7 @@ const getLogoShape = (logo: ImageMetadata) => {
           this.animationTrack.scrollWidth /
           LogoMarquee.speed /
           (LogoMarquee.reducedMotion ? 2 : 1)
-        ).toFixed(3)
+        ).toFixed(3),
       )
 
       this.logoLists.forEach((list) => {
@@ -307,7 +307,7 @@ const getLogoShape = (logo: ImageMetadata) => {
 
     private loadThenPlay() {
       const imagesToLoad = Array.from(
-        this.querySelectorAll<HTMLImageElement>('[data-preload="true"]') || []
+        this.querySelectorAll<HTMLImageElement>('[data-preload="true"]') || [],
       )
       imagesToLoad.forEach((img) => {
         const src = img.getAttribute('src')!
