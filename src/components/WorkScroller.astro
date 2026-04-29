@@ -91,14 +91,14 @@
     inset-inline: 0;
     margin-inline: auto;
     width: max-content;
-    background: #fff;
+    background: var(--bg-color);
+    border: 1px solid var(--bg-color-accent);
     border-radius: 0.125em;
     text-align: center;
     text-transform: uppercase;
     font-family: monospace;
     line-height: 1;
     padding: 0.25rem 0.5rem;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
 
     .list:not(.active) :global(:focus-visible) ~ & {
       visibility: visible;
