@@ -41,10 +41,11 @@
   }
   a,
   button,
-  pre[tabindex] {
+  pre[tabindex],
+  video,
+  summary {
     &:focus-visible {
-      outline: none;
-      box-shadow: 0 0 0 3px rgb(59 130 246);
+      outline: 3px solid var(--focus-color);
     }
   }
   a {
@@ -55,18 +56,9 @@
       color: var(--text-color-bright);
     }
   }
-  pre[tabindex] {
-    &:focus-visible {
-      box-shadow:
-        0 0 0 4px rgb(244 244 245),
-        0 0 0 7px rgb(59 130 246);
-
-      @media (prefers-color-scheme: dark) {
-        box-shadow:
-          0 0 0 4px rgb(24 24 27),
-          0 0 0 7px rgb(59 130 246);
-      }
-    }
+  pre[tabindex],
+  video {
+    outline-offset: 4px;
   }
   code:not(pre *) {
     background-color: var(--bg-color-accent);

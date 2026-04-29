@@ -29,25 +29,11 @@ const logomarkLabel = !isHome ? 'Home' : null
 
   .logo-wrapper {
     border-radius: 999px;
-    box-shadow: 0 0 0 3px white;
     margin-right: auto;
     pointer-events: auto;
 
-    @media (prefers-color-scheme: dark) {
-      box-shadow: 0 0 0 3px rgb(24 24 27);
-    }
-
     &:focus-visible {
-      outline: none;
-      box-shadow:
-        0 0 0 2px white,
-        0 0 0 5px rgb(59 130 246);
-
-      @media (prefers-color-scheme: dark) {
-        box-shadow:
-          0 0 0 2px rgb(24 24 27),
-          0 0 0 5px rgb(59 130 246);
-      }
+      outline-offset: 2px;
     }
 
     img {
