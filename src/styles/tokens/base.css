@@ -15,7 +15,7 @@
   :root {
     --bg-color: #181818;
     --bg-color-accent: #393939;
-    --focus-color: rgb(238, 238, 238);
+    --focus-color: rgb(190, 219, 255);
     --text-color: rgb(255 255 255 / 66%);
     --text-color-bright: rgb(255 255 255 / 100%);
   }
