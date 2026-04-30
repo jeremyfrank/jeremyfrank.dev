@@ -30,7 +30,7 @@
   }
   hr {
     @media (prefers-color-scheme: dark) {
-      border-color: rgb(113 113 122);
+      border-color: var(--bg-color-accent);
     }
   }
   code,

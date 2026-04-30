@@ -102,17 +102,13 @@ const ogImage = data.socialImage || data.heroImage
   }
 
   .project-info {
-    border-block: 1px solid rgb(212 212 216);
+    border-block: 1px solid var(--bg-color-accent);
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     margin-block-start: 2rem;
     padding-block: 2rem;
     text-wrap: pretty;
-
-    @media (prefers-color-scheme: dark) {
-      border-block-color: rgb(113 113 122);
-    }
 
     @media (width >= 40em) {
       display: flex;
