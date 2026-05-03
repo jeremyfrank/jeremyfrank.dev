@@ -45,7 +45,10 @@ export const clients = [
     name: 'Dick’s Sporting Goods',
   },
   {
-    name: 'Discovery',
+    name: 'Discovery Communications',
+  },
+  {
+    name: 'Emerson Collective'
   },
   {
     name: 'Get Satisfaction',
@@ -86,6 +89,8 @@ export const clients = [
   },
   {
     name: 'National Park Foundation',
+    image: 'npf.svg',
+    featured: true,
   },
   {
     name: 'National Trust for Historic Preservation',
@@ -95,11 +100,11 @@ export const clients = [
     name: 'Nest Realty',
   },
   {
-    name: 'OnGood',
-  },
-  {
     name: 'Politico',
     image: 'politico.svg',
+  },
+  {
+    name: 'Public Interest Registry',
   },
   {
     name: 'Puma',
@@ -127,7 +132,6 @@ export const clients = [
   {
     name: 'University of Pennsylvania',
     image: 'upenn.svg',
-    featured: true,
   },
   {
     name: 'Urū Sports',
