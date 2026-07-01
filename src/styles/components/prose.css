@@ -83,7 +83,7 @@
   width: 100%;
 }
 
-@media screen(<md) {
+@media (width < 48rem) {
   /* break long words */
   .prose > *,
   .prose a {
